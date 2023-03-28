@@ -7,7 +7,9 @@
                 {{ session('status') }}
             </div>
         @endif
+        <div class="summary-box">
         <h1 style="text-align: center">Kopsavilkums!</h1>
+        </div>
         <div class="summary-box">
             <h2>Kopējais pirkumu skaits: <?php echo $Count1;?></h2>
         </div>

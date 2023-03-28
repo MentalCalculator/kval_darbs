@@ -7,7 +7,9 @@
                             {{ session('status') }}
                         </div>
                     @endif
+                    <div class="summary-box">
                     <h1 style="text-align: center">Visi pirktie produkti!</h1>
+                    </div>
                     <br>
                     <table style="padding-bottom: 100px;">
                         <thead>

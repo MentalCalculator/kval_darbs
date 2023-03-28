@@ -15,13 +15,14 @@ body {
 table {
     border-collapse: collapse;
     width: 70%;
+    align-items: center;
 }
 th, td {
     text-align: center;
     padding: 4px;
 }
 th {
-    background-color: #f2f2f2;
+    background-color: #d0d0d0;
     color: #333;
 }
 tr:nth-child(even) {
@@ -33,10 +34,11 @@ tr:hover {
 
 #popup-box1 {
     width: 400px;
-    height: 500px;
+    height: 300px;
     background-color: #989898;
     position: fixed;
     border-radius: 10px;
+    display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
@@ -48,7 +50,7 @@ tr:hover {
 
 #popup-box2 {
     width: 400px;
-    height: 500px;
+    height: 350px;
     background-color: #989898;
     position: fixed;
     border-radius: 10px;
@@ -122,28 +124,35 @@ tr:hover {
 }
 
 .container {
+    border-radius: 10px;
     background-color: #ffffff;
     width: 1000px;
     height: 700px;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    margin-top: 50px;
 }
 
-.container[id="power"]{
-    background-color: #ffffff;
-    width: 1000px;
-    height: 700px;
+#power {
     border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    background-color: #ffffff;
+    width: 55%;
+    box-shadow: 0 0 10px rgb(58, 128, 252);
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
+    overflow: auto;
+    padding: 0px 0px; /* Add padding at the top and bottom */
+}
+
+#zone {
+    height: 100%;
+    width: 100%;
+    text-align: center;
+    align-items: center;
+    box-shadow: 0 0 10px rgb(58, 128, 252);
 }
 
 .container h2 {
@@ -188,3 +197,30 @@ button {
     margin-right: 10px;
 }
 
+form input {
+    display: block;
+    margin: 0 auto;
+}
+
+buttons-container {
+    display: flex;
+    justify-content: center;
+}
+
+.summary-box {
+    background-color: #ffffff;
+    width: 60%;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgb(58, 128, 252);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+    padding: 20px;
+}
+
+.summary-box h2 {
+    margin: 0;
+    font-size: 24px;
+    text-align: center;
+}

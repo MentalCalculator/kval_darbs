@@ -13,12 +13,17 @@ class ModifyController extends Controller
         $product = Products::findOrFail($id);
         $usedproduct = UsedProducts::findOrFail($id);
         $nosaukums = $request->input('new_nosaukums');
-        $cena = $request->input('new_cena');
-        $sveramais = $request->input('new_sveramais');
+        $input1 = $request->input('new_cena');
+        $input2 = $request->input('new_sveramais');
         $currentcena = $product->cena;
         $currentusedcena = $usedproduct->cena;
         $currentsveramais = $product->sveramais;
         $currentusedsveramais = $usedproduct->sveramais;
+
+
+
+        $cena = str_replace(',', '.', $input1);
+        $sveramais = str_replace(',', '.', $input2);
 
         if ($nosaukums == null and $cena == null and $sveramais == null) {
             $request->validate([

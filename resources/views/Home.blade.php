@@ -17,6 +17,8 @@
                     <br>
                     <input type="text" class="form-control @error('name') is-invalid @enderror" name="nosaukums" id="nosaukums" placeholder="Produkta Nosaukums">
                     <input type="text" class="form-control @error('name') is-invalid @enderror" name="cena" id="cena" placeholder="Cena Par Vienību">
+                    <input type="text" class="form-control @error('name') is-invalid @enderror" name="sveramais" id="sveramais" placeholder="Skaits/Svars*">
+                    <h6 style="text-align: center">Skaits/Svars paliks 1, ja nav ievadīta vērtība.</h6>
                     <div class="buttons-container" style="text-align: center">
                         <button type="submit" class="btn btn-success">
                             {{ __('Pievienot') }}
@@ -24,8 +26,6 @@
                         <button type="button" class="btn btn-danger" onclick="hidePopupBox1()">Atcelt</button>
                     </div>
                     <br>
-                    <h6 style="text-align: center">Skaits/Svars paliks 1, ja nav ievadīta vērtība.</h6>
-                    <input type="text" name="sveramais" id="sveramais" placeholder="Skaits/Svars">
                 </form>
             </div>
             <br>
@@ -69,9 +69,35 @@
                                                         @csrf
                                                         @method('PUT')
                                                         <br>
-                                                        <input type="text" name="new_nosaukums" placeholder="Jauns nosaukums">
-                                                        <input type="text" name="new_cena" placeholder="Jauna cena">
-                                                        <input type="text" name="new_sveramais" placeholder="Jauns skaits/svars">
+                                                        <table style="margin: auto">
+                                                            <thead>
+                                                            <th>Produkta Nosaukums</th>
+                                                            <th>Produkta Cena</th>
+                                                            <th>Produkta Skaits/Svars(KG)</th>
+                                                            </thead>
+                                                            <tbody>
+                                                            <tr style="background-color: #bdcfe7"><td>{{ $product->nosaukums }}</td>
+                                                                <td>@if($product->sveramais != 1)
+                                                                        @if(fmod($product->sveramais, 1) != 0)
+                                                                            {{ $product->cena }}€/KG
+                                                                        @else
+                                                                            {{ $product->cena }}€
+                                                                        @endif
+                                                                    @endif</td>
+                                                                <td>@if($product->sveramais != 1)
+                                                                        @if(fmod($product->sveramais, 1) != 0)
+                                                                            {{ $product->sveramais }} KG
+                                                                        @else
+                                                                            {{ $product->sveramais }}
+                                                                        @endif
+                                                                    @endif</td>
+                                                            </tr>
+                                                            </tbody>
+                                                        </table>
+                                                        <br>
+                                                        <input type="text" class="form-control @error('name') is-invalid @enderror" name="new_nosaukums" placeholder="Jauns nosaukums">
+                                                        <input type="text" class="form-control @error('name') is-invalid @enderror" name="new_cena" placeholder="Jauna cena">
+                                                        <input type="text" class="form-control @error('name') is-invalid @enderror" name="new_sveramais" placeholder="Jauns skaits/svars">
                                                         <div class="buttons-container" style="text-align: center">
                                                             <button type="submit" class="btn btn-success">Rediģēt</button>
                                                             <button type="button" class="btn btn-danger" onclick="hidePopupBox2()">Atcelt</button>

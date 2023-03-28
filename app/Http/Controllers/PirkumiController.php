@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use Cassandra\Date;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
 use App\Models\Purchases;
@@ -10,6 +9,7 @@ use App\Models\Products;
 use App\Models\UsedProducts;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Validator;
 
 class PirkumiController extends Controller
 {
@@ -18,8 +18,11 @@ class PirkumiController extends Controller
 
         $randomnumbers = random_int(1, 1000000000000);
         $nosaukums = $request->input('nosaukums');
-        $cena = $request->input('cena');
-        $sveramais = $request->input('sveramais');
+        $input1 = $request->input('cena');
+        $input2 = $request->input('sveramais');
+
+        $cena = str_replace(',', '.', $input1);
+        $sveramais = str_replace(',', '.', $input2);
 
         if (empty($sveramais) || is_null($sveramais)) {
             $sveramais = 1;
@@ -32,8 +35,8 @@ class PirkumiController extends Controller
             $request->validate([
                 'nosaukums' => 'required',
                 'cena' => 'required',
-                'sveramais' => 'required',
             ]);
+
         } else {
             $purchases = new Purchases;
 
@@ -47,7 +50,7 @@ class PirkumiController extends Controller
 
             $Products->id = $randomnumbers;
             $Products->userid = Auth::id();
-            $Products->pirkumsid = $randomnumbers;
+            $Products->pirkumsid = $purchases->id;
             $Products->nosaukums = $nosaukums;
             $Products->cena = $cena;
             $Products->sveramais = $sveramais;
@@ -58,7 +61,7 @@ class PirkumiController extends Controller
 
             $usedproducts = new UsedProducts();
 
-            $usedproducts->id = $randomnumbers;
+            $usedproducts->id = $Products->id;
             $usedproducts->userid = Auth::id();
             $usedproducts->nosaukums = $nosaukums;
             $usedproducts->cena = $cena;
