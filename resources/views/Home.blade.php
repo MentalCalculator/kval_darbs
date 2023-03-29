@@ -15,9 +15,21 @@
                 <form method="POST" action="{{route('pirkums')}}">
                     @csrf
                     <br>
-                    <input type="text" class="form-control @error('name') is-invalid @enderror" name="nosaukums" id="nosaukums" placeholder="Produkta Nosaukums">
-                    <input type="text" class="form-control @error('name') is-invalid @enderror" name="cena" id="cena" placeholder="Cena Par Vienību">
-                    <input type="text" class="form-control @error('name') is-invalid @enderror" name="sveramais" id="sveramais" placeholder="Skaits/Svars*">
+                    <input type="text" class="form-control @error('name') is-invalid @enderror" name="nosaukums" id="nosaukums" placeholder="Produkta Nosaukums" maxlength="100" required>
+                    <input type="number" class="form-control @error('name') is-invalid @enderror" name="cena" step="0.01" id="cena" placeholder="Cena Par Vienību" required>
+                      <div class="form-check">
+                        <input class="form-check-input" type="radio" name="sveramaistype" id="Skaits" value="Skaits" onclick="changeStep(1)" required>
+                        <label class="form-check-label" for="Skaits">
+                            Skaits
+                        </label>
+                      </div>
+                      <div class="form-check">
+                        <input class="form-check-input" type="radio" name="sveramaistype" id="Svars" value="Svars" onclick="changeStep(0.001)" required>
+                        <label class="form-check-label" for="Svars">
+                            Svars
+                        </label>
+                      </div>
+                    <input type="number" class="form-control @error('name') is-invalid @enderror" name="sveramais" id="sveramais" step="0" placeholder="Skaits/Svars*">
                     <h6 style="text-align: center">Skaits/Svars paliks 1, ja nav ievadīta vērtība.</h6>
                     <div class="buttons-container" style="text-align: center">
                         <button type="submit" class="btn btn-success">
@@ -48,14 +60,14 @@
                                     <tbody>
                                     <tr><td>{{ $product->nosaukums }}</td>
                                         <td>@if($product->sveramais != 1)
-                                                @if(fmod($product->sveramais, 1) != 0)
+                                                @if($product->sveramaistype == 'Svars')
                                                 {{ $product->cena }}€/KG
                                                 @else
                                                 {{ $product->cena }}€
                                                 @endif
                                             @endif</td>
                                         <td>@if($product->sveramais != 1)
-                                                @if(fmod($product->sveramais, 1) != 0)
+                                                @if($product->sveramaistype == 'Svars')
                                                     {{ $product->sveramais }} KG
                                                 @else
                                                     {{ $product->sveramais }}
@@ -78,14 +90,14 @@
                                                             <tbody>
                                                             <tr style="background-color: #bdcfe7"><td>{{ $product->nosaukums }}</td>
                                                                 <td>@if($product->sveramais != 1)
-                                                                        @if(fmod($product->sveramais, 1) != 0)
+                                                                        @if($product->sveramaistype == 'Svars')
                                                                             {{ $product->cena }}€/KG
                                                                         @else
                                                                             {{ $product->cena }}€
                                                                         @endif
                                                                     @endif</td>
                                                                 <td>@if($product->sveramais != 1)
-                                                                        @if(fmod($product->sveramais, 1) != 0)
+                                                                        @if($product->sveramaistype == 'Svars')
                                                                             {{ $product->sveramais }} KG
                                                                         @else
                                                                             {{ $product->sveramais }}
@@ -95,9 +107,14 @@
                                                             </tbody>
                                                         </table>
                                                         <br>
-                                                        <input type="text" class="form-control @error('name') is-invalid @enderror" name="new_nosaukums" placeholder="Jauns nosaukums">
-                                                        <input type="text" class="form-control @error('name') is-invalid @enderror" name="new_cena" placeholder="Jauna cena">
-                                                        <input type="text" class="form-control @error('name') is-invalid @enderror" name="new_sveramais" placeholder="Jauns skaits/svars">
+                                                        <input type="text" class="form-control @error('name') is-invalid @enderror" name="new_nosaukums" maxlength="20" placeholder="Jauns nosaukums">
+                                                        <input type="number" class="form-control @error('name') is-invalid @enderror" name="new_cena" step="0.01" placeholder="Jauna cena">
+                                                        @if($product->sveramaistype == 'Svars')
+                                                        <input type="number" class="form-control @error('name') is-invalid @enderror" name="new_sveramais" step="0.001" placeholder="Jauns svars">
+                                                        @else
+                                                        <input type="number" class="form-control @error('name') is-invalid @enderror" name="new_sveramais" step="1" placeholder="Jauns skaits">
+                                                        @endif
+                                                        <br>
                                                         <div class="buttons-container" style="text-align: center">
                                                             <button type="submit" class="btn btn-success">Rediģēt</button>
                                                             <button type="button" class="btn btn-danger" onclick="hidePopupBox2()">Atcelt</button>

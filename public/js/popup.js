@@ -6,7 +6,6 @@ function hidePopupBox1() {
     document.getElementById("popup-box1").style.display = "none";
     document.getElementById("overlay").style.display = 'none';
 }
-
 function showPopupBox2() {
     document.getElementById("popup-box2").style.display = "block";
     document.getElementById("overlay").style.display = 'block';
@@ -46,4 +45,7 @@ function showPopupBox6() {
 function hidePopupBox6() {
     document.getElementById("popup-box6").style.display = "none";
     document.getElementById("overlay").style.display = 'none';
+}
+function changeStep(stepValue) {
+    document.getElementById("sveramais").step = stepValue;
 }

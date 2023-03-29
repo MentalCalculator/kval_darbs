@@ -20,8 +20,6 @@ class ModifyController extends Controller
         $currentsveramais = $product->sveramais;
         $currentusedsveramais = $usedproduct->sveramais;
 
-
-
         $cena = str_replace(',', '.', $input1);
         $sveramais = str_replace(',', '.', $input2);
 
@@ -31,7 +29,8 @@ class ModifyController extends Controller
                 'new_cena' => 'required',
                 'new_sveramais' => 'required',
             ]);
-        } elseif ($nosaukums == Null and $cena == Null) {
+        }
+        if ($nosaukums == Null and $cena == Null) {
             $product->sveramais = $sveramais;
             $product->total = $currentcena * $sveramais;
 
@@ -91,6 +90,20 @@ class ModifyController extends Controller
             $usedproduct->nosaukums = $nosaukums;
             $usedproduct->cena = $cena;
             $usedproduct->total = $cena * $currentusedsveramais;
+
+            $product->save();
+            $usedproduct->save();
+            return redirect()->back();
+        } else {
+            $product->nosaukums = $nosaukums;
+            $product->cena = $cena;
+            $product->sveramais = $sveramais;
+            $product->total = $cena * $sveramais;
+
+            $usedproduct->nosaukums = $nosaukums;
+            $usedproduct->cena = $cena;
+            $usedproduct->sveramais = $sveramais;
+            $usedproduct->total = $cena * $sveramais;
 
             $product->save();
             $usedproduct->save();

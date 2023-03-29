@@ -17,6 +17,7 @@ return new class extends Migration
             $table->string('nosaukums');
             $table->decimal('cena');
             $table->decimal('sveramais')->nullable();
+            $table->string('sveramaistype');
             $table->decimal('total')->nullable();
             $table->timestamps();
         });

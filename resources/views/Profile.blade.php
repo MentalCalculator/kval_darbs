@@ -10,7 +10,7 @@
         <form action="{{ route('userchange') }}" method="POST">
             <br>
             @csrf
-            <input type="text" name="new_username" placeholder="Jauns nosaukums">
+            <input type="text"class="form-control @error('name') is-invalid @enderror" name="new_username" placeholder="Jauns nosaukums" required>
             <div class="buttons-container" style="text-align: center">
             <button class="btn btn-success">Mainīt lietotājvārdu</button>
             <button type="button" class="btn btn-danger" onclick="hidePopupBox3()">Atcelt</button>
@@ -24,7 +24,7 @@
         <form action="{{ route('emailchange') }}" method="POST">
             <br>
             @csrf
-            <input type="text" name="new_email" placeholder="Jauns e-pasts">
+            <input type="email" class="form-control @error('name') is-invalid @enderror" name="new_email" placeholder="Jauns e-pasts" required>
             <div class="buttons-container" style="text-align: center">
             <button class="btn btn-success">Mainīt e-pastu</button>
             <button type="button" class="btn btn-danger" onclick="hidePopupBox4()">Atcelt</button>
@@ -38,7 +38,7 @@
         <form action="{{ route('passwordchange') }}" method="POST">
             <br>
             @csrf
-            <input type="password" name="new_password" placeholder="Jauna parole">
+            <input type="password" class="form-control @error('name') is-invalid @enderror" name="new_password" placeholder="Jauna parole" required>
             <div class="buttons-container" style="text-align: center">
             <button class="btn btn-success">Mainīt Paroli</button>
             <button type="button" class="btn btn-danger" onclick="hidePopupBox5()">Atcelt</button>

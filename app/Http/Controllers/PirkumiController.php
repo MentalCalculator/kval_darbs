@@ -15,36 +15,27 @@ class PirkumiController extends Controller
 {
     public function pirkums (Request $request)
     {
-
         $randomnumbers = random_int(1, 1000000000000);
         $nosaukums = $request->input('nosaukums');
-        $input1 = $request->input('cena');
-        $input2 = $request->input('sveramais');
+        $cena = $request->input('cena');
+        $sveramais = $request->input('sveramais');
 
-        $cena = str_replace(',', '.', $input1);
-        $sveramais = str_replace(',', '.', $input2);
-
-        if (empty($sveramais) || is_null($sveramais)) {
+        if ($sveramais == null) {
             $sveramais = 1;
-            $totalsum = $cena;
-        } else {
-            $totalsum = $cena * $sveramais;
         }
 
-        if ($nosaukums == null or $cena == null) {
-            $request->validate([
-                'nosaukums' => 'required',
-                'cena' => 'required',
-            ]);
+        if(isset($_POST['sveramaistype'])) {
+            $sveramaistype = $_POST['sveramaistype'];
+        }
 
-        } else {
+        $totalsum = $cena * $sveramais;
+
             $purchases = new Purchases;
 
             $purchases->id = $randomnumbers;
             $purchases->userid = Auth::id();
             $purchases->created_at = now();
             $purchases->updated_at = now();
-            $purchases->save();
 
             $Products = new Products;
 
@@ -54,10 +45,10 @@ class PirkumiController extends Controller
             $Products->nosaukums = $nosaukums;
             $Products->cena = $cena;
             $Products->sveramais = $sveramais;
+            $Products->sveramaistype = $sveramaistype;
             $Products->total = $totalsum;
             $Products->created_at = now();
             $Products->updated_at = now();
-            $Products->save();
 
             $usedproducts = new UsedProducts();
 
@@ -66,37 +57,15 @@ class PirkumiController extends Controller
             $usedproducts->nosaukums = $nosaukums;
             $usedproducts->cena = $cena;
             $usedproducts->sveramais = $sveramais;
+            $usedproducts->sveramaistype = $sveramaistype;
             $usedproducts->total = $totalsum;
             $usedproducts->created_at = now();
             $usedproducts->updated_at = now();
+
             $usedproducts->save();
+            $purchases->save();
+            $Products->save();
 
-            $user_id = Auth::id();
-            $pirkumi = DB::table('pirkumi')
-                ->select('id', 'created_at')
-                ->where('userid', '=', $user_id)
-                ->get();
-
-            $data = [];
-            foreach ($pirkumi as $p) {
-                $pirkums_id = $p->id;
-                $products = DB::table('produkti')
-                    ->select('id', 'pirkumsid', 'created_at', 'nosaukums', 'cena', 'sveramais', 'total')
-                    ->where('userid', '=', $user_id)
-                    ->where('pirkumsid', '=', $pirkums_id)
-                    ->get();
-                foreach ($products as $product) {
-                    if (round($product->sveramais) == $product->sveramais) {
-                        $product->sveramais = number_format($product->sveramais);
-                    } else {
-                        $product->sveramais = number_format($product->sveramais, 3);
-                    }
-                }
-                $data[$pirkums_id] = $products;
-            }
-
-            return view('Home', compact('data', 'pirkumi'));
-        }
+            return redirect()->back();
     }
-
 }

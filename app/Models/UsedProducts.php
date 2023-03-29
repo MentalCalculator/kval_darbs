@@ -8,5 +8,5 @@ use Illuminate\Database\Eloquent\Model;
 class UsedProducts extends Model
 {
     protected $table = 'UsedProducts';
-    protected $fillable = ['$id','$userid','$nosaukums','$cena','$sveramais','$created_at','$updated_at'];
+    protected $fillable = ['$id','$userid','$nosaukums','$cena','$sveramais','sveramaistype','$created_at','$updated_at'];
 }
