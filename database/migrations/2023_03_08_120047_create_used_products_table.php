@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('UsedProducts', function (Blueprint $table) {
+        Schema::create('IzmantotieProdukti', function (Blueprint $table) {
             $table->id();
             $table->foreignId('userid')->references('id')->on('users')->onDelete('cascade');
             $table->string('nosaukums');
@@ -28,6 +28,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('UsedProducts');
+        Schema::dropIfExists('IzmantotieProdukti');
     }
 };

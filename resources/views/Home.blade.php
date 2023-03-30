@@ -14,22 +14,24 @@
             <div id="popup-box1">
                 <form method="POST" action="{{route('pirkums')}}">
                     @csrf
-                    <br>
+                    <br><br>
                     <input type="text" class="form-control @error('name') is-invalid @enderror" name="nosaukums" id="nosaukums" placeholder="Produkta Nosaukums" maxlength="100" required>
                     <input type="number" class="form-control @error('name') is-invalid @enderror" name="cena" step="0.01" id="cena" placeholder="Cena Par Vienību" required>
-                      <div class="form-check">
-                        <input class="form-check-input" type="radio" name="sveramaistype" id="Skaits" value="Skaits" onclick="changeStep(1)" required>
+                    <div class="text-center">
+                      <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="sveramaistype" id="Skaits" value="Skaits" pattern="\d+" onclick="changeStep(1)",  required>
                         <label class="form-check-label" for="Skaits">
                             Skaits
                         </label>
                       </div>
-                      <div class="form-check">
+                      <div class="form-check form-check-inline">
                         <input class="form-check-input" type="radio" name="sveramaistype" id="Svars" value="Svars" onclick="changeStep(0.001)" required>
                         <label class="form-check-label" for="Svars">
                             Svars
                         </label>
                       </div>
-                    <input type="number" class="form-control @error('name') is-invalid @enderror" name="sveramais" id="sveramais" step="0" placeholder="Skaits/Svars*">
+                    </div>
+                    <input type="number" class="form-control @error('name') is-invalid @enderror" name="sveramais" id="sveramais" oninput="preventDecimal(event)" placeholder="Skaits/Svars*">
                     <h6 style="text-align: center">Skaits/Svars paliks 1, ja nav ievadīta vērtība.</h6>
                     <div class="buttons-container" style="text-align: center">
                         <button type="submit" class="btn btn-success">

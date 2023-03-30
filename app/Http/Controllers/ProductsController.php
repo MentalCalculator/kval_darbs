@@ -26,6 +26,6 @@ class ProductsController extends Controller
                 }
             }
         }
-        return view('productsinfo',['products'=>$usedproducts]);
+        return view('Produkti',['products'=>$usedproducts]);
     }
 }

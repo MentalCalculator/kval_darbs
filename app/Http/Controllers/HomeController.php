@@ -35,7 +35,7 @@ class HomeController extends Controller
         foreach ($pirkumi as $p) {
             $pirkums_id = $p->id;
             $products = DB::table('produkti')
-                ->select('id', 'pirkumsid', 'nosaukums', 'cena', 'sveramais', 'total', 'created_at')
+                ->select('id', 'pirkumsid', 'nosaukums', 'cena', 'sveramais', 'sveramaistype', 'total', 'created_at')
                 ->where('userid', '=', $user_id)
                 ->where('pirkumsid', '=', $pirkums_id)
                 ->get();
@@ -53,7 +53,31 @@ class HomeController extends Controller
     }
     public function pirkumi()
     {
-        return view('purchases');
+        $user_id = Auth::id();
+        $pirkumi = DB::table('pirkumi')
+            ->select('id','created_at')
+            ->where('userid', '=', $user_id)
+            ->get();
+
+        $data = [];
+        foreach ($pirkumi as $p) {
+            $pirkums_id = $p->id;
+            $products = DB::table('produkti')
+                ->select('id', 'pirkumsid', 'nosaukums', 'cena', 'sveramais', 'sveramaistype', 'total', 'created_at')
+                ->where('userid', '=', $user_id)
+                ->where('pirkumsid', '=', $pirkums_id)
+                ->get();
+            foreach ($products as $product) {
+                if (round($product->sveramais) == $product->sveramais) {
+                    $product->sveramais = number_format($product->sveramais);
+                } else {
+                    $product->sveramais = number_format($product->sveramais, 3);
+                }
+            }
+            $data[$pirkums_id] = $products;
+        }
+
+        return view('Home', compact('data','pirkumi'));
     }
     public function total()
     {
@@ -61,6 +85,6 @@ class HomeController extends Controller
     }
     public function profile()
     {
-        return view('Profile');
+        return view('Iestatījumi');
     }
 }

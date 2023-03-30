@@ -46,14 +46,14 @@ Route::middleware(['auth'])->group(function () {
     })->name('Pirkumi');
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('/Produkti',[App\Http\Controllers\ProductsController::class, 'products'])->name('productsinfo');
-Route::get('/Pirkumi', [App\Http\Controllers\HomeController::class, 'pirkumi'])->name('pirkumi');
-Route::post('/Pirkumi', [App\Http\Controllers\PirkumiController::class, 'pirkums'])->name('pirkums');
-Route::get('/Pirkumi', [App\Http\Controllers\PirkumiShowController::class, 'products'])->name('pirkumi');
+Route::post('/Pirkumi', [App\Http\Controllers\PirkumiCreateController::class, 'pirkums'])->name('pirkums');
+Route::get('/Pirkumi', [App\Http\Controllers\PirkumiController::class, 'products'])->name('pirkumi');
 Route::delete('/remove/{id}', [App\Http\Controllers\RemoveController::class, 'removeData'])->name('remove');
 Route::put('/products/{id}',  [App\Http\Controllers\ModifyController::class, 'update'])->name('products.update');
 Route::post('/Profils',[App\Http\Controllers\ProfileEditController::class, 'userchange'])->name('userchange');
 Route::post('/Profild',[App\Http\Controllers\ProfileEditController::class, 'emailchange'])->name('emailchange');
 Route::post('/Profil',[App\Http\Controllers\ProfileEditController::class, 'passwordchange'])->name('passwordchange');
+Route::get('/pirkumi', [App\Http\Controllers\SearchController::class, 'index'])->name('pirkumi.index');
 Route::get('/Kopsavilkums', [App\Http\Controllers\TotalController::class, 'totalcount'])->name('totalcount');
 Route::get('/Profils', [App\Http\Controllers\HomeController::class, 'profile'])->name('profils');
 });

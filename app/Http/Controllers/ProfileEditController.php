@@ -24,8 +24,14 @@ class ProfileEditController extends Controller
 
     public function passwordchange(Request $request) {
         $user = User::findOrFail(Auth::id());
+
+        $request->validate([
+            'new_password' => ['required', 'confirmed'],
+        ]);
+
         $user->password = bcrypt($request->input('new_password'));
         $user->save();
+
         return redirect()->back();
     }
 }

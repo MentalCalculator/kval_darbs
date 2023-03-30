@@ -23,6 +23,6 @@ class TotalController extends Controller
 
         $total = $count1 + $count2 + $count3;
 
-        return view('Total', ['Count1' => $count1, 'Count2' => $count2, 'Count3' => $count3, 'Total' => $total]);
+        return view('Kopsavilkums', ['Count1' => $count1, 'Count2' => $count2, 'Count3' => $count3, 'Total' => $total]);
     }
 }

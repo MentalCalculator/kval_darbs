@@ -22,7 +22,7 @@
                 <!-- Left Side Of Navbar -->
                 <ul class="navbar-nav me-auto mx-5">
                     <li style="margin-left: 50px">
-                        <a class="nav-link text-light btn" href="{{ route('pirkumi')}}">{{__('Pirkumi')}}</a>
+                        <a class="nav-link text-light btn" href="{{ route('home')}}">{{__('Pirkumi')}}</a>
                     </li>
                     <li style="margin-left: 10px">
                         <a class="nav-link text-light btn" href="{{ route('productsinfo')}}">{{__('Produkti')}}</a>

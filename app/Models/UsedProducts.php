@@ -7,6 +7,6 @@ use Illuminate\Database\Eloquent\Model;
 
 class UsedProducts extends Model
 {
-    protected $table = 'UsedProducts';
+    protected $table = 'IzmantotieProdukti';
     protected $fillable = ['$id','$userid','$nosaukums','$cena','$sveramais','sveramaistype','$created_at','$updated_at'];
 }

@@ -49,3 +49,11 @@ function hidePopupBox6() {
 function changeStep(stepValue) {
     document.getElementById("sveramais").step = stepValue;
 }
+function preventDecimal(event) {
+    // Check if the sveramaistype radio button is set to "Skaits"
+    var sveramaistype = document.querySelector('input[name="sveramaistype"]:checked').value;
+    if (sveramaistype === "Skaits") {
+        // Remove any decimal points entered by the user
+        event.target.value = event.target.value.replace(".", "");
+    }
+}

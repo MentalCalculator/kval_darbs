@@ -35,15 +35,32 @@
         <div class="summary-box">
         <h2>Parole: .............. <button class="btn btn-primary" onclick="showPopupBox5()">Mainīt</button></h2>
         <div id="popup-box5">
-        <form action="{{ route('passwordchange') }}" method="POST">
-            <br>
-            @csrf
-            <input type="password" class="form-control @error('name') is-invalid @enderror" name="new_password" placeholder="Jauna parole" required>
-            <div class="buttons-container" style="text-align: center">
-            <button class="btn btn-success">Mainīt Paroli</button>
-            <button type="button" class="btn btn-danger" onclick="hidePopupBox5()">Atcelt</button>
-            </div>
-        </form>
+            <form action="{{ route('passwordchange') }}" method="POST">
+                @csrf
+                <br>
+                <div class="form-group">
+                    <input type="password" class="form-control @error('new_password') is-invalid @enderror" name="new_password" id="new_password" placeholder="Jauna parole" required>
+                    @error('new_password')
+                    <span class="invalid-feedback" role="alert" style="text-align: center;">
+                    <strong>Paroles neatkārtojās!</strong>
+            </span>
+                    @enderror
+                </div>
+
+                <div class="form-group">
+                    <input type="password" class="form-control @error('new_password_confirmation') is-invalid @enderror" name="new_password_confirmation" id="new_password_confirmation" placeholder="Atkārtot jauno paroli" required>
+                    @error('new_password_confirmation')
+                    <span class="invalid-feedback" role="alert">
+                <strong>{{ $message }}</strong>
+            </span>
+                    @enderror
+                </div>
+
+                <div class="buttons-container" style="text-align: center">
+                    <button type="submit" class="btn btn-success">Mainīt Paroli</button>
+                    <button type="button" class="btn btn-danger" onclick="hidePopupBox5()">Atcelt</button>
+                </div>
+            </form>
         </div>
         </div>
     </div>
