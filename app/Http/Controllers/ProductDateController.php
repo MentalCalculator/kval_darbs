@@ -6,14 +6,18 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
-class ProductsController extends Controller
+class ProductDateController extends Controller
 {
-    public function products(Request $request)
+    public function productsdate(Request $request)
     {
         $user_id = Auth::id();
+        $startdate = $request->input('startdate');
+        $enddate = $request->input('enddate');
+
         $usedproducts = DB::table('produkti')
             ->select('id', 'pirkumsid', 'created_at', 'nosaukums', 'cena', 'sveramais', 'sveramaistype', 'total')
             ->where('userid', '=', $user_id)
+            ->whereBetween('created_at', [$startdate . ' 00:00:00', $enddate . ' 23:59:59'])
             ->get();
         foreach ($usedproducts as $product) {
             if ($product->sveramaistype == 'Skaits') {

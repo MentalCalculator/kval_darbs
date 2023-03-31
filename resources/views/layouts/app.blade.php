@@ -22,13 +22,13 @@
                 <!-- Left Side Of Navbar -->
                 <ul class="navbar-nav me-auto mx-5">
                     <li style="margin-left: 50px">
-                        <a class="nav-link text-light btn" href="{{ route('home')}}">{{__('Pirkumi')}}</a>
+                        <a class="nav-link text-light btn" href="{{ route('home')}}">{{__('Purchases')}}</a>
                     </li>
                     <li style="margin-left: 10px">
-                        <a class="nav-link text-light btn" href="{{ route('productsinfo')}}">{{__('Produkti')}}</a>
+                        <a class="nav-link text-light btn" href="{{ route('productsinfo')}}">{{__('Products')}}</a>
                     </li>
                     <li style="margin-left: 10px">
-                        <a class="nav-link text-light btn" href="{{ route('totalcount')}}">{{__('Kopsavilkums')}}</a>
+                        <a class="nav-link text-light btn" href="{{ route('total')}}">{{__('Total')}}</a>
                     </li>
                 </ul>
                 <!-- Middle Of Navbar -->
@@ -42,11 +42,11 @@
                                 {{ Auth::user()->name }}
                             </a>
                             <div class="dropdown-menu">
-                                <a class="dropdown-item" href="{{ route('profils') }}">Iestatījumi</a>
+                                <a class="dropdown-item" href="{{ route('profils') }}">Settings</a>
                                 <a class="dropdown-item" href="{{ route('logout') }}"
                                    onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
-                                    {{ __('Atslēgties') }}
+                                    {{ __('Logout') }}
                                 </a>
                             </div>
                             <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">

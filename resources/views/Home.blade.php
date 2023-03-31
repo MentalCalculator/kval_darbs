@@ -9,44 +9,70 @@
             @endif
                 <br>
             <h1 style="text-align: center">Jūsu veiktie pirkumi!</h1>
-            <br>
-            <button class="btn btn-success" onclick="showPopupBox1()">Pievienojiet Pirkumu</button>
-            <div id="popup-box1">
-                <form method="POST" action="{{route('pirkums')}}">
-                    @csrf
-                    <br><br>
-                    <input type="text" class="form-control @error('name') is-invalid @enderror" name="nosaukums" id="nosaukums" placeholder="Produkta Nosaukums" maxlength="100" required>
-                    <input type="number" class="form-control @error('name') is-invalid @enderror" name="cena" step="0.01" id="cena" placeholder="Cena Par Vienību" required>
-                    <div class="text-center">
-                      <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="radio" name="sveramaistype" id="Skaits" value="Skaits" pattern="\d+" onclick="changeStep(1)",  required>
-                        <label class="form-check-label" for="Skaits">
-                            Skaits
-                        </label>
-                      </div>
-                      <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="radio" name="sveramaistype" id="Svars" value="Svars" onclick="changeStep(0.001)" required>
-                        <label class="form-check-label" for="Svars">
-                            Svars
-                        </label>
-                      </div>
+            <br><br>
+                <form method="GET" action="{{route('purchasessearch')}}">
+                    <div class="container" style="height: 20px; width: 500px">
+                        <div class="input-group mb-3">
+                            <input type="text" class="form-control" name="search" placeholder="Nosaukums" required>
+                            <button class="btn btn-primary" type="submit" style="margin-bottom: 10px">Meklēt</button>
+                        </div>
                     </div>
-                    <input type="number" class="form-control @error('name') is-invalid @enderror" name="sveramais" id="sveramais" oninput="preventDecimal(event)" placeholder="Skaits/Svars*">
-                    <h6 style="text-align: center">Skaits/Svars paliks 1, ja nav ievadīta vērtība.</h6>
-                    <div class="buttons-container" style="text-align: center">
-                        <button type="submit" class="btn btn-success">
-                            {{ __('Pievienot') }}
-                        </button>
-                        <button type="button" class="btn btn-danger" onclick="hidePopupBox1()">Atcelt</button>
-                    </div>
-                    <br>
                 </form>
+                <br>
+                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+                    Izveido pirkumu
+                </button>
+                <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h1 class="modal-title fs-5" id="staticBackdropLabel">Izveidojiet pirkumu</h1>
+                            </div>
+                            <div class="modal-body">
+                                <form method="POST" action="{{route('purchasecreate')}}">
+                                    @csrf
+                                    <input type="text" class="form-control" name="nosaukums" id="nosaukums" placeholder="Produkta Nosaukums" maxlength="100" required>
+                                    <input type="number" class="form-control @error('name') is-invalid @enderror" name="cena" step="0.01" id="cena" placeholder="Cena Par Vienību" required>
+                                    @error('nosaukums')
+                                    <span class="invalid-feedback" role="alert" style="text-align: center;">
+                                    <strong>{{$message}}</strong>
+                                    </span>
+                                    @enderror
+                                    <div class="text-center">
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="radio" name="sveramaistype" id="Skaits" value="Skaits" pattern="\d+" onclick="changeStep(1)", required>
+                                            <label class="form-check-label" for="Skaits">
+                                                Skaits
+                                            </label>
+                                        </div>
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="radio" name="sveramaistype" id="Svars" value="Svars" onclick="changeStep(0.001)" required style="color: #4a5568">
+                                            <label class="form-check-label" for="Svars">
+                                                Svars
+                                            </label>
+                                            <div class="invalid-feedback">Izvēlieties tipu!</div>
+                                        </div>
+                                    </div>
+                                    <input type="number" class="form-control @error('name') is-invalid @enderror" name="sveramais" id="sveramais" oninput="preventDecimal(event)" placeholder="Skaits/Svars*" >
+                                    <h6 style="text-align: center">Skaits/Svars paliks 1, ja nav ievadīta vērtība.</h6>
+                                    <br>
+                            <div class="modal-footer">
+                                <button type="submit" class="btn btn-success">
+                                    {{ __('Pievienot') }}
+                                </button>
+                                <button type="button" class="btn btn-danger" class="btn-close" data-bs-dismiss="modal" aria-label="Close">Atcelt</button>
+                            </div>
+                          </form>
+                        </div>
+                    </div>
+                </div>
             </div>
             <br>
-                <div id="power">
+            <div id="power">
                 @foreach ($data as $pirkums_id => $products)
                     @if (!empty($products))
-                            <div class="container" id="zone">
+                        @foreach ($products as $product)
+                         <div class="container" id="zone">
                             <br>
                             <h2>Pirkuma ID: {{ $pirkums_id }}</h2>
                             <h2>Pirkuma datums: {{ $pirkumi->where('id', $pirkums_id)->first()->created_at }}</h2>
@@ -58,55 +84,62 @@
                                     <th>Kopā</th>
                                     <th></th>
                                     </thead>
-                                    @foreach ($products as $product)
                                     <tbody>
                                     <tr><td>{{ $product->nosaukums }}</td>
-                                        <td>@if($product->sveramais != 1)
+                                            <td>
                                                 @if($product->sveramaistype == 'Svars')
                                                 {{ $product->cena }}€/KG
                                                 @else
                                                 {{ $product->cena }}€
                                                 @endif
-                                            @endif</td>
-                                        <td>@if($product->sveramais != 1)
+                                            </td>
+                                            <td>
                                                 @if($product->sveramaistype == 'Svars')
                                                     {{ $product->sveramais }} KG
                                                 @else
                                                     {{ $product->sveramais }}
                                                 @endif
-                                            @endif</td>
+                                            </td>
                                         <td>{{ $product->total }}€</td>
-                                        <td><button class="btn btn-primary" onclick="showPopupBox2()">Rediģēšana</button>
-                                                <div id="popup-box2">
-                                                    @if ($product->id == $product->id)
-                                                    <form action="{{ route('products.update', $product->id) }}" method="POST">
+                                        <td><button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop2">
+                                                Rediģēt
+                                            </button>
+                                            <div class="modal fade" id="staticBackdrop2" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel2" aria-hidden="true">
+                                                <div class="modal-dialog modal-dialog-centered">
+                                                    <div class="modal-content">
+                                                        <div class="modal-header">
+                                                            <h1 class="modal-title fs-5" id="staticBackdropLabel" style="text-align: center;">Rediģēt produktu</h1>
+                                                        </div>
+                                                        <div class="modal-body">
+                                                        @if ($product->id == $product->id)
+                                                        <form action="{{ route('productsupdate', $product->id) }}" method="POST">
                                                         @csrf
                                                         @method('PUT')
                                                         <br>
                                                         <table style="margin: auto">
-                                                            <thead>
-                                                            <th>Produkta Nosaukums</th>
-                                                            <th>Produkta Cena</th>
-                                                            <th>Produkta Skaits/Svars(KG)</th>
-                                                            </thead>
-                                                            <tbody>
-                                                            <tr style="background-color: #bdcfe7"><td>{{ $product->nosaukums }}</td>
-                                                                <td>@if($product->sveramais != 1)
-                                                                        @if($product->sveramaistype == 'Svars')
-                                                                            {{ $product->cena }}€/KG
-                                                                        @else
-                                                                            {{ $product->cena }}€
-                                                                        @endif
-                                                                    @endif</td>
-                                                                <td>@if($product->sveramais != 1)
-                                                                        @if($product->sveramaistype == 'Svars')
-                                                                            {{ $product->sveramais }} KG
-                                                                        @else
-                                                                            {{ $product->sveramais }}
-                                                                        @endif
-                                                                    @endif</td>
+                                                        <thead>
+                                                        <th>Produkta Nosaukums</th>
+                                                        <th>Produkta Cena</th>
+                                                        <th>Produkta Skaits/Svars(KG)</th>
+                                                        </thead>
+                                                        <tbody>
+                                                        <tr style="background-color: #bdcfe7"><td>{{ $product->nosaukums }}</td>
+                                                                <td>
+                                                                    @if($product->sveramaistype == 'Svars')
+                                                                        {{ $product->cena }}€/KG
+                                                                    @else
+                                                                        {{ $product->cena }}€
+                                                                    @endif
+                                                                </td>
+                                                                <td>
+                                                                    @if($product->sveramaistype == 'Svars')
+                                                                        {{ $product->sveramais }} KG
+                                                                    @else
+                                                                        {{ $product->sveramais }}
+                                                                    @endif
+                                                                </td>
                                                             </tr>
-                                                            </tbody>
+                                                        </tbody>
                                                         </table>
                                                         <br>
                                                         <input type="text" class="form-control @error('name') is-invalid @enderror" name="new_nosaukums" maxlength="20" placeholder="Jauns nosaukums">
@@ -117,36 +150,43 @@
                                                         <input type="number" class="form-control @error('name') is-invalid @enderror" name="new_sveramais" step="1" placeholder="Jauns skaits">
                                                         @endif
                                                         <br>
-                                                        <div class="buttons-container" style="text-align: center">
-                                                            <button type="submit" class="btn btn-success">Rediģēt</button>
-                                                            <button type="button" class="btn btn-danger" onclick="hidePopupBox2()">Atcelt</button>
+                                                        <div class="modal-footer">
+                                                          <button type="submit" class="btn btn-success">Rediģēt</button>
+                                                          <button type="button" class="btn btn-danger" class="btn-close" data-bs-dismiss="modal" aria-label="Close">Atcelt</button>
                                                         </div>
-                                                    </form>
-                                                    @endif
-                                                </div>
+                                                </form>
+                                            @endif
                                         </td></tr>
                                     </tbody>
                                 </table>
                                 <br>
-                            <button type="submit" class="btn btn-danger" onclick="showPopupBox6()">Dzēst</button>
-                            <div id="popup-box6">
-                                <form action="{{ route('remove', $product->pirkumsid) }}" method="POST">
-                                @csrf
-                                @method('DELETE')
-                                    <br>
-                                <h3>Vai vēlaties dzēst?</h3>
-                                    <div class="buttons-container" style="text-align: center">
-                                       <button type="submit" class="btn btn-danger">Jā</button>
-                                       <button type="button" class="btn btn-success" onclick="hidePopupBox6()">Nē</button>
+                                <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#staticBackdrop3">
+                                    Dzēst
+                                </button>
+                                <div class="modal fade" id="staticBackdrop3" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel2" aria-hidden="true">
+                                    <div class="modal-dialog modal-dialog-centered">
+                                        <div class="modal-content">
+                                            <div class="modal-body">
+                                            <form action="{{ route('remove', $product->pirkumsid) }}" method="POST">
+                                            @csrf
+                                            @method('DELETE')
+                                            <br>
+                                            <h3>Vai vēlaties dzēst?</h3>
+                                            <div class="buttons-container" style="text-align: center">
+                                            <button type="submit" class="btn btn-danger">Jā</button>
+                                            <button type="button" class="btn btn-success" class="btn-close" data-bs-dismiss="modal" aria-label="Close">Nē</button>
+                                             </div>
+                                            </form>
+                                            </div>
+                                         </div>
                                     </div>
-                                </form>
+                                </div>
+                              <br>
                             </div>
-                            <br>
-                        </div>
                         @endforeach
                     @endif
                 @endforeach
-          </div>
+         </div>
          <br>
     </div>
 @endsection

@@ -6,14 +6,17 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
-class ProductsController extends Controller
+class ProductsSearchController extends Controller
 {
-    public function products(Request $request)
+    public function productssearch(Request $request)
     {
+        $search = $request->input('search');
+
         $user_id = Auth::id();
         $usedproducts = DB::table('produkti')
             ->select('id', 'pirkumsid', 'created_at', 'nosaukums', 'cena', 'sveramais', 'sveramaistype', 'total')
             ->where('userid', '=', $user_id)
+            ->where('nosaukums', '=', $search)
             ->get();
         foreach ($usedproducts as $product) {
             if ($product->sveramaistype == 'Skaits') {

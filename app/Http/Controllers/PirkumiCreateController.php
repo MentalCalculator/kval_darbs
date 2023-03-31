@@ -15,12 +15,14 @@ use Carbon\Carbon;
 
 class PirkumiCreateController extends Controller
 {
-    public function pirkums (Request $request)
+    public function purchasecreate (Request $request)
     {
         $randomnumbers = random_int(1, 1000000000000);
         $nosaukums = $request->input('nosaukums');
         $cena = $request->input('cena');
         $sveramais = $request->input('sveramais');
+
+        $request->validate(['nosaukums' => 'required|max:100',], ['nosaukums.required' => 'Please fill in this field',]);
 
         if ($sveramais == null) {
             $sveramais = 1;
