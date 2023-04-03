@@ -8,7 +8,7 @@
             </div>
         @endif
         <div class="summary-box">
-        <h1 style="text-align: center">Kopsavilkums!</h1>
+        <h1 style="text-align: center">Total!</h1>
         </div>
         <br>
         <form method="GET" action="{{route('totaldate')}}">
@@ -16,18 +16,18 @@
                 <div class="input-group mb-3">
                     <input type="date" class="form-control" id="startdate" name="startdate" required>
                     <input type="date" class="form-control" id="enddate" name="enddate" required>
-                    <button type="submit" class="btn btn-success">Meklēt</button>
+                    <button type="submit" class="btn btn-primary">Search</button>
                 </div>
             </div>
         </form>
         <div class="summary-box">
-            <h2>Kopējais pirkumu skaits: <?php echo $Count1;?></h2>
+            <h2>Total purchases count: <?php echo $Count1;?></h2>
         </div>
         <div class="summary-box">
-            <h2>Kopējais produktu skaits: <?php echo $Count2;?></h2>
+            <h2>Total product count: <?php echo $Count2;?></h2>
         </div>
         <div class="summary-box">
-            <h2>Kopējā iztērētā summa: <?php echo $Count3;?>€</h2>
+            <h2>Total cost: <?php echo $Count3;?>€</h2>
         </div>
     </div>
 @endsection

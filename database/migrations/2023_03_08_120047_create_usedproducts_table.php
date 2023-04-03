@@ -11,13 +11,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('IzmantotieProdukti', function (Blueprint $table) {
+        Schema::create('usedproducts', function (Blueprint $table) {
             $table->id();
             $table->foreignId('userid')->references('id')->on('users')->onDelete('cascade');
-            $table->string('nosaukums');
-            $table->decimal('cena');
-            $table->decimal('sveramais')->nullable();
-            $table->string('sveramaistype');
+            $table->string('productname');
+            $table->decimal('productprice');
+            $table->decimal('productamount')->nullable();
+            $table->string('producttype');
             $table->decimal('total')->nullable();
             $table->timestamps();
         });
@@ -28,6 +28,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('IzmantotieProdukti');
+        Schema::dropIfExists('usedproducts');
     }
 };

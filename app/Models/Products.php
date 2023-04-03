@@ -9,6 +9,6 @@ class Products extends Model
 {
     use HasFactory;
 
-    protected $table = 'produkti';
-    protected $fillable = ['$id','$userid','pirkumsid','$nosaukums','$cena','$sveramais','sveramaistype','$total','$created_at','$updated_at'];
+    protected $table = 'products';
+    protected $fillable = ['$id','$userid','purchaseid','$productname','$productprice','$productamount','producttype','$total','$created_at','$updated_at'];
 }

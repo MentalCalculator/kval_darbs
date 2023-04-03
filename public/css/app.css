@@ -55,7 +55,7 @@ tr:hover {
     overflow: auto;
 }
 
-#zone {
+.container [id='zone'] {
     height: 100%;
     width: 100%;
     text-align: center;
@@ -109,7 +109,6 @@ buttons-container {
 .summary-box {
     background-color: #ffffff;
     width: 60%;
-    border-radius: 10px;
     box-shadow: 0 0 10px rgb(58, 128, 252);
     display: flex;
     justify-content: center;

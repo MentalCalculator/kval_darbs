@@ -13,7 +13,7 @@
     <link rel="stylesheet" type="text/css" href="css/app.css">
 
     <!-- Scripts -->
-    <script src="js/popup.js" rel="stylesheet" ></script>
+    <script src="js/power.js" rel="stylesheet"></script>
 
 </head>
 <body>

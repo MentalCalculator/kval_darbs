@@ -5,9 +5,6 @@ namespace App\Http\Controllers;
 use App\Models\Products;
 use App\Models\Purchases;
 use App\Models\UsedProducts;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\DB;
 
 class RemoveController extends Controller
 {

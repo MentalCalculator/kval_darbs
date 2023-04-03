@@ -10,7 +10,7 @@ myModal.addEventListener('shown.bs.modal', () => {
 // Sveramais ievades rediģēšana.
 
 function changeStep(stepValue) {
-    document.getElementById("sveramais").step = stepValue;
+    document.getElementById("skaits").step = stepValue;
 }
 function preventDecimal(event) {
     var sveramaistype = document.querySelector('input[name="sveramaistype"]:checked').value;
@@ -18,7 +18,5 @@ function preventDecimal(event) {
         event.target.value = event.target.value.replace(".", "");
     }
 }
-
-// Meklēšanas Funkcija
 
 

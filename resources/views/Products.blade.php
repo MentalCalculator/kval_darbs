@@ -8,14 +8,14 @@
                         </div>
                     @endif
                     <div class="summary-box">
-                    <h1 style="text-align: center">Visi pirktie produkti!</h1>
+                    <h1 style="text-align: center">All products you've bought!</h1>
                     </div>
                     <br><br>
                     <form method="GET" action="{{route('productssearch')}}">
                         <div class="container" style="height: 20px; width: 500px">
                             <div class="input-group mb-3">
-                                <input type="text" class="form-control" name="search" placeholder="Nosaukums" required>
-                                <button class="btn btn-primary" type="submit" style="margin-bottom: 10px">Meklēt</button>
+                                <input type="text" class="form-control" name="search" placeholder="Product Name" required>
+                                <button class="btn btn-primary" type="submit" style="margin-bottom: 10px">Search</button>
                             </div>
                         </div>
                     </form>
@@ -25,37 +25,37 @@
                             <div class="input-group mb-3">
                                 <input type="date" class="form-control" id="startdate" name="startdate" required>
                                 <input type="date" class="form-control" id="enddate" name="enddate" required>
-                                <button type="submit" class="btn btn-success">Meklēt</button>
+                                <button type="submit" class="btn btn-primary">Search</button>
                             </div>
                         </div>
                     </form>
                     <br>
                     <table style="padding-bottom: 100px;">
                         <thead>
-                        <th>Produkta Nosaukums</th>
-                        <th>Produkta Cena</th>
-                        <th>Produkta Skaits/Svars(KG)</th>
-                        <th>Kopā</th>
+                        <th>Product Name</th>
+                        <th>Product Price</th>
+                        <th>Product Amount/Weight(KG)</th>
+                        <th>Total</th>
                         </thead>
                         <div style="overflow: auto;">
                         <tbody>
                         @foreach($products as $product)
                             <tr>
-                                <td>{{ $product->nosaukums }}</td>
-                                    <td>
-                                        @if(fmod($product->sveramais, 1) != 0)
-                                            {{ $product->cena }}€/KG
-                                        @else
-                                            {{ $product->cena }}€
-                                        @endif
-                                    </td>
-                                    <td>
-                                        @if(fmod($product->sveramais, 1) != 0)
-                                            {{ $product->sveramais }} KG
-                                        @else
-                                            {{ $product->sveramais }}
-                                        @endif
-                                    </td>
+                                <td>{{ $product->productname }}</td>
+                                <td>
+                                    @if($product->producttype == 'weight')
+                                        {{ $product->productprice }}€/KG
+                                    @else
+                                        {{ $product->productprice }}€
+                                    @endif
+                                </td>
+                                <td>
+                                    @if($product->producttype == 'weight')
+                                        {{ $product->productamount }} KG
+                                    @else
+                                        {{ $product->productamount }}
+                                    @endif
+                                </td>
                                 <td>{{ $product->total }}€</td>
                             </tr>
                         @endforeach

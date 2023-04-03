@@ -11,14 +11,14 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('produkti', function (Blueprint $table) {
+        Schema::create('products', function (Blueprint $table) {
             $table->id();
             $table->foreignId('userid')->references('id')->on('users')->onDelete('cascade');
-            $table->foreignId('pirkumsid')->references('id')->on('pirkumi')->onDelete('cascade');
-            $table->string('nosaukums');
-            $table->decimal('cena');
-            $table->decimal('sveramais')->nullable();
-            $table->string('sveramaistype');
+            $table->foreignId('purchaseid')->references('id')->on('purchases')->onDelete('cascade');
+            $table->string('productname',20);
+            $table->decimal('productprice');
+            $table->decimal('productamount')->nullable();
+            $table->string('producttype');
             $table->decimal('total')->nullable();
             $table->timestamps();
         });
@@ -29,6 +29,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('produkti');
+        Schema::dropIfExists('products');
     }
 };

@@ -12,98 +12,98 @@ class ModifyController extends Controller
     {
         $product = Products::findOrFail($id);
         $usedproduct = UsedProducts::findOrFail($id);
-        $nosaukums = $request->input('new_nosaukums');
-        $input1 = $request->input('new_cena');
-        $input2 = $request->input('new_sveramais');
-        $currentcena = $product->cena;
-        $currentusedcena = $usedproduct->cena;
-        $currentsveramais = $product->sveramais;
-        $currentusedsveramais = $usedproduct->sveramais;
+        $name = $request->input('new_name');
+        $input1 = $request->input('new_price');
+        $input2 = $request->input('new_amount');
+        $currentprice = $product->productprice;
+        $currentusedprice = $usedproduct->productprice;
+        $currentamount = $product->productamount;
+        $currentusedamount = $usedproduct->productamount;
 
-        $cena = str_replace(',', '.', $input1);
-        $sveramais = str_replace(',', '.', $input2);
+        $price = str_replace(',', '.', $input1);
+        $amount = str_replace(',', '.', $input2);
 
-        if ($nosaukums == null and $cena == null and $sveramais == null) {
+        if ($name == null and $price == null and $amount == null) {
             $request->validate([
-                'new_nosaukums' => 'required',
-                'new_cena' => 'required',
-                'new_sveramais' => 'required',
+                'new_name' => 'required',
+                'new_price' => 'required',
+                'new_amount' => 'required',
             ]);
         }
-        if ($nosaukums == Null and $cena == Null) {
-            $product->sveramais = $sveramais;
-            $product->total = $currentcena * $sveramais;
+        if ($name == Null and $price == Null) {
+            $product->productamount = $amount;
+            $product->total = $currentprice * $amount;
 
-            $usedproduct->sveramais = $sveramais;
-            $usedproduct->total = $currentusedcena * $sveramais;
-
-            $product->save();
-            $usedproduct->save();
-            return redirect()->back();
-        } elseif ($cena == Null and $sveramais == Null) {
-            $product->nosaukums = $nosaukums;
-
-            $usedproduct->nosaukums = $nosaukums;
+            $usedproduct->productamount = $amount;
+            $usedproduct->total = $currentusedprice * $amount;
 
             $product->save();
             $usedproduct->save();
             return redirect()->back();
-        } elseif ($nosaukums == Null and $sveramais == null) {
-            $product->cena = $cena;
-            $product->total = $cena * $currentsveramais;
+        } elseif ($price == Null and $amount == Null) {
+            $product->productname = $name;
 
-            $usedproduct->cena = $cena;
-            $usedproduct->total = $cena * $currentusedsveramais;
+            $usedproduct->productname = $name;
 
             $product->save();
             $usedproduct->save();
             return redirect()->back();
-        } elseif ($nosaukums == Null) {
-            $product->cena = $cena;
-            $product->sveramais = $sveramais;
-            $product->total = $cena * $sveramais;
+        } elseif ($name == Null and $amount == null) {
+            $product->productprice = $price;
+            $product->total = $price * $currentamount;
 
-            $usedproduct->cena = $cena;
-            $usedproduct->sveramais = $sveramais;
-            $usedproduct->total = $cena * $sveramais;
+            $usedproduct->productprice = $price;
+            $usedproduct->total = $price * $currentusedamount;
 
             $product->save();
             $usedproduct->save();
             return redirect()->back();
-        } elseif ($cena == Null) {
-            $product->nosaukums = $nosaukums;
-            $product->sveramais = $sveramais;
-            $product->total = $currentcena * $sveramais;
+        } elseif ($name == Null) {
+            $product->productprice = $price;
+            $product->productamount = $amount;
+            $product->total = $price * $amount;
 
-            $usedproduct->nosaukums = $nosaukums;
-            $usedproduct->sveramais = $sveramais;
-            $usedproduct->total = $currentusedcena * $sveramais;
+            $usedproduct->productprice = $price;
+            $usedproduct->productamount = $amount;
+            $usedproduct->total = $price * $amount;
 
             $product->save();
             $usedproduct->save();
             return redirect()->back();
-        } elseif ($sveramais == Null) {
-            $product->nosaukums = $nosaukums;
-            $product->cena = $cena;
-            $product->total = $cena * $currentsveramais;
+        } elseif ($price == Null) {
+            $product->productname = $name;
+            $product->productamount = $amount;
+            $product->total = $currentprice * $amount;
 
-            $usedproduct->nosaukums = $nosaukums;
-            $usedproduct->cena = $cena;
-            $usedproduct->total = $cena * $currentusedsveramais;
+            $usedproduct->productname = $name;
+            $usedproduct->productamount = $amount;
+            $usedproduct->total = $currentusedprice * $amount;
+
+            $product->save();
+            $usedproduct->save();
+            return redirect()->back();
+        } elseif ($amount == Null) {
+            $product->productname = $name;
+            $product->productprice = $price;
+            $product->total = $price * $currentamount;
+
+            $usedproduct->productname = $name;
+            $usedproduct->productprice = $price;
+            $usedproduct->total = $price * $currentusedamount;
 
             $product->save();
             $usedproduct->save();
             return redirect()->back();
         } else {
-            $product->nosaukums = $nosaukums;
-            $product->cena = $cena;
-            $product->sveramais = $sveramais;
-            $product->total = $cena * $sveramais;
+            $product->productname = $name;
+            $product->productprice = $price;
+            $product->productamount = $amount;
+            $product->total = $price * $amount;
 
-            $usedproduct->nosaukums = $nosaukums;
-            $usedproduct->cena = $cena;
-            $usedproduct->sveramais = $sveramais;
-            $usedproduct->total = $cena * $sveramais;
+            $usedproduct->productname = $name;
+            $usedproduct->productprice = $price;
+            $usedproduct->productamount = $amount;
+            $usedproduct->total = $price * $amount;
 
             $product->save();
             $usedproduct->save();
