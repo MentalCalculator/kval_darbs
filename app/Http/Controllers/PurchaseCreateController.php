@@ -13,32 +13,29 @@ class PurchaseCreateController extends Controller
     public function purchasecreate (Request $request)
     {
         $randomnumbers = random_int(1, 1000000000000);
-        $productname = $request->input('productname');
-        $productprice = $request->input('productprice');
-        $productamount = $request->input('productamount');
+        $productnames = $request->input('productname');
+        $productprices = $request->input('productprice');
+        $productamounts = $request->input('productamount');
+        $producttypes = $request->input('producttype');
 
-        $request->validate(['productname' => 'required|max:100',], ['productname.required' => 'Please fill in this field',]);
+        $purchases = new Purchases;
+        $purchases->id = $randomnumbers;
+        $purchases->userid = Auth::id();
+        $purchases->created_at = now();
+        $purchases->updated_at = now();
+        $purchases->save();
 
-        if ($productamount == null) {
-            $productamount = 1;
-        }
 
-        if(isset($_POST['producttype'])) {
-            $producttype = $_POST['producttype'];
-        }
+        foreach ($productnames as $key => $productname) {
+            $randomnumberproduct = random_int(1, 1000000000000);
+            $productprice = $productprices[$key];
+            $productamount = $productamounts[$key] ?? 1;
+            $producttype = $producttypes[$key];
 
-        $totalsum = $productprice * $productamount;
-
-            $purchases = new Purchases;
-
-            $purchases->id = $randomnumbers;
-            $purchases->userid = Auth::id();
-            $purchases->created_at = now();
-            $purchases->updated_at = now();
+            $totalsum = $productprice * $productamount;
 
             $products = new Products;
-
-            $products->id = $randomnumbers;
+            $products->id = $randomnumberproduct;
             $products->userid = Auth::id();
             $products->purchaseid = $purchases->id;
             $products->productname = $productname;
@@ -50,7 +47,6 @@ class PurchaseCreateController extends Controller
             $products->updated_at = now();
 
             $usedproducts = new UsedProducts();
-
             $usedproducts->id = $products->id;
             $usedproducts->userid = Auth::id();
             $usedproducts->productname = $productname;
@@ -62,9 +58,8 @@ class PurchaseCreateController extends Controller
             $usedproducts->updated_at = now();
 
             $usedproducts->save();
-            $purchases->save();
             $products->save();
-
-            return redirect()->back();
+        }
+        return redirect()->back();
     }
 }

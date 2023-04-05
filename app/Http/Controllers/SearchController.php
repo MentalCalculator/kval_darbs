@@ -16,6 +16,13 @@ class SearchController extends Controller
         $purchases = DB::table('purchases')
             ->select('id','created_at')
             ->where('userid', '=', $user_id)
+            ->whereExists(function ($query) use ($user_id, $inputname) {
+                $query->select(DB::raw(1))
+                    ->from('products')
+                    ->where('userid', '=', $user_id)
+                    ->where('products.purchaseid', '=', DB::raw('purchases.id'))
+                    ->where('products.productname', 'like', '%' . $inputname . '%');
+            })
             ->get();
 
         $data = [];

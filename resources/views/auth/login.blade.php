@@ -13,44 +13,41 @@
 
 </head>
 <body>
-<div class="container" id="login">
-            <h2>Pieslēgšanās</h2>
-                    <form method="POST" action="{{ route('login') }}">
-                        @csrf
-                                <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus placeholder="E-Pasts">
+    <div class="container" id="login">
+        <h2>Pieslēgšanās</h2>
+        <form method="POST" action="{{ route('login') }}">
+            @csrf
+            <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus placeholder="E-Pasts">
+            @error('email')
+            <span class="invalid-feedback" role="alert">
+                <strong style="text-align: center;">{{ $message }}</strong>
+            </span>
+            @enderror
 
-                                @error('email')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong style="text-align: center;">{{ $message }}</strong>
-                                    </span>
-                                @enderror
+            <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" pattern="[a-zA-Z0-9@#$%&*]+" required autocomplete="current-password" placeholder="Parole">
+            @error('password')
+            <span class="invalid-feedback" role="alert">
+                <strong style="text-align: center;">{{ $message }}</strong>
+            </span>
+            @enderror
 
-
-                                <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password" placeholder="Parole">
-
-                                @error('password')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong style="text-align: center;">{{ $message }}</strong>
-                                    </span>
-                                @enderror
-
-                                <div class="text-center">
-                                <button type="submit" class="btn btn-success">
-                                    {{ __('Pieslēgties') }}
-                                </button>
-                                <!-- @if (Route::has('password.request'))
-                                    <a class="btn btn-danger" href="{{ route('password.request') }}">
-                                        {{ __('Aizmirsāt paroli?') }}
-                                    </a>
-                                </div>
-                                @endif -->
-                                <br><br>
-                                @if (Route::has('register'))
-                                    <div class="text-center">
-                                    <h2>Neesiet reģistrēts?</h2>
-                                    <a href="{{ route('register') }}" class="btn btn-primary">Reģistrēšanās</a>
-                                    </div>
-                                @endif
-                    </form>
-         </div>
+            <div class="text-center">
+                <button type="submit" class="btn btn-success">
+                    {{ __('Pieslēgties') }}
+                </button>
+            <!--@if (Route::has('password.request'))
+                    <a class="btn btn-danger" href="{{ route('password.request') }}">
+                        {{ __('Aizmirsāt paroli?') }}
+                    </a> -->
+                @endif
+            </div>
+            <br><br>
+            @if (Route::has('register'))
+            <div class="text-center">
+                <h2>Neesiet reģistrēts?</h2>
+                <a href="{{ route('register') }}" class="btn btn-primary">Reģistrēšanās</a>
+            </div>
+            @endif
+        </form>
+    </div>
 </body>

@@ -14,7 +14,24 @@
 
     <!-- Scripts -->
     <script src="js/power.js" rel="stylesheet"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            var productsTable = $('#products-table tbody');
 
+            $('#add-product-btn').click(function() {
+                var newRow = $('<tr>');
+
+                // Add inputs for product name, price, type, and amount/weight
+                newRow.append($('<td>').append($('<input>').attr('type', 'text').attr('name', 'productname[]').attr('required', true)));
+                newRow.append($('<td>').append($('<input>').attr('type', 'number').attr('name', 'productprice[]').attr('step', '0.01').attr('required', true)));
+                newRow.append($('<td>').append($('<select>').attr('name', 'producttype[]').append($('<option>').attr('value', 'amount').text('Amount')).append($('<option>').attr('value', 'weight').text('Weight')).attr('required', true)));
+                newRow.append($('<td>').append($('<input>').attr('type', 'number').attr('name', 'productamount[]').attr('oninput', 'preventDecimal(event)')));
+
+                productsTable.append(newRow);
+            });
+        });
+    </script>
 </head>
 <body>
         <div id="app">

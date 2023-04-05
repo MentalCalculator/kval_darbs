@@ -11,7 +11,6 @@ body {
     z-index: 1000; /* set the z-index to be higher than any other element on the page */
     display: none; /* hide the overlay by default */
 }
-
 table {
     border-collapse: collapse;
     width: 80%;
@@ -43,18 +42,45 @@ tr:hover {
     justify-content: center;
     align-items: center;
 }
-
+.containerWrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.container1 {
+    background-color: #ffffff;
+    width: 600px;
+    height: 700px;
+    border-bottom-left-radius: 10px;
+    border-top-left-radius: 10px;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.container2 {
+    background-color: #ffffff;
+    width: 800px;
+    height: 700px;
+    border-bottom-right-radius: 10px;
+    border-top-right-radius: 10px;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
 #power {
     border-radius: 10px;
     background-color: #ffffff;
-    width: 55%;
+    width: 70%;
     box-shadow: 0 0 10px rgb(58, 128, 252);
     display: flex;
     flex-direction: column;
     align-items: center;
     overflow: auto;
 }
-
 #zone {
     height: 100%;
     width: 100%;

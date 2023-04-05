@@ -11,10 +11,9 @@ body {
     z-index: 1000; /* set the z-index to be higher than any other element on the page */
     display: none; /* hide the overlay by default */
 }
-
 table {
     border-collapse: collapse;
-    width: 70%;
+    width: 80%;
     align-items: center;
 }
 th, td {
@@ -33,21 +32,49 @@ tr:hover {
 }
 
 .container {
-    border-radius: 10px;
     background-color: #ffffff;
     width: 1000px;
     height: 700px;
+    border-radius: 10px;
     box-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
 }
-
+.containerWrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.container1 {
+    background-color: #ffffff;
+    width: 600px;
+    height: 700px;
+    border-bottom-left-radius: 10px;
+    border-top-left-radius: 10px;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.container2 {
+    background-color: #ffffff;
+    width: 800px;
+    height: 700px;
+    border-bottom-right-radius: 10px;
+    border-top-right-radius: 10px;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
 #power {
     border-radius: 10px;
     background-color: #ffffff;
-    width: 55%;
+    width: 70%;
     box-shadow: 0 0 10px rgb(58, 128, 252);
     display: flex;
     flex-direction: column;
@@ -55,7 +82,7 @@ tr:hover {
     overflow: auto;
 }
 
-.container [id='zone'] {
+#zone {
     height: 100%;
     width: 100%;
     text-align: center;
@@ -81,7 +108,6 @@ input[type="number"],
 input[type="password"] {
     width: 70%;
     padding: 10px;
-    margin-bottom: 10px;
     border: none;
     border-radius: 5px;
     background-color: rgba(164, 164, 164, 0.65);
@@ -109,6 +135,7 @@ buttons-container {
 .summary-box {
     background-color: #ffffff;
     width: 60%;
+    border-radius: 10px;
     box-shadow: 0 0 10px rgb(58, 128, 252);
     display: flex;
     justify-content: center;
@@ -122,5 +149,4 @@ buttons-container {
     font-size: 24px;
     text-align: center;
 }
-
 
