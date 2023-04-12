@@ -47,7 +47,8 @@ class PurchaseCreateController extends Controller
             $products->updated_at = now();
 
             $usedproducts = new UsedProducts();
-            $usedproducts->id = $products->id;
+            $usedproducts->productid = $randomnumberproduct;
+            $usedproducts->mainid = $products->id;
             $usedproducts->userid = Auth::id();
             $usedproducts->productname = $productname;
             $usedproducts->productprice = $productprice;

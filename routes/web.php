@@ -54,8 +54,9 @@ Route::get('/Settings', [App\Http\Controllers\HomeController::class, 'profile'])
 
 // Edit, Add, Delete Routes
 Route::post('/CreatePurchase', [App\Http\Controllers\PurchaseCreateController::class, 'purchasecreate'])->name('purchasecreate');
-Route::delete('/Remove{id}', [App\Http\Controllers\RemoveController::class, 'removeData'])->name('remove');
-Route::put('/Update{id}',  [App\Http\Controllers\ModifyController::class, 'update'])->name('productsupdate');
+Route::delete('/purchase/remove/{id}', [App\Http\Controllers\RemoveController::class, 'removepurchase'])->name('removepurchase');
+Route::delete('/product/remove/{id}', [App\Http\Controllers\RemoveController::class, 'removeproduct'])->name('removeproduct');
+Route::put('/product/update/{id}', [App\Http\Controllers\ModifyController::class, 'update'])->name('productupdate');
 Route::post('/ProfileU',[App\Http\Controllers\ProfileEditController::class, 'userchange'])->name('userchange');
 Route::post('/ProfileE',[App\Http\Controllers\ProfileEditController::class, 'emailchange'])->name('emailchange');
 Route::post('/ProfileP',[App\Http\Controllers\ProfileEditController::class, 'passwordchange'])->name('passwordchange');

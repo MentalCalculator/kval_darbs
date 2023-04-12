@@ -8,13 +8,29 @@ use App\Models\UsedProducts;
 
 class RemoveController extends Controller
 {
-    public function removeData($id)
+    public function removepurchase($id)
     {
+        // Find the purchase by ID
+        $purchase = Purchases::find($id);
 
-        // Delete the purchase from the database
-        DB::table('purchases')->where('id', $id)->delete();
+        // Delete the purchase and related products
+        $purchase->delete();
 
-        // Redirect back to the homepage
-        return redirect()->route('home');
+        // Redirect to the desired page
+        return redirect()->back();
+    }
+
+    public function removeproduct($id)
+    {
+        // Find the product by ID
+        $product = Products::find($id);
+        $usedproduct = UsedProducts::find($id);
+
+        // Delete the product
+        $product->delete();
+        $usedproduct->delete();
+
+        // Redirect to the desired page
+        return redirect()->back();
     }
 }

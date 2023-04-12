@@ -57,8 +57,8 @@ class SearchController extends Controller
         $search = $request->input('search');
 
         $user_id = Auth::id();
-        $usedproducts = DB::table('products')
-            ->select('id', 'purchaseid', 'created_at', 'productname', 'productprice', 'productamount', 'producttype', 'total')
+        $usedproducts = DB::table('usedproducts')
+            ->select('mainid', 'created_at', 'productname', 'productprice', 'productamount', 'producttype', 'total')
             ->where('userid', '=', $user_id)
             ->where('productname', '=', $search)
             ->get();

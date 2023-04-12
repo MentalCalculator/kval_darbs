@@ -85,7 +85,7 @@ class HomeController extends Controller
     {
         $user_id = Auth::id();
         $usedproducts = DB::table('usedproducts')
-            ->select('id', 'created_at', 'productname', 'productprice', 'productamount', 'producttype', 'total')
+            ->select('mainid', 'created_at', 'productname', 'productprice', 'productamount', 'producttype', 'total')
             ->where('userid', '=', $user_id)
             ->get();
         // Checks if the row contains an integer (Skaits) or decimal (Svars).
