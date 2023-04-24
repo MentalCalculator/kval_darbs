@@ -10,27 +10,60 @@ class RemoveController extends Controller
 {
     public function removepurchase($id)
     {
-        // Find the purchase by ID
         $purchase = Purchases::find($id);
 
-        // Delete the purchase and related products
-        $purchase->delete();
+        if ($purchase) {
+            // Delete all related products for the purchase
+            $products = Products::where('purchaseid', $id)->get();
+            foreach ($products as $product) {
+                $product->delete();
+            }
 
-        // Redirect to the desired page
-        return redirect()->back();
+            // Delete all related used products for the purchase
+            $usedproducts = UsedProducts::where('UsedPurchaseid', $id)->get();
+            foreach ($usedproducts as $usedproduct) {
+                $usedproduct->delete();
+            }
+
+            $purchase->delete();
+
+            return redirect()->back();
+        } else {
+            // Handle case when purchase is not found
+            return redirect()->back()->with('error', 'Purchase not found');
+        }
     }
-
     public function removeproduct($id)
     {
-        // Find the product by ID
         $product = Products::find($id);
-        $usedproduct = UsedProducts::find($id);
 
-        // Delete the product
-        $product->delete();
-        $usedproduct->delete();
+        if ($product) {
+            $purchaseId = $product->purchaseid;
 
-        // Redirect to the desired page
-        return redirect()->back();
+            // Delete the product
+            $product->delete();
+
+            // Check if the purchase has any other products
+            $remainingProducts = Products::where('purchaseid', $purchaseId)->count();
+            if ($remainingProducts === 0) {
+                // If no other products exist for the purchase, delete the purchase as well
+                $purchase = Purchases::find($purchaseId);
+                if ($purchase) {
+                    $purchase->delete();
+                }
+            }
+
+            // Delete the associated used product
+            $usedproduct = UsedProducts::find($id);
+            if ($usedproduct) {
+                $usedproduct->delete();
+            }
+
+            return redirect()->back();
+        } else {
+            // Handle case when product is not found
+            return redirect()->back()->with('error', 'Product not found');
+        }
     }
+
 }

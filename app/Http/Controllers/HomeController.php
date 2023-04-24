@@ -84,11 +84,26 @@ class HomeController extends Controller
     public function products()
     {
         $user_id = Auth::id();
+
         $usedproducts = DB::table('usedproducts')
-            ->select('mainid', 'created_at', 'productname', 'productprice', 'productamount', 'producttype', 'total')
+            ->select('id', 'mainproductid', 'created_at', 'productname', 'productprice', 'productamount', 'producttype', 'total')
             ->where('userid', '=', $user_id)
             ->get();
-        // Checks if the row contains an integer (Skaits) or decimal (Svars).
+
+        $groupedProducts = $usedproducts->groupBy(function ($product) {
+            return $product->productname . '-' . $product->producttype . '-' . $product->productprice;
+        });
+
+        foreach ($groupedProducts as $group => $products) {
+            $totalSum = $products->sum(function ($product) {
+                // Convert productamount to float before summing
+                return floatval($product->productamount) * $product->productprice;
+            });
+            $totalAmount = $products->sum('productamount');
+            $groupedProducts[$group]->totalSum = $totalSum;
+            $groupedProducts[$group]->totalAmount = $totalAmount;
+        }
+
         foreach ($usedproducts as $product) {
             if ($product->producttype == 'amount') {
                 $product->productamount = number_format($product->productamount);
@@ -100,7 +115,8 @@ class HomeController extends Controller
                 }
             }
         }
-        return view('Products',['products'=>$usedproducts]);
+
+        return view('Products', ['products' => $groupedProducts]);
     }
     // Total Page
     public function total()

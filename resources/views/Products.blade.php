@@ -8,13 +8,13 @@
         </div>
     @endif
     <div class="summary-box">
-        <h1 style="text-align: center">All products you've bought!</h1>
+        <h1 style="text-align: center">All products you've bought</h1>
     </div>
     <br><br>
     <form method="GET" action="{{route('productssearch')}}">
         <div class="container" style="height: 20px; width: 500px">
             <div class="input-group mb-3">
-                <input type="text" class="form-control" name="search" placeholder="Product Name" required>
+                <input type="text" name="search" value="{{ Session::get('productsSearch', '') }}" placeholder="Product name" />
                 <button class="btn btn-primary" type="submit">Search</button>
             </div>
         </div>
@@ -39,26 +39,26 @@
         </thead>
         <div style="overflow: auto;">
             <tbody>
-                @foreach($products as $product)
-                    <tr>
-                        <td>{{ $product->productname }}</td>
-                        <td>
-                            @if($product->producttype == 'weight')
-                                {{ $product->productprice }}€/KG
-                            @else
-                                {{ $product->productprice }}€
-                            @endif
-                        </td>
-                        <td>
-                            @if($product->producttype == 'weight')
-                                {{ $product->productamount }} KG
-                            @else
-                                {{ $product->productamount }}
-                            @endif
-                        </td>
-                        <td>{{ $product->total }}€</td>
-                    </tr>
-                @endforeach
+            @foreach($products as $group => $groupedProduct)
+                <tr>
+                    <td>{{ $groupedProduct[0]->productname }}</td>
+                    <td>
+                        @if($groupedProduct[0]->producttype == 'weight')
+                            {{ $groupedProduct[0]->productprice }}€/KG
+                        @else
+                            {{ $groupedProduct[0]->productprice }}€
+                        @endif
+                    </td>
+                    <td>
+                        @if($groupedProduct[0]->producttype == 'weight')
+                            {{ $groupedProduct->sum(function($product) { return $product->productamount; }) }} KG
+                        @else
+                            {{ $groupedProduct->sum(function($product) { return $product->productamount; }) }}
+                        @endif
+                    </td>
+                    <td>{{ $groupedProduct->totalSum }}€</td>
+                </tr>
+            @endforeach
             </tbody>
         </div>
     </table>

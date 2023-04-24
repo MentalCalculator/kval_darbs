@@ -11,4 +11,5 @@ class Purchases extends Model
 
     protected $table = 'purchases';
     protected $fillable = ['$id','$userid','$created_at','$updated_at'];
+
 }

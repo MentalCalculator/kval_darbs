@@ -81,8 +81,8 @@ tr:hover {
     align-items: center;
     overflow: auto;
 }
-
 #zone {
+    border-radius: 10px;
     height: 100%;
     width: 100%;
     text-align: center;

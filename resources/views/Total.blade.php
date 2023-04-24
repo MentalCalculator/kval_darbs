@@ -8,7 +8,7 @@
         </div>
     @endif
     <div class="summary-box">
-        <h1 style="text-align: center">Total!</h1>
+        <h1 style="text-align: center">Total</h1>
     </div>
         <br>
     <form method="GET" action="{{route('totaldate')}}">

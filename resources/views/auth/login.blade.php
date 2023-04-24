@@ -13,7 +13,7 @@
 
 </head>
 <body>
-    <div class="container" id="login">
+    <div class="container">
         <h2>Pieslēgšanās</h2>
         <form method="POST" action="{{ route('login') }}">
             @csrf

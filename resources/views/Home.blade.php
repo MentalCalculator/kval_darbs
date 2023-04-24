@@ -10,11 +10,11 @@
         @endif
         <br>
         <div class="summary-box" style="margin-bottom: 50px">
-            <h1 style="text-align: center">Your purchases!</h1>
+            <h1 style="text-align: center">Your purchases</h1>
         </div>
         <form method="GET" action="{{route('purchasessearch')}}">
             <div class="input-group mb-3">
-                <input type="text" class="form-control" name="search" placeholder="Nosaukums" required>
+                <input type="text" name="search" value="{{ Session::get('purchasesSearch', '') }}" placeholder="Product name" />
                 <button class="btn btn-primary" type="submit">Search</button>
             </div>
         </form>
@@ -30,7 +30,7 @@
             Create Purchase
         </button>
         <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-dialog modal-dialog-centered" style="width: 500px">
                 <div class="modal-content">
                     <div class="modal-header">
                         <h1 class="modal-title fs-5" id="staticBackdropLabel">Create Purchase</h1>
@@ -38,13 +38,14 @@
                     <div class="modal-body">
                         <form method="POST" action="{{route('purchasecreate')}}">
                             @csrf
-                            <table class="table" id="products-table" style="overflow: auto">
+                            <table class="table" id="products-table" style="max-height: 200px; overflow-y: auto;">
                                 <thead id="table-header">
                                 <tr>
                                     <th>Product Name</th>
-                                    <th>Price per unit or KG</th>
+                                    <th>Price</th>
                                     <th>Type</th>
                                     <th>Amount/Weight*</th>
+                                    <th> </th>
                                 </tr>
                                 </thead>
                                 <tbody>
@@ -52,6 +53,7 @@
                             </table>
                             <button type="button" class="btn btn-primary" id="add-product-btn">Add Product</button>
                             <button type="submit" class="btn btn-success">Submit Purchase</button>
+                            <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cancel</button>
                         </form>
                     </div>
                 </div>

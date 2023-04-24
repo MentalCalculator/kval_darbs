@@ -13,7 +13,6 @@
     <link rel="stylesheet" type="text/css" href="css/app.css">
 
     <!-- Scripts -->
-    <script src="js/power.js" rel="stylesheet"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script>
         $(document).ready(function() {
@@ -25,10 +24,31 @@
                 // Add inputs for product name, price, type, and amount/weight
                 newRow.append($('<td>').append($('<input>').attr('type', 'text').attr('name', 'productname[]').attr('required', true)));
                 newRow.append($('<td>').append($('<input>').attr('type', 'number').attr('name', 'productprice[]').attr('step', '0.01').attr('required', true)));
-                newRow.append($('<td>').append($('<select>').attr('name', 'producttype[]').append($('<option>').attr('value', 'amount').text('Amount')).append($('<option>').attr('value', 'weight').text('Weight')).attr('required', true)));
-                newRow.append($('<td>').append($('<input>').attr('type', 'number').attr('name', 'productamount[]').attr('oninput', 'preventDecimal(event)')));
+                newRow.append(
+                    $('<td>').append(
+                        $('<select>').attr('name', 'producttype[]').addClass('form-control custom-select mb-3')
+                            .append($('<option selected>').attr('value', 'amount').text('Amount'))
+                            .append($('<option>').attr('value', 'weight').text('Weight'))
+                            .attr('required', true)
+                            .on('change', function() {
+                                var selectedOption = $(this).val();
+                                var inputAmount = $(this).closest('tr').find('input[name="productamount[]"]');
+                                if (selectedOption === 'amount') {
+                                    inputAmount.prop('step', '1');
+                                } else if (selectedOption === 'weight') {
+                                    inputAmount.prop('step', '0.001');
+                                }
+                            })
+                    )
+                );
+                newRow.append($('<td>').append($('<input>').attr('type', 'number').attr('name', 'productamount[]')));
+                newRow.append($('<td>').append($('<button>').attr('type', 'button').addClass('btn btn-danger remove-product-btn').text('-')));
 
                 productsTable.append(newRow);
+            });
+
+            productsTable.on('click', '.remove-product-btn', function() {
+                $(this).closest('tr').remove();
             });
         });
     </script>

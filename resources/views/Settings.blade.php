@@ -27,7 +27,7 @@
         </div>
     </div>
     <div class="summary-box">
-        <h2> E-Mail: {{ Auth::user()->email }} <button class="btn btn-primary" type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#staticBackdrop5">Change</button></h2>
+        <h2> E-mail: {{ Auth::user()->email }} <button class="btn btn-primary" type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#staticBackdrop5">Change</button></h2>
         <div class="modal fade" id="staticBackdrop5" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel2" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered">
                 <div class="modal-content">

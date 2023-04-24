@@ -10,28 +10,24 @@ class DateController extends Controller
 {
     public function purchasesdate(Request $request)
     {
-        // Identifies the Date (Datums) input.
         $startdate = $request->input('startdate');
         $enddate = $request->input('enddate');
 
-        // Calls the Date of the purchases table.
         $user_id = Auth::id();
         $purchases = DB::table('purchases')
-            ->select('id','created_at')
+            ->select('id', 'created_at')
             ->where('userid', '=', $user_id)
+            ->whereBetween('created_at', [$startdate . ' 00:00:00', $enddate . ' 23:59:59'])
             ->get();
 
-        // Calls the data of the products table.
         $data = [];
         foreach ($purchases as $p) {
-            $purchases_id = $p->id;
+            $purchase_id = $p->id;
             $products = DB::table('products')
                 ->select('id', 'purchaseid', 'created_at', 'productname', 'productprice', 'productamount', 'producttype', 'total')
                 ->where('userid', '=', $user_id)
-                ->where('purchaseid', '=', $purchases_id)
-                ->whereBetween('created_at', [$startdate . ' 00:00:00', $enddate . ' 23:59:59'])
+                ->where('purchaseid', '=', $purchase_id)
                 ->get();
-            // Checks if the row contains an integer/amount (Skaits) or decimal/weight (Svars).
             foreach ($products as $product) {
                 if ($product->producttype == 'amount') {
                     $product->productamount = number_format($product->productamount);
@@ -44,9 +40,9 @@ class DateController extends Controller
                 }
             }
 
-            $data[$purchases_id] = $products;
+            $data[$purchase_id] = $products;
         }
-        // Sends out the data to the view (page).
+
         return view('Home', compact('data', 'purchases'));
     }
 
@@ -63,7 +59,20 @@ class DateController extends Controller
             ->where('userid', '=', $user_id)
             ->whereBetween('created_at', [$startdate . ' 00:00:00', $enddate . ' 23:59:59'])
             ->get();
-        // Checks if the row contains an integer (Skaits) or decimal (Svars).
+        $groupedProducts = $usedproducts->groupBy(function($product) {
+            return $product->productname . '-' . $product->producttype . '-' . $product->productprice;
+        });
+
+        foreach ($groupedProducts as $group => $products) {
+            $totalSum = $products->sum(function($product) {
+                // Convert productamount to float before summing
+                return floatval($product->productamount) * $product->productprice;
+            });
+            $totalAmount = $products->sum('productamount');
+            $groupedProducts[$group]->totalSum = $totalSum;
+            $groupedProducts[$group]->totalAmount = $totalAmount;
+        }
+
         foreach ($usedproducts as $product) {
             if ($product->producttype == 'amount') {
                 $product->productamount = number_format($product->productamount);
@@ -75,8 +84,8 @@ class DateController extends Controller
                 }
             }
         }
-        // Sends out the data to the view (page).
-        return view('Products',['products'=>$usedproducts]);
+
+        return view('Products', ['products' => $groupedProducts]);
     }
 
     public function totalcountdate(Request $request) {
