@@ -14,17 +14,17 @@
 </head>
 <body>
     <div class="container">
-        <h2>Pieslēgšanās</h2>
+        <h2>Login</h2>
         <form method="POST" action="{{ route('login') }}">
             @csrf
-            <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus placeholder="E-Pasts">
+            <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus placeholder="E-Mail">
             @error('email')
             <span class="invalid-feedback" role="alert">
                 <strong style="text-align: center;">{{ $message }}</strong>
             </span>
             @enderror
 
-            <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" pattern="[a-zA-Z0-9@#$%&*]+" required autocomplete="current-password" placeholder="Parole">
+            <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" pattern="[a-zA-Z0-9@#$%&*]+" required autocomplete="current-password" placeholder="Password">
             @error('password')
             <span class="invalid-feedback" role="alert">
                 <strong style="text-align: center;">{{ $message }}</strong>
@@ -33,19 +33,19 @@
 
             <div class="text-center">
                 <button type="submit" class="btn btn-success">
-                    {{ __('Pieslēgties') }}
+                    {{ __('Login') }}
                 </button>
             <!--@if (Route::has('password.request'))
                     <a class="btn btn-danger" href="{{ route('password.request') }}">
-                        {{ __('Aizmirsāt paroli?') }}
+                        {{ __('Forgot Password?') }}
                     </a> -->
                 @endif
             </div>
             <br><br>
             @if (Route::has('register'))
             <div class="text-center">
-                <h2>Neesiet reģistrēts?</h2>
-                <a href="{{ route('register') }}" class="btn btn-primary">Reģistrēšanās</a>
+                <h2>Arent registered?</h2>
+                <a href="{{ route('register') }}" class="btn btn-primary">Register</a>
             </div>
             @endif
         </form>

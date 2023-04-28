@@ -10,18 +10,18 @@ class SearchController extends Controller
 {
     public function purchasessearch(Request $request)
     {
-        $inputname = $request->input('search');
+        $search = $request->input('search');
 
         $user_id = Auth::id();
         $purchases = DB::table('purchases')
             ->select('id','created_at')
             ->where('userid', '=', $user_id)
-            ->whereExists(function ($query) use ($user_id, $inputname) {
+            ->whereExists(function ($query) use ($user_id, $search) {
                 $query->select(DB::raw(1))
                     ->from('products')
                     ->where('userid', '=', $user_id)
                     ->where('products.purchaseid', '=', DB::raw('purchases.id'))
-                    ->where('products.productname', 'like', '%' . $inputname . '%');
+                    ->where('products.productname', 'like', '%' . $search . '%');
             })
             ->get();
 
@@ -32,7 +32,7 @@ class SearchController extends Controller
                 ->select('id', 'purchaseid', 'created_at', 'productname', 'productprice', 'productamount', 'producttype', 'total')
                 ->where('userid', '=', $user_id)
                 ->where('purchaseid', '=', $purchase_id)
-                ->where('productname','=', $inputname)
+                ->where('productname', 'like', '%' . $search . '%')
                 ->get();
             foreach ($products as $product) {
                 if ($product->producttype == 'amount') {
@@ -61,7 +61,7 @@ class SearchController extends Controller
         $usedproducts = DB::table('usedproducts')
             ->select('id', 'mainproductid', 'created_at', 'productname', 'productprice', 'productamount', 'producttype', 'total')
             ->where('userid', '=', $user_id)
-            ->where('productname','=', $search)
+            ->where('productname','like', '%' . $search . '%')
             ->get();
 
         $groupedProducts = $usedproducts->groupBy(function($product) {

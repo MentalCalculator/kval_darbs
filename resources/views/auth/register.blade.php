@@ -11,10 +11,10 @@
 </head>
 <body>
 <div class="container">
-                <h2>Reģistrēšanās</h2>
+                <h2>Registration</h2>
                     <form method="POST" action="{{ route('register') }}">
                                 @csrf
-                                <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus placeholder="Lietotājvārds">
+                                <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus placeholder="Username">
 
                                 @error('name')
                                     <span class="invalid-feedback" role="alert">
@@ -22,7 +22,7 @@
                                     </span>
                                 @enderror
 
-                                <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" placeholder="E-Pasts">
+                                <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" placeholder="E-Mail">
 
                                 @error('email')
                                     <span class="invalid-feedback" role="alert">
@@ -30,7 +30,7 @@
                                     </span>
                                 @enderror
 
-                                <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password" placeholder="Parole">
+                                <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password" placeholder="Password">
 
                                 @error('password')
                                     <span class="invalid-feedback" role="alert">
@@ -38,17 +38,17 @@
                                     </span>
                                 @enderror
 
-                                <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password" placeholder="Atkārtot Paroli">
+                                <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password" placeholder="Repeat Password">
                                 <div class="text-center">
                                 <button type="submit" class="btn btn-success">
-                                    {{ __('Reģistrēties') }}
+                                    {{ __('Register') }}
                                 </button>
                                 </div>
                                 <br><br>
                                 @if (Route::has('login'))
                                 <div class="text-center">
-                                <h2>Esiet jau reģistrēts?</h2>
-                                <a href="{{ route('login') }}" class="btn btn-primary text-center" style="align-self: center">Pieslēgšanās</a>
+                                <h2>Are you registered?</h2>
+                                <a href="{{ route('login') }}" class="btn btn-primary text-center" style="align-self: center">Login</a>
                                 </div>
                                 @endif
                     </form>

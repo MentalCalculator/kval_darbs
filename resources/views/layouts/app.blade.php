@@ -15,40 +15,37 @@
     <!-- Scripts -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script>
-        $(document).ready(function() {
-            var productsTable = $('#products-table tbody');
-
+        $(function() {
             $('#add-product-btn').click(function() {
-                var newRow = $('<tr>');
+                var newInputGroup = $('<div class="input-group mb-3">' +
+                    '<input type="text" class="form-control" placeholder="Product Name" name="productname[]" minlength="3" maxlength="30" required>' +
+                    '<input type="number" class="form-control" placeholder="Product Price" name="productprice[]" step="0.01" max="99999999.99">' +
+                    '<select class="form-select form-select-sm" aria-label=".form-select-sm example" name="producttype[]" required>' +
+                    '<option value="amount">Amount</option>' +
+                    '<option value="weight">Weight</option>' +
+                    '</select>' +
+                    '<input type="number" class="form-control" placeholder="Product Amount*" name="productamount[]" max="99999999">' +
+                    '<button class="btn btn-danger" type="button" onclick="$(this).parent().remove()">X</button></div>').clone();
 
-                // Add inputs for product name, price, type, and amount/weight
-                newRow.append($('<td>').append($('<input>').attr('type', 'text').attr('name', 'productname[]').attr('required', true)));
-                newRow.append($('<td>').append($('<input>').attr('type', 'number').attr('name', 'productprice[]').attr('step', '0.01').attr('required', true)));
-                newRow.append(
-                    $('<td>').append(
-                        $('<select>').attr('name', 'producttype[]').addClass('form-control custom-select mb-3')
-                            .append($('<option selected>').attr('value', 'amount').text('Amount'))
-                            .append($('<option>').attr('value', 'weight').text('Weight'))
-                            .attr('required', true)
-                            .on('change', function() {
-                                var selectedOption = $(this).val();
-                                var inputAmount = $(this).closest('tr').find('input[name="productamount[]"]');
-                                if (selectedOption === 'amount') {
-                                    inputAmount.prop('step', '1');
-                                } else if (selectedOption === 'weight') {
-                                    inputAmount.prop('step', '0.001');
-                                }
-                            })
-                    )
-                );
-                newRow.append($('<td>').append($('<input>').attr('type', 'number').attr('name', 'productamount[]')));
-                newRow.append($('<td>').append($('<button>').attr('type', 'button').addClass('btn btn-danger remove-product-btn').text('-')));
+                newInputGroup.find('input').val('');
 
-                productsTable.append(newRow);
-            });
+                // Add an event listener to the select input
+                newInputGroup.find('select[name="producttype[]"]').on('change', function() {
+                    var selectedOption = $(this).val();
+                    var productAmountInput = $(this).closest('.input-group').find('input[name="productamount[]"]');
 
-            productsTable.on('click', '.remove-product-btn', function() {
-                $(this).closest('tr').remove();
+                    if (selectedOption === 'amount') {
+                        productAmountInput.attr('step', '1');
+                        productAmountInput.attr('max', '99999999');
+                        newInputGroup.find('input[name="productamount[]"]').attr('placeholder', 'Product Amount');
+                    } else if (selectedOption === 'weight') {
+                        productAmountInput.attr('step', '0.001');
+                        productAmountInput.attr('max', '99999999.999');
+                        newInputGroup.find('input[name="productamount[]"]').attr('placeholder', 'Product Weight');
+                    }
+                });
+
+                $('#product-input-group').after(newInputGroup);
             });
         });
     </script>
@@ -74,13 +71,22 @@
                 </ul>
                 <!-- Right Side Of Navbar -->
                 <ul class="navbar-nav ms-auto mx-5">
+                    @if(Auth::user()->is_admin)
+                        <li style="margin-left: 10px">
+                            <a class="nav-link text-light btn">Admin User</a>
+                        </li>
+                    @endif
+                    <div class="btn-group">
                         <div class="dropdown">
-                            <a style="margin-right: 50px" class="btn btn-dark btn-outline-light dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <button type="button" class="btn btn-dark-outline dropdown-toggle text-light" data-bs-toggle="dropdown" data-bs-display="static" aria-expanded="false">
                                 {{ Auth::user()->name }}
-                            </a>
-                            <div class="dropdown-menu">
-                                <a class="dropdown-item" href="{{ route('profils') }}">Settings</a>
-                                <a class="dropdown-item" href="{{ route('logout') }}"
+                            </button>
+                            <div class="dropdown-menu dropdown-menu-dark dropdown-menu-lg-end">
+                                @if(Auth::user()->is_admin)
+                                    <a class="dropdown-item" href="{{ route('adminpurchases') }}">Admin Panel</a>
+                                @endif
+                                <a class="dropdown-item" href="{{ route('profile') }}">Settings</a>
+                                <a class="dropdown-item text-danger" href="{{ route('logout') }}"
                                    onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
                                     {{ __('Logout') }}
@@ -90,6 +96,7 @@
                                 @csrf
                             </form>
                         </div>
+                    </div>
                 </ul>
             </nav>
             <main class="py-4">

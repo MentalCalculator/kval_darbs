@@ -41,7 +41,6 @@ tr:hover {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    overflow: auto;
 }
 .containerWrapper {
     display: flex;
@@ -130,6 +129,7 @@ form input {
 buttons-container {
     display: flex;
     justify-content: center;
+
 }
 
 .summary-box {

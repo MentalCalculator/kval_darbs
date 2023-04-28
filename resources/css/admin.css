@@ -41,7 +41,6 @@ tr:hover {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    overflow: auto;
 }
 .containerWrapper {
     display: flex;

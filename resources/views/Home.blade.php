@@ -30,7 +30,7 @@
             Create Purchase
         </button>
         <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered" style="width: 500px">
+            <div class="modal-dialog modal-dialog-centered" style="width: 800px">
                 <div class="modal-content">
                     <div class="modal-header">
                         <h1 class="modal-title fs-5" id="staticBackdropLabel">Create Purchase</h1>
@@ -38,22 +38,13 @@
                     <div class="modal-body">
                         <form method="POST" action="{{route('purchasecreate')}}">
                             @csrf
-                            <table class="table" id="products-table" style="max-height: 200px; overflow-y: auto;">
-                                <thead id="table-header">
-                                <tr>
-                                    <th>Product Name</th>
-                                    <th>Price</th>
-                                    <th>Type</th>
-                                    <th>Amount/Weight*</th>
-                                    <th> </th>
-                                </tr>
-                                </thead>
-                                <tbody>
-                                </tbody>
-                            </table>
-                            <button type="button" class="btn btn-primary" id="add-product-btn">Add Product</button>
-                            <button type="submit" class="btn btn-success">Submit Purchase</button>
-                            <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cancel</button>
+                            <div id="product-input-group"></div>
+                            <p>Weight/Amount is optional. It sets to 1 if left blank.</p>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-primary" id="add-product-btn">Add Product</button>
+                                <button type="submit" class="btn btn-success">Submit Purchase</button>
+                                <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cancel</button>
+                            </div>
                         </form>
                     </div>
                 </div>
@@ -69,7 +60,7 @@
                     <thead>
                         <th>Product Name</th>
                         <th>Product Price</th>
-                        <th>Product Amount/Weight(KG)</th>
+                        <th>Product Amount/Weight</th>
                         <th>Total</th>
                         <th></th>
                         <th></th>
@@ -78,7 +69,11 @@
                         <tr>
                             @foreach($data[$purchase->id] as $products)
                             <td>{{$products->productname}}</td>
-                            <td>{{$products->productprice}}€</td>
+                            @if ($products->producttype == 'weight')
+                                <td>{{$products->productprice}}€/KG</td>
+                            @else
+                                <td>{{$products->productprice}}€</td>
+                            @endif
                             @if ($products->producttype == 'weight')
                                 <td>{{$products->productamount}}KG</td>
                             @else
@@ -91,7 +86,7 @@
                                     <div class="modal-dialog modal-dialog-centered">
                                         <div class="modal-content">
                                             <div class="modal-header">
-                                                <h1 class="modal-title fs-5" id="staticBackdropLabel2">Modify</h1>
+                                                <h1 class="modal-title fs-5" id="staticBackdropLabel2">Modify Product</h1>
                                             </div>
                                             <div class="modal-body">
                                                 <table>
@@ -103,7 +98,11 @@
                                                     </thead>
                                                     <tr>
                                                         <td>{{$products->productname}}</td>
-                                                        <td>{{$products->productprice}}€</td>
+                                                        @if ($products->producttype == 'weight')
+                                                            <td>{{$products->productprice}}€/KG</td>
+                                                        @else
+                                                            <td>{{$products->productprice}}€</td>
+                                                        @endif
                                                         @if ($products->producttype == 'weight')
                                                             <td>{{$products->productamount}}KG</td>
                                                         @else
@@ -117,12 +116,12 @@
                                                     @method('PUT')
                                                     <!-- Include product ID as hidden input field -->
                                                     <input type="hidden" name="product_id" value="{{$products->id}}">
-                                                    <input type="text" class="form check" name="new_name" id="new_name" placeholder="New product name" style="margin-top: 10px;">
-                                                    <input type="text" class="form check" name="new_price" id="new_price" step="0.01" placeholder="New product price" style="margin-top: 10px;">
+                                                    <input type="text" class="form check" name="new_name" id="new_name" placeholder="New product name" minlength="3" maxlength="30" style="margin-top: 10px;">
+                                                    <input type="number" class="form check" name="new_price" id="new_price" step="0.01" placeholder="New product price" maxlength="8" pattern="^\d+(\.\d{1,2})?$" style="margin-top: 10px;">
                                                     @if ($products->producttype == 'weight')
-                                                        <input type="number" class="form check" name="new_amount" id="new_amount" step="1" placeholder="New product weight" style="margin-top: 10px;">
+                                                        <input type="number" class="form check" name="new_amount" id="new_amount" step="0.001" placeholder="New product weight" maxlength="8" style="margin-top: 10px;">
                                                     @else
-                                                        <input type="number" class="form check" name="new_amount" id="new_amount" step="0.001" placeholder="New product amount" style="margin-top: 10px; margin-bottom: 10px">
+                                                        <input type="number" class="form check" name="new_amount" id="new_amount" step="1" placeholder="New product amount" maxlength="8" style="margin-top: 10px; margin-bottom: 10px">
                                                     @endif
                                                     <div class="modal-footer">
                                                         <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cancel</button>
@@ -158,8 +157,8 @@
                     </tbody>
                     @endforeach
                 </table>
-                <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#staticBackdrop4" style="margin-bottom: 10px;">Delete Purchase</button>
-                <div class="modal fade" id="staticBackdrop4" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel4" aria-hidden="true">
+                <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#staticBackdrop4_{{$purchase->id}}" style="margin-bottom: 10px;">Delete Purchase</button>
+                <div class="modal fade" id="staticBackdrop4_{{$purchase->id}}" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel4" aria-hidden="true">
                     <div class="modal-dialog modal-dialog-centered">
                         <div class="modal-content">
                             <div class="modal-header">

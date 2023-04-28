@@ -12,7 +12,7 @@
     </div>
         <br>
     <form method="GET" action="{{route('totaldate')}}">
-        <div class="container" style="height: 50px; width: 500px">
+        <div class="container" style="height: 60px; width: 500px">
             <div class="input-group mb-3">
                 <input type="date" class="form-control" id="startdate" name="startdate" required>
                 <input type="date" class="form-control" id="enddate" name="enddate" required>

@@ -8,20 +8,19 @@
         </div>
     @endif
     <div class="summary-box">
-        <h1 style="text-align: center">All products you've bought</h1>
+        <h1 style="text-align: center">Your products</h1>
     </div>
     <br><br>
     <form method="GET" action="{{route('productssearch')}}">
-        <div class="container" style="height: 20px; width: 500px">
+        <div class="container" style="height: 60px; width: 500px">
             <div class="input-group mb-3">
-                <input type="text" name="search" value="{{ Session::get('productsSearch', '') }}" placeholder="Product name" />
+                <input type="text" name="search" class="form-control" value="{{ Session::get('productsSearch', '') }}" placeholder="Product name" required/>
                 <button class="btn btn-primary" type="submit">Search</button>
             </div>
         </div>
     </form>
-    <br>
     <form method="GET" action="{{route('productsdate')}}">
-        <div class="container" style="height: 50px; width: 500px">
+        <div class="container" style="height: 60px; width: 500px">
             <div class="input-group mb-3">
                 <input type="date" class="form-control" id="startdate" name="startdate" required>
                 <input type="date" class="form-control" id="enddate" name="enddate" required>
@@ -37,14 +36,14 @@
             <th>Product Amount/Weight(KG)</th>
             <th>Total</th>
         </thead>
-        <div style="overflow: auto;">
+        <div style="overflow: auto">
             <tbody>
             @foreach($products as $group => $groupedProduct)
                 <tr>
                     <td>{{ $groupedProduct[0]->productname }}</td>
                     <td>
                         @if($groupedProduct[0]->producttype == 'weight')
-                            {{ $groupedProduct[0]->productprice }}€/KG
+                            {{ $groupedProduct[0]->productprice }} €/KG
                         @else
                             {{ $groupedProduct[0]->productprice }}€
                         @endif

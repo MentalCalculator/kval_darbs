@@ -3,7 +3,7 @@
 @section('content')
 <div class="container" style="margin-top: 50px;">
     <div class="summary-box" id="popup3">
-        <h1 class="text-danger" style="">Profile Settings</h1>
+        <h1 style="">Profile Settings</h1>
     </div>
     <br><br><br>
     <div class="summary-box">
@@ -12,7 +12,7 @@
             <div class="modal-dialog modal-dialog-centered">
                 <div class="modal-content">
                     <div class="modal-body">
-                        <form action="{{ route('userchange') }}" method="POST">
+                        <form action="{{ route('namechange') }}" method="POST">
                             <br>
                             @csrf
                             <input type="text"class="form-control @error('name') is-invalid @enderror" name="new_username" placeholder="Jauns nosaukums" required>
@@ -61,7 +61,7 @@
                             @csrf
                             <br>
                             <div class="form-group">
-                                <input type="password" class="form-control @error('new_password') is-invalid @enderror" name="new_password" id="new_password" placeholder="Jauna parole" required>
+                                <input type="password" class="form-control @error('new_password') is-invalid @enderror" name="new_password" id="new_password" placeholder="New password" required>
                                 @error('new_password')
                                 <span class="invalid-feedback" role="alert" style="text-align: center;">
                                     <strong>Passwords don't match!</strong>
@@ -69,7 +69,7 @@
                                 @enderror
                             </div>
                             <div class="form-group">
-                                <input type="password" class="form-control @error('new_password_confirmation') is-invalid @enderror" name="new_password_confirmation" id="new_password_confirmation" placeholder="Atkārtot jauno paroli" required>
+                                <input type="password" class="form-control @error('new_password_confirmation') is-invalid @enderror" name="new_password_confirmation" id="new_password_confirmation" placeholder="Repeat new password" required>
                                 @error('new_password_confirmation')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
