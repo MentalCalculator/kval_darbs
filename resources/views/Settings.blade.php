@@ -2,11 +2,11 @@
 
 @section('content')
 <div class="container" style="margin-top: 50px;">
-    <div class="summary-box" id="popup3">
+    <div class="summary-box" id="SSummary">
         <h1 style="">Profile Settings</h1>
     </div>
     <br><br><br>
-    <div class="summary-box">
+    <div class="summary-box" id="EUSummary">
         <h2> Username: {{ Auth::user()->name }} <button class="btn btn-primary" type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#staticBackdrop4">Change</button></h2>
         <div class="modal fade" id="staticBackdrop4" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel2" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered">
@@ -26,7 +26,7 @@
             </div>
         </div>
     </div>
-    <div class="summary-box">
+    <div class="summary-box" id="ESSummary">
         <h2> E-mail: {{ Auth::user()->email }} <button class="btn btn-primary" type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#staticBackdrop5">Change</button></h2>
         <div class="modal fade" id="staticBackdrop5" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel2" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered">
@@ -51,7 +51,7 @@
             </div>
         </div>
     </div>
-    <div class="summary-box">
+    <div class="summary-box" id="EPSummary">
         <h2> Password: .............. <button class="btn btn-primary" type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#staticBackdrop6">Change</button></h2>
         <div class="modal fade" id="staticBackdrop6" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel2" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered">

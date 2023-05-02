@@ -1,13 +1,14 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container" style="margin-top: 50px;">
+    <div class="containerWrapper">
+        <div class="container">
     @if (session('status'))
         <div class="alert alert-success" role="alert">
             {{ session('status') }}
         </div>
     @endif
-    <div class="summary-box">
+    <div class="summary-box" id="TotalSummary">
         <h1 style="text-align: center">Total</h1>
     </div>
         <br>
@@ -20,13 +21,13 @@
             </div>
         </div>
     </form>
-    <div class="summary-box">
-        <h2>Total purchases count: <?php echo $Count1;?></h2>
+    <div class="summary-box" id="TotalPUSummary">
+        <h2>Total purchases: <?php echo $Count1;?></h2>
     </div>
-    <div class="summary-box">
-        <h2>Total product count: <?php echo $Count2;?></h2>
+    <div class="summary-box" id="TotalPRSummary">
+        <h2>Total products: <?php echo $Count2;?></h2>
     </div>
-    <div class="summary-box">
+    <div class="summary-box" id="TotalCostSummary">
         <h2>Total cost: <?php echo $Count3;?>€</h2>
     </div>
 </div>
