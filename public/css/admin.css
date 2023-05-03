@@ -13,7 +13,7 @@ body {
 }
 table {
     border-collapse: collapse;
-    width: 80%;
+    width: 70%;
     align-items: center;
 }
 th, td {
@@ -46,6 +46,7 @@ tr:hover {
     display: flex;
     justify-content: center;
     align-items: center;
+    margin-top: 50px;
 }
 .container1 {
     background-color: #ffffff;
@@ -73,10 +74,32 @@ tr:hover {
     justify-content: center;
     align-items: center;
 }
+.container3 {
+    background-color: #ffffff;
+    width: 65%;
+    height: 700px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
 #power {
     border-radius: 10px;
     background-color: #ffffff;
     width: 90%;
+    box-shadow: 0 0 10px rgb(58, 128, 252);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow: auto;
+}
+#power2 {
+    border-radius: 10px;
+    background-color: #ffffff;
+    width: 100%;
+    height: 700px;
     box-shadow: 0 0 10px rgb(58, 128, 252);
     display: flex;
     flex-direction: column;
@@ -112,7 +135,7 @@ input[type="password"] {
     width: 200px;
     border: none;
     border-radius: 5px;
-    background-color: rgba(164, 164, 164, 0.65);
+    background-color: rgba(215, 215, 215, 0.65);
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -120,35 +143,77 @@ input[type="password"] {
 }
 
 input[id="ProductsTitle"] {
+    background-color: rgba(148, 151, 255, 0.65);
     width: 100px;
     text-align: center;
     font-weight: bold;
-    border: #1a202c;
+    border: 1px solid black;
 }
 
-input[id="Name"] {
-    width: 100px;
+input[id="PName"] {
+    width: 25%;
     text-align: center;
-    border-color: #1a202c;
+    border: 1px solid black;
 }
-
-input[id="Price"] {
-    width: 70px;
+input[id="PID"] {
+    width: 12%;
     text-align: center;
-    border-color: #1a202c;
+    border: 1px solid black;
 }
-
-input[id="Amount"] {
-    width: 90px;
+input[id="PUID"] {
+    width: 12%;
     text-align: center;
-    border-color: #1a202c;
+    border: 1px solid black;
 }
-
-input[id="Total"] {
-    width: 100px;
+input[id="PPrice"] {
+    width: 12%;
+    text-align: center;
+    border: 1px solid black;
+}
+input[id="PAmount"] {
+    width: 5%;
+    text-align: center;
+    border: 1px solid black;
+}
+input[id="PCreated"] {
+    width: 18%;
+    text-align: center;
+    border: 1px solid black;
+}
+input[id="PTotal"] {
+    width: 10%;
     text-align: center;
     font-weight: bold;
-    border-color: #1a202c;
+    border: 1px solid black;
+}
+input[id="PType"] {
+    width: 7%;
+    text-align: center;
+    font-weight: bold;
+    border: 1px solid black;
+}
+
+input[id="PurchaseInfo"] {
+    width: 15%;
+    text-align: center;
+    font-weight: bold;
+    border: 1px solid black;
+}
+input[id="PurchaseDateInfo"] {
+    width: 8%;
+    text-align: center;
+    font-weight: bold;
+    border: 1px solid black;
+}
+input[id="PurchaseData"] {
+    width: 18%;
+    text-align: center;
+    border: 1px solid black;
+}
+input[id="PurchaseDate"] {
+    width: 23%;
+    text-align: center;
+    border: 1px solid black;
 }
 
 .input-group {
@@ -177,12 +242,38 @@ buttons-container {
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-top: 20px;
+    margin-top: 10px;
     padding: 20px;
+    margin-bottom: 10px;
 }
 
 .summary-box h2 {
     margin: 0;
     font-size: 24px;
     text-align: center;
+}
+.summary-box[id="PurchasesSummary"] {
+    background-color: #ffffff;
+    width: 60%;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgb(58, 128, 252);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+.summary-box[id="ProductsSummary"] {
+    background-color: #ffffff;
+    width: 60%;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgb(58, 128, 252);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 30px;
+    padding: 20px;
+    margin-bottom: 10px;
 }

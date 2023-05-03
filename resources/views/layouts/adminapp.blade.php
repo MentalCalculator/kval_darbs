@@ -90,7 +90,7 @@
         }
         .container3 {
             background-color: #ffffff;
-            width: 55%;
+            width: 65%;
             height: 700px;
             border-radius: 10px;
             box-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
@@ -165,17 +165,22 @@
         }
 
         input[id="PName"] {
-            width: 15%;
+            width: 25%;
             text-align: center;
             border: 1px solid black;
         }
         input[id="PID"] {
+            width: 10%;
+            text-align: center;
+            border: 1px solid black;
+        }
+        input[id="PUID"] {
             width: 12%;
             text-align: center;
             border: 1px solid black;
         }
         input[id="PPrice"] {
-            width: 12%;
+            width: 10%;
             text-align: center;
             border: 1px solid black;
         }
@@ -185,18 +190,18 @@
             border: 1px solid black;
         }
         input[id="PCreated"] {
-            width: 12%;
+            width: 16%;
             text-align: center;
             border: 1px solid black;
         }
         input[id="PTotal"] {
-            width: 15%;
+            width: 10%;
             text-align: center;
             font-weight: bold;
             border: 1px solid black;
         }
         input[id="PType"] {
-            width: 7%;
+            width: 6%;
             text-align: center;
             font-weight: bold;
             border: 1px solid black;
@@ -220,7 +225,7 @@
             border: 1px solid black;
         }
         input[id="PurchaseDate"] {
-            width: 23%;
+            width: 20%;
             text-align: center;
             border: 1px solid black;
         }

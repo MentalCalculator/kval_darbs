@@ -127,25 +127,52 @@ input[id="ProductsTitle"] {
 }
 
 input[id="Name"] {
-    width: 100px;
+    width: 20%;
     text-align: center;
+    font-weight: bold;
     border-color: #1a202c;
 }
 
 input[id="Price"] {
-    width: 70px;
+    width: 20%;
     text-align: center;
     border-color: #1a202c;
 }
 
 input[id="Amount"] {
-    width: 90px;
+    width: 10%;
     text-align: center;
     border-color: #1a202c;
 }
 
 input[id="Total"] {
-    width: 100px;
+    width: 20%;
+    text-align: center;
+    font-weight: bold;
+    border-color: #1a202c;
+}
+
+input[id="PName"] {
+    width: 20%;
+    text-align: center;
+    font-weight: bold;
+    border-color: #1a202c;
+}
+
+input[id="PPrice"] {
+    width: 20%;
+    text-align: center;
+    border-color: #1a202c;
+}
+
+input[id="PAmount"] {
+    width: 10%;
+    text-align: center;
+    border-color: #1a202c;
+}
+
+input[id="PTotal"] {
+    width: 20%;
     text-align: center;
     font-weight: bold;
     border-color: #1a202c;

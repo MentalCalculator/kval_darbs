@@ -32,18 +32,18 @@
             </form>
             @foreach($products as $group => $groupedProduct)
                 <div class="input-group mb-3">
-                    <input type="text" id="Name" value="{{ $groupedProduct[0]->productname }}">
+                    <input type="text" id="PName" value="{{ $groupedProduct[0]->productname }}">
                     @if($groupedProduct[0]->producttype == 'weight')
-                        <input type="text" id="Price" value="{{ $groupedProduct[0]->productprice }} €/KG">
+                        <input type="text" id="PPrice" value="{{ $groupedProduct[0]->productprice }} €/KG">
                     @else
-                        <input type="text" id="Price" value="{{ $groupedProduct[0]->productprice }} €">
+                        <input type="text" id="PPrice" value="{{ $groupedProduct[0]->productprice }} €">
                     @endif
                     @if($groupedProduct[0]->producttype == 'weight')
-                        <input type="text" id="Amount" value="{{ $groupedProduct->sum(function($product) { return $product->productamount; }) }} KG">
+                        <input type="text" id="PAmount" value="{{ $groupedProduct->sum(function($product) { return $product->productamount; }) }} KG">
                     @else
-                        <input type="text" id="Amount" value="{{ $groupedProduct->sum(function($product) { return $product->productamount; }) }}">
+                        <input type="text" id="PAmount" value="{{ $groupedProduct->sum(function($product) { return $product->productamount; }) }}">
                     @endif
-                    <input type="text" id="Total" value="{{ $groupedProduct->totalSum }} €">
+                    <input type="text" id="PTotal" value="{{ $groupedProduct->totalSum }} €">
                 </div>
             @endforeach
         </div>

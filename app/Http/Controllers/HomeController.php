@@ -100,9 +100,10 @@ class HomeController extends Controller
                 return floatval($product->productamount) * $product->productprice;
             });
             $totalAmount = $products->sum('productamount');
-            $groupedProducts[$group]->totalSum = $totalSum;
-            $groupedProducts[$group]->totalAmount = $totalAmount;
+            $groupedProducts[$group]->totalSum = number_format($totalSum, 2);
+            $groupedProducts[$group]->totalAmount = number_format($totalAmount);
         }
+
 
         foreach ($usedproducts as $product) {
             if ($product->producttype == 'amount') {

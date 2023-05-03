@@ -40,6 +40,8 @@
                 @foreach($purchases as $purchase)
                 <div id="zone">
                     <div class="input-group mb-3">
+                        <input type="text" id="PurchaseInfo" value="User ID:" readonly>
+                        <input type="text" id="PUID" value="{{ $purchase->userid }}" readonly>
                         <input type="text" id="PurchaseInfo" value="Purchase ID:" readonly>
                         <input type="text" id="PurchaseData" value="{{ $purchase->id }}" readonly>
                         <input type="text" id="PurchaseDateInfo" value="Date:" readonly>
