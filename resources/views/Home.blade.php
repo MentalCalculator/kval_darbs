@@ -109,8 +109,8 @@
                                                     @method('PUT')
                                                     <!-- Include product ID as hidden input field -->
                                                     <input type="hidden" name="product_id" value="{{$products->id}}">
-                                                    <input type="text" class="form check" name="new_name" id="new_name" placeholder="New product name" minlength="3" maxlength="30" style="margin-top: 10px;">
-                                                    <input type="number" class="form check" name="new_price" id="new_price" step="0.01" placeholder="New product price" maxlength="8" pattern="^\d+(\.\d{1,2})?$" style="margin-top: 10px;">
+                                                    <input type="text" class="form check" name="new_name" id="new_name" placeholder="New product name" minlength="3" maxlength="50" style="margin-top: 10px;">
+                                                    <input type="number" class="form check" name="new_price" id="new_price" step="0.01" placeholder="New product price" maxlength="8" style="margin-top: 10px;">
                                                     @if ($products->producttype == 'weight')
                                                         <input type="number" class="form check" name="new_amount" id="new_amount" step="0.001" placeholder="New product weight" maxlength="8" style="margin-top: 10px;">
                                                     @else

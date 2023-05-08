@@ -86,7 +86,7 @@
                                                     <input type="text" id="PAmount" value="{{$product->productamount}}" readonly>
                                                 @endif
                                             </div>
-                                            <input type="text" class="form check" name="new_name" id="new_name" placeholder="New product name" minlength="3" maxlength="30" style="margin-top: 10px;">
+                                            <input type="text" class="form check" name="new_name" id="new_name" placeholder="New product name" minlength="3" maxlength="50" style="margin-top: 10px;">
                                             <input type="number" class="form check" name="new_price" id="new_price" step="0.01" placeholder="New product price" max="99999999.99" style="margin-top: 10px;">
                                             @if ($product->producttype == 'weight')
                                                 <input type="number" class="form check" name="new_amount" id="new_amount" step="0.001" placeholder="New product weight" maxlength="12" style="margin-top: 10px;">
