@@ -12,7 +12,7 @@
             <div class="summary-box" id="ProductsSummary">
                 <h1 style="text-align: center">All products</h1>
             </div>
-                <br><br>
+                <br>
                 <form method="GET" action="{{route('adminproductssearchname')}}">
                     <div class="container" style="height: 20px; width: 500px">
                         <div class="input-group mb-3">
@@ -69,28 +69,23 @@
                                         <form method="POST" action="{{ route('adminproductupdate', ['id' => $product->id]) }}">
                                             @csrf
                                             @method('PUT')
-                                            <table>
-                                                <tbody>
-                                                <thead>
-                                                <th>Product Name</th>
-                                                <th>Product Price</th>
-                                                <th>Product Amount</th>
-                                                </thead>
-                                                <tr>
-                                                    <td>{{$product->productname}}</td>
-                                                    @if ($product->producttype == 'weight')
-                                                            <td>{{$product->productprice}}€/KG</td>
-                                                    @else
-                                                        <td>{{$product->productprice}}€</td>
-                                                    @endif
-                                                    @if ($product->producttype == 'weight')
-                                                        <td>{{$product->productamount}}KG</td>
-                                                    @else
-                                                        <td>{{$product->productamount}}</td>
-                                                    @endif
-                                                </tr>
-                                                </tbody>
-                                            </table>
+                                            <div class="input-group mb-3">
+                                                <input type="text" id="ProductsInfoTitle" value="Name:" readonly>
+                                                <input type="text" id="PName" value="{{$product->productname}}" readonly>
+                                                <input type="text" id="ProductsInfoTitle" value="Price:" readonly>
+                                                @if ($product->producttype == 'weight')
+                                                    <input type="text" id="PPrice" value="{{$product->productprice}}€/KG" readonly>
+                                                @else
+                                                    <input type="text" id="PPrice" value="{{$product->productprice}}€" readonly>
+                                                @endif
+                                                @if ($product->producttype == 'weight')
+                                                    <input type="text" id="ProductsInfoTitle" value="Weight:" readonly>
+                                                    <input type="text" id="PAmount" value="{{$product->productamount}}KG" readonly>
+                                                @else
+                                                    <input type="text" id="ProductsInfoTitle" value="Amount:" readonly>
+                                                    <input type="text" id="PAmount" value="{{$product->productamount}}" readonly>
+                                                @endif
+                                            </div>
                                             <input type="text" class="form check" name="new_name" id="new_name" placeholder="New product name" minlength="3" maxlength="30" style="margin-top: 10px;">
                                             <input type="number" class="form check" name="new_price" id="new_price" step="0.01" placeholder="New product price" max="99999999.99" style="margin-top: 10px;">
                                             @if ($product->producttype == 'weight')
@@ -98,6 +93,7 @@
                                             @else
                                                 <input type="number" class="form check" name="new_amount" id="new_amount" step="1" placeholder="New product amount" maxlength="8" style="margin-top: 10px; margin-bottom: 10px">
                                             @endif
+                                            <br>
                                             <div class="modal-footer">
                                                 <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cancel</button>
                                                 <button type="submit" class="btn btn-success">Modify</button>

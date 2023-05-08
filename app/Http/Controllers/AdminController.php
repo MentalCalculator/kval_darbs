@@ -15,12 +15,15 @@ class AdminController extends Controller
                 ->select('id','userid', 'created_at')
                 ->get();
             $data = [];
+            $totalSums = [];
             foreach ($purchases as $p) {
                 $purchase_id = $p->id;
                 $products = DB::table('products')
                     ->select('id', 'purchaseid', 'productname', 'productprice', 'productamount', 'producttype', 'total', 'created_at')
                     ->where('purchaseid', '=', $purchase_id)
                     ->get();
+                $totalSum = $products->sum('total');
+                $totalSum = number_format($totalSum, 2);
                 foreach ($products as $product) {
                     if (round($product->productamount) == $product->productamount) {
                         $product->productamount = number_format($product->productamount);
@@ -29,8 +32,9 @@ class AdminController extends Controller
                     }
                 }
                 $data[$purchase_id] = $products;
+                $totalSums[$purchase_id] = $totalSum;
             }
-            return view('adminpurchases', compact('data', 'purchases'));
+            return view('adminpurchases', compact('data', 'purchases', 'totalSums'));
     }
 
     public function productdashboard()

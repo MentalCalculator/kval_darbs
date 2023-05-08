@@ -5,7 +5,7 @@
     <div class="summary-box" id="SSummary">
         <h1 style="">Profile Settings</h1>
     </div>
-    <br><br><br>
+    <br><br>
     <div class="summary-box" id="EUSummary">
         <h2> Username: {{ Auth::user()->name }} <button class="btn btn-primary" type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#staticBackdrop4">Change</button></h2>
         <div class="modal fade" id="staticBackdrop4" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel2" aria-hidden="true">

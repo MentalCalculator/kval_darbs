@@ -113,7 +113,7 @@
             border-radius: 10px;
             background-color: #ffffff;
             width: 100%;
-            height: 700px;
+            height: 100%;
             box-shadow: 0 0 10px rgb(58, 128, 252);
             display: flex;
             flex-direction: column;
@@ -121,15 +121,27 @@
             overflow: auto;
         }
         #zone {
-            padding-top: 10px;
+            padding-top: 20px;
             padding-bottom: 10px;
             height: 100%;
             width: 100%;
-            text-align: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
             align-items: center;
             box-shadow: 0 0 10px rgb(58, 128, 252);
         }
-
+        #products {
+            max-width: 650px;
+            max-height: 200px;
+            display: flex;
+            padding-top: 15px;
+            border-radius: 20px;
+            flex-direction: column;
+            align-items: center;
+            overflow: auto;
+            box-shadow: 0 0 10px rgb(58, 128, 252);
+        }
         .container h2 {
             display: inline-block;
             font-size: 24px;
@@ -159,6 +171,12 @@
         input[id="ProductsTitle"] {
             background-color: rgba(148, 151, 255, 0.65);
             width: 100px;
+            text-align: center;
+            font-weight: bold;
+            border: 1px solid black;
+        }
+        input[id="ProductsInfoTitle"] {
+            width: 15%;
             text-align: center;
             font-weight: bold;
             border: 1px solid black;
@@ -195,6 +213,18 @@
             border: 1px solid black;
         }
         input[id="PTotal"] {
+            width: 15%;
+            text-align: center;
+            font-weight: bold;
+            border: 1px solid black;
+        }
+        input[id="PTotalAmount"] {
+            width: 15%;
+            text-align: center;
+            font-weight: bold;
+            border: 1px solid black;
+        }
+        input[id="PTotalSum"] {
             width: 15%;
             text-align: center;
             font-weight: bold;
@@ -299,13 +329,13 @@
         $(function() {
             $('#add-product-btn').click(function() {
                 var newInputGroup = $('<div class="input-group mb-3">' +
-                    '<input type="text" class="form-control" placeholder="Product Name" name="productname[]" minlength="3" maxlength="30" required>' +
-                    '<input type="number" class="form-control" placeholder="Product Price" name="productprice[]" step="0.01" max="99999999.99">' +
+                    '<input type="text" class="form-control" placeholder="Name" name="productname[]" minlength="3" maxlength="30" required>' +
+                    '<input type="number" class="form-control" placeholder="Price" name="productprice[]" step="0.01" max="99999999.99">' +
                     '<select class="form-select form-select-sm" aria-label=".form-select-sm example" name="producttype[]" required>' +
                     '<option value="amount">Amount</option>' +
                     '<option value="weight">Weight</option>' +
                     '</select>' +
-                    '<input type="number" class="form-control" placeholder="Product Amount*" name="productamount[]" max="99999999">' +
+                    '<input type="number" class="form-control" placeholder="Number*" name="productamount[]" max="99999999">' +
                     '<button class="btn btn-danger" type="button" onclick="$(this).parent().remove()">X</button></div>').clone();
 
                 newInputGroup.find('input').val('');
@@ -318,11 +348,11 @@
                     if (selectedOption === 'amount') {
                         productAmountInput.attr('step', '1');
                         productAmountInput.attr('max', '99999999');
-                        newInputGroup.find('input[name="productamount[]"]').attr('placeholder', 'Product Amount');
+                        newInputGroup.find('input[name="productamount[]"]').attr('placeholder', 'Number*');
                     } else if (selectedOption === 'weight') {
                         productAmountInput.attr('step', '0.001');
                         productAmountInput.attr('max', '99999999.999');
-                        newInputGroup.find('input[name="productamount[]"]').attr('placeholder', 'Product Weight');
+                        newInputGroup.find('input[name="productamount[]"]').attr('placeholder', 'Number*');
                     }
                 });
 
@@ -336,7 +366,7 @@
             <nav class="navbar navbar-expand-lg navbar-dark bg-dark shadow-sm">
                 <!-- Left Side Of Navbar -->
                 <ul class="navbar-nav me-auto mx-5">
-                    <li style="margin-left: 50px">
+                    <li style="margin-left: 10px">
                         <a class="nav-link text-light btn" href="{{ route('home')}}">{{__('Purchases')}}</a>
                     </li>
                     <li style="margin-left: 10px">

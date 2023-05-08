@@ -21,6 +21,7 @@ class DateController extends Controller
             ->get();
 
         $data = [];
+        $totalSums = [];
         foreach ($purchases as $p) {
             $purchase_id = $p->id;
             $products = DB::table('products')
@@ -28,6 +29,8 @@ class DateController extends Controller
                 ->where('userid', '=', $user_id)
                 ->where('purchaseid', '=', $purchase_id)
                 ->get();
+            $totalSum = $products->sum('total');
+            $totalSum = number_format($totalSum, 2);
             foreach ($products as $product) {
                 if ($product->producttype == 'amount') {
                     $product->productamount = number_format($product->productamount);
@@ -41,6 +44,7 @@ class DateController extends Controller
             }
 
             $data[$purchase_id] = $products;
+            $totalSums[$purchase_id] = $totalSum;
         }
 
         return view('Home', compact('data', 'purchases'));

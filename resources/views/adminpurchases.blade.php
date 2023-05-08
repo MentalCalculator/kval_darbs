@@ -22,7 +22,7 @@
         <form method="GET" action="{{route('adminpurchasesearchuserid')}}">
             <div class="input-group mb-3">
                 <input type="text" name="search" value="{{ Session::get('adminpurchasesearchuserid', '') }}"
-                       placeholder="Purchase User ID"/>
+                       placeholder="User ID"/>
                 <button class="btn btn-primary" type="submit">Search</button>
             </div>
         </form>
@@ -50,22 +50,29 @@
                     <div class="input-group mb-3">
                         <input type="text" id="ProductsTitle" value="Products" readonly>
                     </div>
-                    @foreach($data[$purchase->id] as $products)
-                    <div class="input-group mb-3">
-                        <input type="text" id="PName" value="{{$products->productname}}" readonly>
-                        @if ($products->producttype == 'weight')
-                            <input type="text" id="PPrice" value="{{$products->productprice}}€/KG" readonly>
-                        @else
-                            <input type="text" id="PPrice" value="{{$products->productprice}}€" readonly>
-                        @endif
-                        @if ($products->producttype == 'weight')
-                            <input type="text" id="PAmount" value="{{$products->productamount}}KG" readonly>
-                        @else
-                            <input type="text" id="PAmount" value="{{$products->productamount}}" readonly>
-                        @endif
-                        <input type="text" id="PTotal" value="{{$products->total}}€" readonly>
+                    <div id="products">
+                        @foreach($data[$purchase->id] as $products)
+                            <div class="input-group mb-3">
+                                <input type="text" id="PName" value="{{$products->productname}}" readonly>
+                                @if ($products->producttype == 'weight')
+                                    <input type="text" id="PPrice" value="{{$products->productprice}}€/KG" readonly>
+                                @else
+                                    <input type="text" id="PPrice" value="{{$products->productprice}}€" readonly>
+                                @endif
+                                @if ($products->producttype == 'weight')
+                                    <input type="text" id="PAmount" value="{{$products->productamount}}KG" readonly>
+                                @else
+                                    <input type="text" id="PAmount" value="{{$products->productamount}}" readonly>
+                                @endif
+                                <input type="text" id="PTotal" value="{{$products->total}}€" readonly>
+                            </div>
+                        @endforeach
                     </div>
-                    @endforeach
+                    <br>
+                    <div class="input-group mb-3">
+                        <input type="text" id="PTotal" value="Total:" readonly>
+                        <input type="text" id="PTotalAmount" value="{{ $totalSums[$purchase->id] }}€" readonly>
+                    </div>
                     <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#staticBackdrop4_{{$purchase->id}}" style="margin-bottom: 10px;">Delete Purchase</button>
                     <div class="modal fade" id="staticBackdrop4_{{$purchase->id}}" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" data-product-id="{{$purchase->id}}" aria-labelledby="staticBackdropLabel4" aria-hidden="true">
                         <div class="modal-dialog modal-dialog-centered">

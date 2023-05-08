@@ -51,7 +51,6 @@ class AdminModifyController extends Controller
         $product = Products::findOrFail($id);
         $usedproduct = UsedProducts::findOrFail($id);
         $name = $request->input('new_name');
-        $type = $request->input('new_type');
         $input1 = $request->input('new_price');
         $input2 = $request->input('new_amount');
         $currentprice = $product->productprice;
@@ -88,8 +87,6 @@ class AdminModifyController extends Controller
             $usedproduct->productamount = $amount;
             $currentusedamount = $amount;
         }
-        $product->producttype = $type;
-        $usedproduct->producttype = $type;
         $product->total = $currentprice * $currentamount;
         $usedproduct->total = $currentusedprice * $currentusedamount;
         $product->save();

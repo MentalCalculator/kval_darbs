@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('userid')->references('id')->on('users')->onDelete('cascade');
             $table->foreignId('purchaseid')->references('id')->on('purchases')->onDelete('cascade');
-            $table->string('productname',20);
+            $table->string('productname',50);
             $table->decimal('productprice');
             $table->decimal('productamount')->nullable();
             $table->string('producttype');

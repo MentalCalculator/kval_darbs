@@ -22,13 +22,13 @@
         </div>
     </form>
     <div class="summary-box" id="TotalPUSummary">
-        <h2>Total purchases: <?php echo $Count1;?></h2>
+        <h2>Total purchases: {{$Count1}}</h2>
     </div>
     <div class="summary-box" id="TotalPRSummary">
-        <h2>Total products: <?php echo $Count2;?></h2>
+        <h2>Total products: {{$Count2}}</h2>
     </div>
     <div class="summary-box" id="TotalCostSummary">
-        <h2>Total cost: <?php echo $Count3;?>€</h2>
+        <h2>Total cost: {{$Count3}}€</h2>
     </div>
 </div>
 @endsection

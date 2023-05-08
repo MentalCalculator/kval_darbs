@@ -125,11 +125,23 @@
             padding-bottom: 10px;
             height: 100%;
             width: 100%;
-            text-align: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
             align-items: center;
             box-shadow: 0 0 10px rgb(58, 128, 252);
         }
-
+        #products {
+            max-width: 650px;
+            max-height: 200px;
+            display: flex;
+            padding-top: 15px;
+            border-radius: 20px;
+            flex-direction: column;
+            align-items: center;
+            overflow: auto;
+            box-shadow: 0 0 10px rgb(58, 128, 252);
+        }
         .container h2 {
             display: inline-block;
             font-size: 24px;
@@ -163,6 +175,12 @@
             font-weight: bold;
             border: 1px solid black;
         }
+        input[id="ProductsInfoTitle"] {
+            width: 18%;
+            text-align: center;
+            font-weight: bold;
+            border: 1px solid black;
+        }
 
         input[id="PName"] {
             width: 25%;
@@ -180,22 +198,28 @@
             border: 1px solid black;
         }
         input[id="PPrice"] {
-            width: 10%;
+            width: 12%;
             text-align: center;
             border: 1px solid black;
         }
         input[id="PAmount"] {
-            width: 8%;
+            width: 10%;
             text-align: center;
             border: 1px solid black;
         }
         input[id="PCreated"] {
-            width: 16%;
+            width: 14%;
             text-align: center;
             border: 1px solid black;
         }
         input[id="PTotal"] {
             width: 10%;
+            text-align: center;
+            font-weight: bold;
+            border: 1px solid black;
+        }
+        input[id="PTotalAmount"] {
+            width: 15%;
             text-align: center;
             font-weight: bold;
             border: 1px solid black;

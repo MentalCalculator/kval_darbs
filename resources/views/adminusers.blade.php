@@ -55,20 +55,14 @@
                                     <h1 class="modal-title fs-5" id="staticBackdropLabel2">Modify User</h1>
                                 </div>
                                 <div class="modal-body">
-                                    <table>
-                                        <tbody>
-                                        <thead>
-                                        <th>User ID</th>
-                                        <th>Username</th>
-                                        <th>E-Mail</th>
-                                        </thead>
-                                        <tr>
-                                            <td>{{$user->id}}</td>
-                                            <td>{{$user->name}}</td>
-                                            <td>{{$user->email}}</td>
-                                        </tr>
-                                        </tbody>
-                                    </table>
+                                    <div class="input-group mb-3">
+                                        <input type="text" id="ProductsInfoTitle" value="User ID:" readonly>
+                                        <input type="text" id="PPrice" value="{{$user->id}}" readonly>
+                                        <input type="text" id="ProductsInfoTitle" value="Username:" readonly>
+                                        <input type="text" id="PCreated" value="{{$user->name}}" readonly>
+                                        <input type="text" id="ProductsInfoTitle" value="E-Mail:" readonly>
+                                        <input type="text" id="PPrice" value="{{$user->email}}" readonly>
+                                    </div>
                                     <form method="POST" action="{{ route('adminuserupdate', ['id' => $user->id]) }}">
                                         @csrf
                                         @method('PUT')

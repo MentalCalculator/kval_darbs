@@ -12,7 +12,7 @@
             <div class="summary-box" id="ProductsSummary">
                 <h1 style="text-align: center">Your products</h1>
             </div>
-            <br><br>
+            <br>
             <form method="GET" action="{{route('productssearch')}}">
                 <div class="container" style="height: 60px; width: 500px">
                     <div class="input-group mb-3">
@@ -30,6 +30,7 @@
                     </div>
                 </div>
             </form>
+            <br>
             @foreach($products as $group => $groupedProduct)
                 <div class="input-group mb-3">
                     <input type="text" id="PName" value="{{ $groupedProduct[0]->productname }}">

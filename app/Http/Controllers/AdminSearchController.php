@@ -18,12 +18,15 @@ class AdminSearchController extends Controller
             ->get();
 
         $data = [];
+        $totalSums = [];
         foreach ($purchases as $p) {
             $purchase_id = $p->id;
             $products = DB::table('products')
                 ->select('id', 'purchaseid', 'created_at', 'productname', 'productprice', 'productamount', 'producttype', 'total')
                 ->where('purchaseid', '=', $purchase_id)
                 ->get();
+            $totalSum = $products->sum('total');
+            $totalSum = number_format($totalSum, 2);
             foreach ($products as $product) {
                 if ($product->producttype == 'amount') {
                     $product->productamount = number_format($product->productamount);
@@ -37,9 +40,10 @@ class AdminSearchController extends Controller
             }
 
             $data[$purchase_id] = $products;
+            $totalSums[$purchase_id] = $totalSum;
         }
 
-        return view('adminpurchases', compact('data', 'purchases'));
+        return view('adminpurchases', compact('data', 'purchases', 'totalSums'));
     }
 
     public function adminpurchasesearchuserid(Request $request)
@@ -52,12 +56,15 @@ class AdminSearchController extends Controller
             ->get();
 
         $data = [];
+        $totalSums = [];
         foreach ($purchases as $p) {
             $purchase_id = $p->id;
             $products = DB::table('products')
                 ->select('id', 'purchaseid', 'created_at', 'productname', 'productprice', 'productamount', 'producttype', 'total')
                 ->where('purchaseid', '=', $purchase_id)
                 ->get();
+            $totalSum = $products->sum('total');
+            $totalSum = number_format($totalSum, 2);
             foreach ($products as $product) {
                 if ($product->producttype == 'amount') {
                     $product->productamount = number_format($product->productamount);
@@ -71,9 +78,10 @@ class AdminSearchController extends Controller
             }
 
             $data[$purchase_id] = $products;
+            $totalSums[$purchase_id] = $totalSum;
         }
 
-        return view('adminpurchases', compact('data', 'purchases'));
+        return view('adminpurchases', compact('data', 'purchases', 'totalSums'));
     }
 
     public function adminproductssearchname(Request $request)
