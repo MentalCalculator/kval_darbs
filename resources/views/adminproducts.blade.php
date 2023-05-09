@@ -16,7 +16,7 @@
                 <form method="GET" action="{{route('adminproductssearchname')}}">
                     <div class="container" style="height: 20px; width: 500px">
                         <div class="input-group mb-3">
-                            <input type="text" name="search" class="form-control" value="{{ Session::get('productsSearch', '') }}" placeholder="Product name" required/>
+                            <input type="text" name="search" class="form-control" maxlength="50" value="{{ Session::get('productsSearch', '') }}" placeholder="Product name" required/>
                             <button class="btn btn-primary" type="submit">Search</button>
                         </div>
                     </div>
@@ -25,7 +25,7 @@
                 <form method="GET" action="{{route('adminproductssearchuserid')}}">
                     <div class="container" style="height: 20px; width: 500px">
                         <div class="input-group mb-3">
-                            <input type="text" name="search" class="form-control" value="{{ Session::get('productsSearch', '') }}" placeholder="Product user ID" required/>
+                            <input type="text" name="search" class="form-control" maxlength="20" value="{{ Session::get('productsSearch', '') }}" placeholder="Product user ID" required/>
                             <button class="btn btn-primary" type="submit">Search</button>
                         </div>
                     </div>
@@ -43,21 +43,21 @@
                 <br>
                 @foreach($products as $product)
                     <div class="input-group mb-3">
-                        <input type="text" id="PID" value="User ID: {{ $product->userid }}" readonly>
-                        <input type="text" id="PName" value="{{ $product->productname }}" readonly>
+                        <textarea type="text" id="ProductUserID" readonly>User ID: {{ $product->userid }}</textarea>
+                        <textarea id="ProductName" autofocus readonly>{{ $product->productname }}</textarea>
                         @if($product->producttype == 'weight')
-                            <input type="text" id="PPrice" value="{{ $product->productprice }}€/KG" readonly>
+                            <textarea type="text" id="ProductPrice" readonly>{{ $product->productprice }}€/KG</textarea>
                         @else
-                            <input type="text" id="PPrice" value="{{ $product->productprice }}€" readonly>
+                            <textarea type="text" id="ProductPrice" readonly>{{ $product->productprice }}€</textarea>
                         @endif
-                        <input type="text" id="PType" value="{{ $product->producttype }}" readonly>
+                        <textarea type="text" id="ProductType" readonly>{{ $product->producttype }}</textarea>
                         @if($product->producttype == 'weight')
-                            <input type="text" id="PAmount" value="{{ $product->productamount }} KG" readonly>
+                            <textarea type="text" id="ProductAmount" readonly>{{ $product->productamount }} KG</textarea>
                             @else
-                            <input type="text" id="PAmount" value="{{ $product->productamount }}" readonly>
+                            <textarea type="text" id="ProductAmount" readonly>{{ $product->productamount }}</textarea>
                         @endif
-                        <input type="text" id="PTotal" value="{{ $product->total }}€" readonly>
-                        <input type="text" id="PCreated" value="{{ $product->created_at }}" readonly>
+                        <textarea type="text" id="ProductTotalProductSum" readonly>{{ $product->total }}€</textarea>
+                        <textarea type="text" id="ProductDate" readonly>{{ $product->created_at }}</textarea>
                         <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop4_{{$product->id}}" data-product-id="{{$product->id}}">Modify</button>
                         <div class="modal fade" id="staticBackdrop4_{{$product->id}}" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel4" aria-hidden="true">
                             <div class="modal-dialog modal-dialog-centered">
@@ -70,28 +70,24 @@
                                             @csrf
                                             @method('PUT')
                                             <div class="input-group mb-3">
-                                                <input type="text" id="ProductsInfoTitle" value="Name:" readonly>
-                                                <input type="text" id="PName" value="{{$product->productname}}" readonly>
-                                                <input type="text" id="ProductsInfoTitle" value="Price:" readonly>
+                                                <textarea type="text" id="ProductEditName" readonly>{{$product->productname}}</textarea>
                                                 @if ($product->producttype == 'weight')
-                                                    <input type="text" id="PPrice" value="{{$product->productprice}}€/KG" readonly>
+                                                    <textarea type="text" id="ProductEditPrice" readonly>{{$product->productprice}}€/KG</textarea>
                                                 @else
-                                                    <input type="text" id="PPrice" value="{{$product->productprice}}€" readonly>
+                                                    <textarea type="text" id="ProductEditPrice" readonly>{{$product->productprice}}€</textarea>
                                                 @endif
                                                 @if ($product->producttype == 'weight')
-                                                    <input type="text" id="ProductsInfoTitle" value="Weight:" readonly>
-                                                    <input type="text" id="PAmount" value="{{$product->productamount}}KG" readonly>
+                                                    <textarea type="text" id="ProductEditAmount" readonly>{{$product->productamount}}KG</textarea>
                                                 @else
-                                                    <input type="text" id="ProductsInfoTitle" value="Amount:" readonly>
-                                                    <input type="text" id="PAmount" value="{{$product->productamount}}" readonly>
+                                                    <textarea type="text" id="ProductEditAmount" readonly>{{$product->productamount}}</textarea>
                                                 @endif
                                             </div>
-                                            <input type="text" class="form check" name="new_name" id="new_name" placeholder="New product name" minlength="3" maxlength="50" style="margin-top: 10px;">
-                                            <input type="number" class="form check" name="new_price" id="new_price" step="0.01" placeholder="New product price" max="99999999.99" style="margin-top: 10px;">
+                                            <input type="text" class="form-control" minlength="3" maxlength="50" name="new_name" id="new_name" placeholder="New product name" style="margin-top: 10px;">
+                                            <input type="number" class="form-control" name="new_price" id="new_price" step="0.01" placeholder="New product price" max="99999999.99" style="margin-top: 10px;">
                                             @if ($product->producttype == 'weight')
-                                                <input type="number" class="form check" name="new_amount" id="new_amount" step="0.001" placeholder="New product weight" maxlength="12" style="margin-top: 10px;">
+                                                <input type="number" class="form-control" name="new_amount" id="new_amount" max="99999999.999" placeholder="New product weight" style="margin-top: 10px;">
                                             @else
-                                                <input type="number" class="form check" name="new_amount" id="new_amount" step="1" placeholder="New product amount" maxlength="8" style="margin-top: 10px; margin-bottom: 10px">
+                                                <input type="number" class="form-control" name="new_amount" id="new_amount" max="99999999" placeholder="New product amount" maxlength="8" style="margin-top: 10px; margin-bottom: 10px">
                                             @endif
                                             <br>
                                             <div class="modal-footer">

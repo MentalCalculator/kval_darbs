@@ -64,7 +64,7 @@
         }
         .container1 {
             background-color: #ffffff;
-            width: 600px;
+            width: 30%;
             height: 700px;
             border-bottom-left-radius: 10px;
             border-top-left-radius: 10px;
@@ -78,7 +78,7 @@
             padding-top: 30px;
             padding-bottom: 30px;
             background-color: #ffffff;
-            width: 800px;
+            width: 50%;
             height: 700px;
             border-bottom-right-radius: 10px;
             border-top-right-radius: 10px;
@@ -90,7 +90,7 @@
         }
         .container3 {
             background-color: #ffffff;
-            width: 65%;
+            width: 80%;
             height: 700px;
             border-radius: 10px;
             box-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
@@ -132,7 +132,7 @@
             box-shadow: 0 0 10px rgb(58, 128, 252);
         }
         #products {
-            max-width: 650px;
+            max-width: 700px;
             max-height: 200px;
             display: flex;
             padding-top: 15px;
@@ -168,116 +168,185 @@
             align-items: center;
         }
 
-        input[id="ProductsTitle"] {
+        /* Product Title */
+        textarea[id="ProductsTitle"] {
             background-color: rgba(148, 151, 255, 0.65);
-            width: 100px;
-            text-align: center;
-            font-weight: bold;
-            border: 1px solid black;
-        }
-        input[id="ProductsInfoTitle"] {
             width: 15%;
+            height: 70%;
             text-align: center;
-            font-weight: bold;
             border: 1px solid black;
+            overflow-wrap: break-word;
+            resize: none;
+            font-weight: bold;
         }
 
-        input[id="PName"] {
+        /* Purchase Info Data Style */
+        textarea[id="PurchaseIDTitle"] {
+            background-color: rgba(215, 215, 215, 0.65);
+            width: 15%;
+            text-align: center;
+            border: 1px solid black;
+            overflow-wrap: break-word;
+            resize: none;
+            font-weight: bold;
+        }
+        textarea[id="PurchaseID"] {
+            background-color: rgba(215, 215, 215, 0.65);
+            width: 15%;
+            text-align: center;
+            border: 1px solid black;
+            overflow-wrap: break-word;
+            resize: none;
+        }
+        textarea[id="PurchaseDateTitle"] {
+            background-color: rgba(215, 215, 215, 0.65);
+            width: 7%;
+            text-align: center;
+            border: 1px solid black;
+            overflow-wrap: break-word;
+            resize: none;
+            font-weight: bold;
+        }
+        textarea[id="PurchaseDate"] {
+            background-color: rgba(215, 215, 215, 0.65);
+            width: 15%;
+            text-align: center;
+            border: 1px solid black;
+            overflow-wrap: break-word;
+            resize: none;
+        }
+
+
+        /* Purchase Info Data Style */
+        textarea[id="PurchaseName"] {
+            background-color: rgba(215, 215, 215, 0.65);
             width: 25%;
             text-align: center;
             border: 1px solid black;
+            overflow-wrap: break-word;
+            resize: none;
         }
-        input[id="PID"] {
-            width: 12%;
+        textarea[id="PurchasePrice"] {
+            background-color: rgba(215, 215, 215, 0.65);
+            width: 15%;
             text-align: center;
             border: 1px solid black;
+            overflow-wrap: break-word;
+            resize: none;
         }
-        input[id="PUID"] {
-            width: 12%;
+        textarea[id="PurchaseAmount"] {
+            background-color: rgba(215, 215, 215, 0.65);
+            width: 15%;
             text-align: center;
             border: 1px solid black;
+            overflow-wrap: break-word;
+            resize: none;
         }
-        input[id="PPrice"] {
-            width: 12%;
+        textarea[id="PurchaseTotalProductSum"] {
+            background-color: rgba(215, 215, 215, 0.65);
+            width: 15%;
+            text-align: center;
+            font-weight: bold;
+            border: 1px solid black;
+            overflow-wrap: break-word;
+            resize: none;
+        }
+
+        /* Total Purchase Data Style */
+        textarea[id="PurchaseTotalSumTitle"] {
+            background-color: rgba(215, 215, 215, 0.65);
+            width: 7%;
             text-align: center;
             border: 1px solid black;
+            overflow-wrap: break-word;
+            resize: none;
+            font-weight: bold;
         }
-        input[id="PAmount"] {
+        textarea[id="PurchaseTotalSum"] {
+            background-color: rgba(215, 215, 215, 0.65);
+            width: 15%;
+            text-align: center;
+            border: 1px solid black;
+            overflow-wrap: break-word;
+            resize: none;
+            font-weight: bold;
+        }
+
+        /* Products Info */
+        textarea[id="ProductName"] {
+            background-color: rgba(215, 215, 215, 0.65);
+            width: 30%;
+            text-align: center;
+            border: 1px solid black;
+            overflow-wrap: break-word;
+            resize: none;
+        }
+        textarea[id="ProductPrice"] {
+            background-color: rgba(215, 215, 215, 0.65);
+            width: 15%;
+            text-align: center;
+            border: 1px solid black;
+            overflow-wrap: break-word;
+            resize: none;
+        }
+        textarea[id="ProductAmount"] {
+            background-color: rgba(215, 215, 215, 0.65);
             width: 10%;
             text-align: center;
             border: 1px solid black;
+            overflow-wrap: break-word;
+            resize: none;
         }
-        input[id="PCreated"] {
-            width: 18%;
-            text-align: center;
-            border: 1px solid black;
-        }
-        input[id="PTotal"] {
+        textarea[id="ProductTotalProductSum"] {
+            background-color: rgba(215, 215, 215, 0.65);
             width: 15%;
             text-align: center;
             font-weight: bold;
             border: 1px solid black;
+            overflow-wrap: break-word;
+            resize: none;
         }
-        input[id="PTotalAmount"] {
-            width: 15%;
+        /* Product Edit Info */
+        textarea[id="ProductEditName"] {
+            background-color: rgba(215, 215, 215, 0.65);
+            width: 40%;
             text-align: center;
-            font-weight: bold;
             border: 1px solid black;
+            overflow-wrap: break-word;
+            resize: none;
         }
-        input[id="PTotalSum"] {
-            width: 15%;
+        textarea[id="ProductEditPrice"] {
+            background-color: rgba(215, 215, 215, 0.65);
+            width: 25%;
             text-align: center;
-            font-weight: bold;
             border: 1px solid black;
+            overflow-wrap: break-word;
+            resize: none;
         }
-        input[id="PType"] {
-            width: 7%;
+        textarea[id="ProductEditAmount"] {
+            background-color: rgba(215, 215, 215, 0.65);
+            width: 20%;
             text-align: center;
-            font-weight: bold;
             border: 1px solid black;
+            overflow-wrap: break-word;
+            resize: none;
         }
 
-        input[id="PurchaseInfo"] {
-            width: 15%;
-            text-align: center;
-            font-weight: bold;
-            border: 1px solid black;
-        }
-        input[id="PurchaseDateInfo"] {
-            width: 8%;
-            text-align: center;
-            font-weight: bold;
-            border: 1px solid black;
-        }
-        input[id="PurchaseData"] {
-            width: 18%;
-            text-align: center;
-            border: 1px solid black;
-        }
-        input[id="PurchaseDate"] {
-            width: 23%;
-            text-align: center;
-            border: 1px solid black;
-        }
-
+        /* Other Style Fixes */
         .input-group {
             justify-content: center
         }
-
         button {
             display: inline-block;
         }
-
         form input {
             display: block;
             margin: 0 auto;
         }
-
         buttons-container {
             display: flex;
             justify-content: center;
         }
-
         .summary-box {
             background-color: #ffffff;
             width: 60%;
@@ -290,7 +359,6 @@
             padding: 20px;
             margin-bottom: 10px;
         }
-
         .summary-box h2 {
             margin: 0;
             font-size: 24px;
@@ -308,7 +376,6 @@
             padding: 20px;
             margin-bottom: 20px;
         }
-
         .summary-box[id="ProductsSummary"] {
             background-color: #ffffff;
             width: 60%;
@@ -329,8 +396,8 @@
         $(function() {
             $('#add-product-btn').click(function() {
                 var newInputGroup = $('<div class="input-group mb-3">' +
-                    '<input type="text" class="form-control" placeholder="Name" name="productname[]" minlength="3" maxlength="30" required>' +
-                    '<input type="number" class="form-control" placeholder="Price" name="productprice[]" step="0.01" max="99999999.99">' +
+                    '<input type="text" class="form-control" placeholder="Name" name="productname[]" minlength="3" maxlength="50" required>' +
+                    '<input type="number" class="form-control" placeholder="Price" name="productprice[]" max="99999999.99" required>' +
                     '<select class="form-select form-select-sm" aria-label=".form-select-sm example" name="producttype[]" required>' +
                     '<option value="amount">Amount</option>' +
                     '<option value="weight">Weight</option>' +
@@ -346,11 +413,9 @@
                     var productAmountInput = $(this).closest('.input-group').find('input[name="productamount[]"]');
 
                     if (selectedOption === 'amount') {
-                        productAmountInput.attr('step', '1');
                         productAmountInput.attr('max', '99999999');
                         newInputGroup.find('input[name="productamount[]"]').attr('placeholder', 'Number*');
                     } else if (selectedOption === 'weight') {
-                        productAmountInput.attr('step', '0.001');
                         productAmountInput.attr('max', '99999999.999');
                         newInputGroup.find('input[name="productamount[]"]').attr('placeholder', 'Number*');
                     }

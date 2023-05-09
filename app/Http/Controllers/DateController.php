@@ -47,7 +47,7 @@ class DateController extends Controller
             $totalSums[$purchase_id] = $totalSum;
         }
 
-        return view('Home', compact('data', 'purchases'));
+        return view('Home', compact('data', 'purchases', 'totalSums'));
     }
 
     public function productsdate(Request $request)
@@ -63,6 +63,7 @@ class DateController extends Controller
             ->where('userid', '=', $user_id)
             ->whereBetween('created_at', [$startdate . ' 00:00:00', $enddate . ' 23:59:59'])
             ->get();
+
         $groupedProducts = $usedproducts->groupBy(function($product) {
             return $product->productname . '-' . $product->producttype . '-' . $product->productprice;
         });
@@ -73,11 +74,12 @@ class DateController extends Controller
                 return floatval($product->productamount) * $product->productprice;
             });
             $totalAmount = $products->sum('productamount');
-            $groupedProducts[$group]->totalSum = $totalSum;
+            $groupedProducts[$group]->totalSum = number_format($totalSum,2);
             $groupedProducts[$group]->totalAmount = $totalAmount;
         }
 
         foreach ($usedproducts as $product) {
+            $totalSum = number_format($totalSum,2);
             if ($product->producttype == 'amount') {
                 $product->productamount = number_format($product->productamount);
             } elseif ($product->producttype == 'weight') {
@@ -101,7 +103,7 @@ class DateController extends Controller
         $user_id = Auth::id();
 
         $data1 = DB::table('purchases')->select('userid','created_at')->where('userid','=',$user_id)->whereBetween('created_at', [$startdate . ' 00:00:00', $enddate . ' 23:59:59'])->get();
-        $products = DB::table('products')->select('userid','producttype','productamount','created_at')->whereBetween('created_at', [$startdate . ' 00:00:00', $enddate . ' 23:59:59'])->get();
+        $products = DB::table('products')->select('userid','producttype','productamount','created_at')->where('userid','=',$user_id)->whereBetween('created_at', [$startdate . ' 00:00:00', $enddate . ' 23:59:59'])->get();
 
         // Mathematically counts the equations.
         $totalWeight = 0;
@@ -117,7 +119,6 @@ class DateController extends Controller
 
         $data3 = DB::table('products')->select(DB::raw('SUM(total) as total'))->where('userid','=',$user_id)->whereBetween('created_at', [$startdate . ' 00:00:00', $enddate . ' 23:59:59'])->first();
 
-        // Identifies the data from the Query.
         $count1 = $data1->count();
         $count2 = $totalCount;
         $count3 = $data3 ? $data3->total ?? "0.00" : "0.00";

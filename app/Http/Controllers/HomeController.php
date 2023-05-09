@@ -133,8 +133,8 @@ class HomeController extends Controller
     public function total()
     {
         $user_id = Auth::id();
-        $data1 = DB::table('purchases')->select('userid')->where('userid','=',$user_id)->get();
 
+        $data1 = DB::table('purchases')->select('userid')->where('userid','=',$user_id)->get();
         $products = DB::table('products')->select('userid','producttype','productamount')->where('userid','=',$user_id)->get();
 
         $totalWeight = 0;

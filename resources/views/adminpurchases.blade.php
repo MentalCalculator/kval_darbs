@@ -14,14 +14,14 @@
         </div>
         <form method="GET" action="{{route('adminpurchasesearchid')}}">
             <div class="input-group mb-3">
-                <input type="text" name="search" value="{{ Session::get('adminpurchasesearchid', '') }}"
+                <input type="text" name="search" class="form-control" maxlength="20" value="{{ Session::get('adminpurchasesearchid', '') }}"
                        placeholder="Purchase ID"/>
                 <button class="btn btn-primary" type="submit">Search</button>
             </div>
         </form>
         <form method="GET" action="{{route('adminpurchasesearchuserid')}}">
             <div class="input-group mb-3">
-                <input type="text" name="search" value="{{ Session::get('adminpurchasesearchuserid', '') }}"
+                <input type="text" name="search" class="form-control" maxlength="20" value="{{ Session::get('adminpurchasesearchuserid', '') }}"
                        placeholder="User ID"/>
                 <button class="btn btn-primary" type="submit">Search</button>
             </div>
@@ -40,38 +40,38 @@
                 @foreach($purchases as $purchase)
                 <div id="zone">
                     <div class="input-group mb-3">
-                        <input type="text" id="PurchaseInfo" value="User ID:" readonly>
-                        <input type="text" id="PUID" value="{{ $purchase->userid }}" readonly>
-                        <input type="text" id="PurchaseInfo" value="Purchase ID:" readonly>
-                        <input type="text" id="PurchaseData" value="{{ $purchase->id }}" readonly>
-                        <input type="text" id="PurchaseDateInfo" value="Date:" readonly>
-                        <input type="text" id="PurchaseDate" value="{{ $purchase->created_at }}" readonly>
+                        <textarea type="text" id="PurchaseUserIDTitle" readonly>User ID:</textarea>
+                        <textarea type="text" id="PurchaseUserID" readonly>{{ $purchase->userid }}</textarea>
+                        <textarea type="text" id="PurchaseIDTitle" readonly>Purchase ID:</textarea>
+                        <textarea type="text" id="PurchaseID" readonly>{{ $purchase->id }}</textarea>
+                        <textarea type="text" id="PurchaseDateTitle" readonly>Date:</textarea>
+                        <textarea type="text" id="PurchaseDate" readonly>{{ $purchase->created_at }}</textarea>
                     </div>
                     <div class="input-group mb-3">
-                        <input type="text" id="ProductsTitle" value="Products" readonly>
+                        <textarea type="text" id="ProductsTitle" readonly>Products</textarea>
                     </div>
                     <div id="products">
                         @foreach($data[$purchase->id] as $products)
                             <div class="input-group mb-3">
-                                <input type="text" id="PName" value="{{$products->productname}}" readonly>
+                                <textarea readonly id="PurchaseName" rows="2" autofocus>{{ $products->productname }}</textarea>
                                 @if ($products->producttype == 'weight')
-                                    <input type="text" id="PPrice" value="{{$products->productprice}}€/KG" readonly>
+                                    <textarea  type="text" id="PurchasePrice" readonly>{{$products->productprice}}€/KG</textarea>
                                 @else
-                                    <input type="text" id="PPrice" value="{{$products->productprice}}€" readonly>
+                                    <textarea  type="text" id="PurchasePrice" readonly>{{$products->productprice}}€</textarea>
                                 @endif
                                 @if ($products->producttype == 'weight')
-                                    <input type="text" id="PAmount" value="{{$products->productamount}}KG" readonly>
+                                    <textarea  type="text" id="PurchaseAmount" readonly>{{$products->productamount}}KG</textarea>
                                 @else
-                                    <input type="text" id="PAmount" value="{{$products->productamount}}" readonly>
+                                    <textarea  type="text" id="PurchaseAmount" readonly>{{$products->productamount}}</textarea>
                                 @endif
-                                <input type="text" id="PTotal" value="{{$products->total}}€" readonly>
+                                <textarea  type="text" id="PurchaseTotalProductSum" readonly>{{$products->total}}€</textarea>
                             </div>
                         @endforeach
                     </div>
                     <br>
                     <div class="input-group mb-3">
-                        <input type="text" id="PTotal" value="Total:" readonly>
-                        <input type="text" id="PTotalAmount" value="{{ $totalSums[$purchase->id] }}€" readonly>
+                        <textarea type="text" id="PurchaseTotalSumTitle" readonly>Total:</textarea>
+                        <textarea type="text" id="PurchaseTotalSum" readonly>{{ $totalSums[$purchase->id] }}€</textarea>
                     </div>
                     <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#staticBackdrop4_{{$purchase->id}}" style="margin-bottom: 10px;">Delete Purchase</button>
                     <div class="modal fade" id="staticBackdrop4_{{$purchase->id}}" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" data-product-id="{{$purchase->id}}" aria-labelledby="staticBackdropLabel4" aria-hidden="true">

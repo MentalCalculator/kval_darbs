@@ -64,7 +64,7 @@
         }
         .container1 {
             background-color: #ffffff;
-            width: 600px;
+            width: 30%;
             height: 700px;
             border-bottom-left-radius: 10px;
             border-top-left-radius: 10px;
@@ -78,7 +78,7 @@
             padding-top: 30px;
             padding-bottom: 30px;
             background-color: #ffffff;
-            width: 800px;
+            width: 50%;
             height: 700px;
             border-bottom-right-radius: 10px;
             border-top-right-radius: 10px;
@@ -121,7 +121,7 @@
             overflow: auto;
         }
         #zone {
-            padding-top: 10px;
+            padding-top: 20px;
             padding-bottom: 10px;
             height: 100%;
             width: 100%;
@@ -132,7 +132,7 @@
             box-shadow: 0 0 10px rgb(58, 128, 252);
         }
         #products {
-            max-width: 650px;
+            max-width: 700px;
             max-height: 200px;
             display: flex;
             padding-top: 15px;
@@ -168,110 +168,290 @@
             align-items: center;
         }
 
-        input[id="ProductsTitle"] {
+        /* Product Title */
+        textarea[id="ProductsTitle"] {
             background-color: rgba(148, 151, 255, 0.65);
-            width: 100px;
+            width: 15%;
+            height: 70%;
             text-align: center;
-            font-weight: bold;
             border: 1px solid black;
-        }
-        input[id="ProductsInfoTitle"] {
-            width: 18%;
-            text-align: center;
+            overflow-wrap: break-word;
+            resize: none;
             font-weight: bold;
-            border: 1px solid black;
         }
 
-        input[id="PName"] {
+        /* Purchase Info Data Style */
+        textarea[id="PurchaseUserIDTitle"] {
+            background-color: rgba(215, 215, 215, 0.65);
+            width: 10%;
+            text-align: center;
+            border: 1px solid black;
+            overflow-wrap: break-word;
+            resize: none;
+            font-weight: bold;
+        }
+        textarea[id="PurchaseUserID"] {
+            background-color: rgba(215, 215, 215, 0.65);
+            width: 15%;
+            text-align: center;
+            border: 1px solid black;
+            overflow-wrap: break-word;
+            resize: none;
+        }
+        textarea[id="PurchaseIDTitle"] {
+            background-color: rgba(215, 215, 215, 0.65);
+            width: 12%;
+            text-align: center;
+            border: 1px solid black;
+            overflow-wrap: break-word;
+            resize: none;
+            font-weight: bold;
+        }
+        textarea[id="PurchaseID"] {
+            background-color: rgba(215, 215, 215, 0.65);
+            width: 15%;
+            text-align: center;
+            border: 1px solid black;
+            overflow-wrap: break-word;
+            resize: none;
+        }
+        textarea[id="PurchaseDateTitle"] {
+            background-color: rgba(215, 215, 215, 0.65);
+            width: 7%;
+            text-align: center;
+            border: 1px solid black;
+            overflow-wrap: break-word;
+            resize: none;
+            font-weight: bold;
+        }
+        textarea[id="PurchaseDate"] {
+            background-color: rgba(215, 215, 215, 0.65);
+            width: 17%;
+            text-align: center;
+            border: 1px solid black;
+            overflow-wrap: break-word;
+            resize: none;
+        }
+
+
+        /* Purchase Info Data Style */
+        textarea[id="PurchaseName"] {
+            background-color: rgba(215, 215, 215, 0.65);
             width: 25%;
             text-align: center;
             border: 1px solid black;
+            overflow-wrap: break-word;
+            resize: none;
         }
-        input[id="PID"] {
-            width: 10%;
+        textarea[id="PurchasePrice"] {
+            background-color: rgba(215, 215, 215, 0.65);
+            width: 15%;
             text-align: center;
             border: 1px solid black;
+            overflow-wrap: break-word;
+            resize: none;
         }
-        input[id="PUID"] {
-            width: 12%;
+        textarea[id="PurchaseAmount"] {
+            background-color: rgba(215, 215, 215, 0.65);
+            width: 15%;
             text-align: center;
             border: 1px solid black;
+            overflow-wrap: break-word;
+            resize: none;
         }
-        input[id="PPrice"] {
-            width: 12%;
-            text-align: center;
-            border: 1px solid black;
-        }
-        input[id="PAmount"] {
-            width: 10%;
-            text-align: center;
-            border: 1px solid black;
-        }
-        input[id="PCreated"] {
-            width: 14%;
-            text-align: center;
-            border: 1px solid black;
-        }
-        input[id="PTotal"] {
-            width: 10%;
-            text-align: center;
-            font-weight: bold;
-            border: 1px solid black;
-        }
-        input[id="PTotalAmount"] {
+        textarea[id="PurchaseTotalProductSum"] {
+            background-color: rgba(215, 215, 215, 0.65);
             width: 15%;
             text-align: center;
             font-weight: bold;
             border: 1px solid black;
-        }
-        input[id="PType"] {
-            width: 6%;
-            text-align: center;
-            font-weight: bold;
-            border: 1px solid black;
+            overflow-wrap: break-word;
+            resize: none;
         }
 
-        input[id="PurchaseInfo"] {
+        /* Total Purchase Data Style */
+        textarea[id="PurchaseTotalSumTitle"] {
+            background-color: rgba(215, 215, 215, 0.65);
+            width: 7%;
+            text-align: center;
+            border: 1px solid black;
+            overflow-wrap: break-word;
+            resize: none;
+            font-weight: bold;
+        }
+        textarea[id="PurchaseTotalSum"] {
+            background-color: rgba(215, 215, 215, 0.65);
             width: 15%;
             text-align: center;
+            border: 1px solid black;
+            overflow-wrap: break-word;
+            resize: none;
             font-weight: bold;
-            border: 1px solid black;
         }
-        input[id="PurchaseDateInfo"] {
-            width: 8%;
-            text-align: center;
-            font-weight: bold;
-            border: 1px solid black;
-        }
-        input[id="PurchaseData"] {
-            width: 18%;
-            text-align: center;
-            border: 1px solid black;
-        }
-        input[id="PurchaseDate"] {
+
+        /* Products Info Style */
+        textarea[id="ProductUserID"] {
+            background-color: rgba(215, 215, 215, 0.65);
             width: 20%;
             text-align: center;
             border: 1px solid black;
+            overflow-wrap: break-word;
+            resize: none;
+            font-weight: bold;
+        }
+        textarea[id="ProductName"] {
+            background-color: rgba(215, 215, 215, 0.65);
+            width: 17%;
+            text-align: center;
+            border: 1px solid black;
+            overflow-wrap: break-word;
+            resize: none;
+        }
+        textarea[id="ProductPrice"] {
+            background-color: rgba(215, 215, 215, 0.65);
+            width: 10%;
+            text-align: center;
+            border: 1px solid black;
+            overflow-wrap: break-word;
+            resize: none;
+        }
+        textarea[id="ProductType"] {
+            background-color: rgba(215, 215, 215, 0.65);
+            width: 6%;
+            text-align: center;
+            border: 1px solid black;
+            overflow-wrap: break-word;
+            resize: none;
+            font-weight: bold;
+        }
+        textarea[id="ProductAmount"] {
+            background-color: rgba(215, 215, 215, 0.65);
+            width: 10%;
+            text-align: center;
+            border: 1px solid black;
+            overflow-wrap: break-word;
+            resize: none;
+        }
+        textarea[id="ProductTotalProductSum"] {
+            background-color: rgba(215, 215, 215, 0.65);
+            width: 10%;
+            text-align: center;
+            font-weight: bold;
+            border: 1px solid black;
+            overflow-wrap: break-word;
+            resize: none;
+        }
+        textarea[id="ProductDate"] {
+            background-color: rgba(215, 215, 215, 0.65);
+            width: 12%;
+            text-align: center;
+            font-weight: bold;
+            border: 1px solid black;
+            overflow-wrap: break-word;
+            resize: none;
+        }
+        /* User Info Style */
+        textarea[id="UserID"] {
+            background-color: rgba(215, 215, 215, 0.65);
+            width: 10%;
+            text-align: center;
+            border: 1px solid black;
+            overflow-wrap: break-word;
+            resize: none;
+        }
+        textarea[id="UserName"] {
+            background-color: rgba(215, 215, 215, 0.65);
+            width: 20%;
+            text-align: center;
+            border: 1px solid black;
+            overflow-wrap: break-word;
+            resize: none;
+        }
+        textarea[id="UserEmail"] {
+            background-color: rgba(215, 215, 215, 0.65);
+            width: 17%;
+            text-align: center;
+            border: 1px solid black;
+            overflow-wrap: break-word;
+            resize: none;
+        }
+        textarea[id="UserDate"] {
+            background-color: rgba(215, 215, 215, 0.65);
+            width: 15%;
+            text-align: center;
+            font-weight: bold;
+            border: 1px solid black;
+            overflow-wrap: break-word;
+            resize: none;
         }
 
+        /* Product Edit Info */
+        textarea[id="ProductEditName"] {
+            background-color: rgba(215, 215, 215, 0.65);
+            width: 40%;
+            text-align: center;
+            border: 1px solid black;
+            overflow-wrap: break-word;
+            resize: none;
+        }
+        textarea[id="ProductEditPrice"] {
+            background-color: rgba(215, 215, 215, 0.65);
+            width: 25%;
+            text-align: center;
+            border: 1px solid black;
+            overflow-wrap: break-word;
+            resize: none;
+        }
+        textarea[id="ProductEditAmount"] {
+            background-color: rgba(215, 215, 215, 0.65);
+            width: 20%;
+            text-align: center;
+            border: 1px solid black;
+            overflow-wrap: break-word;
+            resize: none;
+        }
+
+        /* User Edit Info */
+        textarea[id="UserEditID"] {
+            background-color: rgba(215, 215, 215, 0.65);
+            width: 30%;
+            text-align: center;
+            border: 1px solid black;
+            overflow-wrap: break-word;
+            resize: none;
+        }
+        textarea[id="UserEditName"] {
+            background-color: rgba(215, 215, 215, 0.65);
+            width: 25%;
+            text-align: center;
+            border: 1px solid black;
+            overflow-wrap: break-word;
+            resize: none;
+        }
+        textarea[id="UserEditEmail"] {
+            background-color: rgba(215, 215, 215, 0.65);
+            width: 40%;
+            text-align: center;
+            border: 1px solid black;
+            overflow-wrap: break-word;
+            resize: none;
+        }
+
+        /* Other Style Fixes */
         .input-group {
             justify-content: center
         }
-
         button {
             display: inline-block;
         }
-
         form input {
             display: block;
             margin: 0 auto;
         }
-
         buttons-container {
             display: flex;
             justify-content: center;
         }
-
         .summary-box {
             background-color: #ffffff;
             width: 60%;
@@ -284,7 +464,6 @@
             padding: 20px;
             margin-bottom: 10px;
         }
-
         .summary-box h2 {
             margin: 0;
             font-size: 24px;
@@ -302,7 +481,6 @@
             padding: 20px;
             margin-bottom: 20px;
         }
-
         .summary-box[id="ProductsSummary"] {
             background-color: #ffffff;
             width: 60%;

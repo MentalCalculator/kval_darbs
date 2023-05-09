@@ -16,7 +16,7 @@
             <form method="GET" action="{{route('productssearch')}}">
                 <div class="container" style="height: 60px; width: 500px">
                     <div class="input-group mb-3">
-                        <input type="text" name="search" class="form-control" value="{{ Session::get('productsSearch', '') }}" placeholder="Product name" required/>
+                        <input type="text" name="search" class="form-control" maxlength="50" value="{{ Session::get('productsSearch', '') }}" placeholder="Product name" required/>
                         <button class="btn btn-primary" type="submit">Search</button>
                     </div>
                 </div>
@@ -33,18 +33,18 @@
             <br>
             @foreach($products as $group => $groupedProduct)
                 <div class="input-group mb-3">
-                    <input type="text" id="PName" value="{{ $groupedProduct[0]->productname }}">
+                    <textarea id="ProductName" rows="1" style="overflow-wrap: break-word; resize: none; vertical-align: middle;" autofocus readonly>{{ $groupedProduct[0]->productname }}</textarea>
                     @if($groupedProduct[0]->producttype == 'weight')
-                        <input type="text" id="PPrice" value="{{ $groupedProduct[0]->productprice }} €/KG">
+                        <textarea type="text" id="ProductPrice" readonly>{{ $groupedProduct[0]->productprice }} €/KG</textarea>
                     @else
-                        <input type="text" id="PPrice" value="{{ $groupedProduct[0]->productprice }} €">
+                        <textarea type="text" id="ProductPrice" readonly>{{ $groupedProduct[0]->productprice }} €</textarea>
                     @endif
                     @if($groupedProduct[0]->producttype == 'weight')
-                        <input type="text" id="PAmount" value="{{ $groupedProduct->sum(function($product) { return $product->productamount; }) }} KG">
+                        <textarea type="text" id="ProductAmount" readonly>{{ $groupedProduct->sum(function($product) { return $product->productamount; }) }} KG</textarea>
                     @else
-                        <input type="text" id="PAmount" value="{{ $groupedProduct->sum(function($product) { return $product->productamount; }) }}">
+                        <textarea type="text" id="ProductAmount" readonly>{{ $groupedProduct->sum(function($product) { return $product->productamount; }) }}</textarea>
                     @endif
-                    <input type="text" id="PTotal" value="{{ $groupedProduct->totalSum }} €">
+                    <textarea type="text" id="ProductTotalProductSum" readonly>{{ $groupedProduct->totalSum }} €</textarea>
                 </div>
             @endforeach
         </div>

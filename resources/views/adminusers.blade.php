@@ -25,7 +25,7 @@
             <form method="GET" action="{{route('adminusersearchname')}}">
                 <div class="container" style="height: 20px; width: 500px">
                     <div class="input-group mb-3">
-                        <input type="name" name="search" class="form-control" value="{{ Session::get('userSearch', '') }}" placeholder="Username" required/>
+                        <input type="text" name="search" class="form-control" value="{{ Session::get('userSearch', '') }}" placeholder="Username" required/>
                         <button class="btn btn-primary" type="submit">Search</button>
                     </div>
                 </div>
@@ -43,10 +43,10 @@
             <br>
             @foreach($users as $user)
                 <div class="input-group mb-3">
-                    <input type="text" id="PID" value="{{$user->id}}" readonly>
-                    <input type="text" id="PName" value="{{$user->name}}" readonly>
-                    <input type="text" id="PName" value="{{$user->email}}" readonly>
-                    <input type="text" id="PCreated" value="{{$user->created_at}}" readonly>
+                    <textarea type="text" id="UserID" readonly>{{$user->id}}</textarea>
+                    <textarea type="text" id="UserName" readonly>{{$user->name}}</textarea>
+                    <textarea type="text" id="UserEmail" readonly>{{$user->email}}</textarea>
+                    <textarea type="text" id="UserDate" readonly>{{$user->created_at}}</textarea>
                     <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop2_{{$user->id}}" data-product-id="{{$user->id}}">Modify</button>
                     <div class="modal fade" id="staticBackdrop2_{{$user->id}}" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel2" aria-hidden="true">
                         <div class="modal-dialog modal-dialog-centered">
@@ -56,22 +56,19 @@
                                 </div>
                                 <div class="modal-body">
                                     <div class="input-group mb-3">
-                                        <input type="text" id="ProductsInfoTitle" value="User ID:" readonly>
-                                        <input type="text" id="PPrice" value="{{$user->id}}" readonly>
-                                        <input type="text" id="ProductsInfoTitle" value="Username:" readonly>
-                                        <input type="text" id="PCreated" value="{{$user->name}}" readonly>
-                                        <input type="text" id="ProductsInfoTitle" value="E-Mail:" readonly>
-                                        <input type="text" id="PPrice" value="{{$user->email}}" readonly>
+                                        <textarea type="text" id="UserEditID" readonly>{{$user->id}}</textarea>
+                                        <textarea type="text" id="UserEditName" readonly>{{$user->name}}</textarea>
+                                        <textarea type="text" id="UserEditEmail" readonly>{{$user->email}}</textarea>
                                     </div>
                                     <form method="POST" action="{{ route('adminuserupdate', ['id' => $user->id]) }}">
                                         @csrf
                                         @method('PUT')
                                         <!-- Include product ID as hidden input field -->
                                         <input type="hidden" name="product_id" value="{{$user->id}}">
-                                        <input type="text" class="form check" name="new_name" id="new_name" placeholder="New user name" style="margin-top: 10px;">
-                                        <input type="email" class="form check" name="new_email" id="new_email" placeholder="New user e-mail" style="margin-top: 10px;">
-                                        <input type="password" class="form check" name="new_password" id="new_password" placeholder="New user password" style="margin-top: 10px;">
-                                        <input type="password" class="form check" name="new_password_repeat" id="new_password_repeat" placeholder="Repeat password" style="margin-top: 10px;">
+                                        <input type="text" class="form-control" name="new_name" id="new_name" placeholder="New user name" style="margin-top: 10px;">
+                                        <input type="email" class="form-control" name="new_email" id="new_email" placeholder="New user e-mail" style="margin-top: 10px;">
+                                        <input type="password" class="form-control" name="new_password" id="new_password" placeholder="New user password" style="margin-top: 10px;">
+                                        <input type="password" class="form-control" name="new_password_repeat" id="new_password_repeat" placeholder="Repeat password" style="margin-top: 10px;">
                                         <br>
                                         <div class="modal-footer">
                                             <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cancel</button>

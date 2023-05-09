@@ -78,7 +78,7 @@ class SearchController extends Controller
                 return floatval($product->productamount) * $product->productprice;
             });
             $totalAmount = $products->sum('productamount');
-            $groupedProducts[$group]->totalSum = $totalSum;
+            $groupedProducts[$group]->totalSum = number_format($totalSum,2);
             $groupedProducts[$group]->totalAmount = $totalAmount;
         }
 
