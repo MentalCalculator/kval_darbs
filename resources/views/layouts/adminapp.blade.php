@@ -171,8 +171,7 @@
         /* Product Title */
         textarea[id="ProductsTitle"] {
             background-color: rgba(148, 151, 255, 0.65);
-            width: 15%;
-            height: 70%;
+            width: 10%;
             text-align: center;
             border: 1px solid black;
             overflow-wrap: break-word;
@@ -209,7 +208,7 @@
         }
         textarea[id="PurchaseID"] {
             background-color: rgba(215, 215, 215, 0.65);
-            width: 15%;
+            width: 17%;
             text-align: center;
             border: 1px solid black;
             overflow-wrap: break-word;
@@ -226,7 +225,7 @@
         }
         textarea[id="PurchaseDate"] {
             background-color: rgba(215, 215, 215, 0.65);
-            width: 17%;
+            width: 21%;
             text-align: center;
             border: 1px solid black;
             overflow-wrap: break-word;
@@ -237,7 +236,7 @@
         /* Purchase Info Data Style */
         textarea[id="PurchaseName"] {
             background-color: rgba(215, 215, 215, 0.65);
-            width: 25%;
+            width: 35%;
             text-align: center;
             border: 1px solid black;
             overflow-wrap: break-word;
@@ -245,7 +244,7 @@
         }
         textarea[id="PurchasePrice"] {
             background-color: rgba(215, 215, 215, 0.65);
-            width: 15%;
+            width: 17%;
             text-align: center;
             border: 1px solid black;
             overflow-wrap: break-word;
@@ -253,7 +252,7 @@
         }
         textarea[id="PurchaseAmount"] {
             background-color: rgba(215, 215, 215, 0.65);
-            width: 15%;
+            width: 17%;
             text-align: center;
             border: 1px solid black;
             overflow-wrap: break-word;
@@ -261,7 +260,7 @@
         }
         textarea[id="PurchaseTotalProductSum"] {
             background-color: rgba(215, 215, 215, 0.65);
-            width: 15%;
+            width: 17%;
             text-align: center;
             font-weight: bold;
             border: 1px solid black;

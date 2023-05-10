@@ -172,8 +172,8 @@
         textarea[id="ProductsTitle"] {
             background-color: rgba(148, 151, 255, 0.65);
             width: 15%;
-            height: 70%;
             text-align: center;
+            justify-content: center;
             border: 1px solid black;
             overflow-wrap: break-word;
             resize: none;
@@ -192,7 +192,7 @@
         }
         textarea[id="PurchaseID"] {
             background-color: rgba(215, 215, 215, 0.65);
-            width: 15%;
+            width: 17%;
             text-align: center;
             border: 1px solid black;
             overflow-wrap: break-word;
@@ -200,7 +200,7 @@
         }
         textarea[id="PurchaseDateTitle"] {
             background-color: rgba(215, 215, 215, 0.65);
-            width: 7%;
+            width: 10%;
             text-align: center;
             border: 1px solid black;
             overflow-wrap: break-word;
@@ -209,7 +209,7 @@
         }
         textarea[id="PurchaseDate"] {
             background-color: rgba(215, 215, 215, 0.65);
-            width: 15%;
+            width: 20%;
             text-align: center;
             border: 1px solid black;
             overflow-wrap: break-word;
@@ -220,11 +220,14 @@
         /* Purchase Info Data Style */
         textarea[id="PurchaseName"] {
             background-color: rgba(215, 215, 215, 0.65);
-            width: 25%;
+            width: 30%;
             text-align: center;
             border: 1px solid black;
-            overflow-wrap: break-word;
+            word-wrap: break-word;
             resize: none;
+            display: flex;
+            justify-content: center;
+            align-items: center;
         }
         textarea[id="PurchasePrice"] {
             background-color: rgba(215, 215, 215, 0.65);
@@ -255,7 +258,7 @@
         /* Total Purchase Data Style */
         textarea[id="PurchaseTotalSumTitle"] {
             background-color: rgba(215, 215, 215, 0.65);
-            width: 7%;
+            width: 10%;
             text-align: center;
             border: 1px solid black;
             overflow-wrap: break-word;
@@ -278,12 +281,12 @@
             width: 30%;
             text-align: center;
             border: 1px solid black;
-            overflow-wrap: break-word;
+            overflow-block: auto;
             resize: none;
         }
         textarea[id="ProductPrice"] {
             background-color: rgba(215, 215, 215, 0.65);
-            width: 15%;
+            width: 20%;
             text-align: center;
             border: 1px solid black;
             overflow-wrap: break-word;
@@ -291,7 +294,7 @@
         }
         textarea[id="ProductAmount"] {
             background-color: rgba(215, 215, 215, 0.65);
-            width: 10%;
+            width: 15%;
             text-align: center;
             border: 1px solid black;
             overflow-wrap: break-word;
@@ -299,7 +302,7 @@
         }
         textarea[id="ProductTotalProductSum"] {
             background-color: rgba(215, 215, 215, 0.65);
-            width: 15%;
+            width: 20%;
             text-align: center;
             font-weight: bold;
             border: 1px solid black;

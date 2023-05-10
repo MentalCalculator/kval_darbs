@@ -43,21 +43,21 @@
                 <br>
                 @foreach($products as $product)
                     <div class="input-group mb-3">
-                        <textarea type="text" id="ProductUserID" readonly>User ID: {{ $product->userid }}</textarea>
-                        <textarea id="ProductName" autofocus readonly>{{ $product->productname }}</textarea>
+                        <textarea id="ProductUserID" rows="1" readonly>User ID: {{ $product->userid }}</textarea>
+                        <textarea id="ProductName" rows="1" autofocus readonly>{{ $product->productname }}</textarea>
                         @if($product->producttype == 'weight')
-                            <textarea type="text" id="ProductPrice" readonly>{{ $product->productprice }}€/KG</textarea>
+                            <textarea id="ProductPrice" rows="1" readonly>{{ $product->productprice }}€/KG</textarea>
                         @else
-                            <textarea type="text" id="ProductPrice" readonly>{{ $product->productprice }}€</textarea>
+                            <textarea id="ProductPrice" rows="1" readonly>{{ $product->productprice }}€</textarea>
                         @endif
-                        <textarea type="text" id="ProductType" readonly>{{ $product->producttype }}</textarea>
+                        <textarea id="ProductType" rows="1" readonly>{{ $product->producttype }}</textarea>
                         @if($product->producttype == 'weight')
-                            <textarea type="text" id="ProductAmount" readonly>{{ $product->productamount }} KG</textarea>
+                            <textarea id="ProductAmount" rows="1" readonly>{{ $product->productamount }} KG</textarea>
                             @else
-                            <textarea type="text" id="ProductAmount" readonly>{{ $product->productamount }}</textarea>
+                            <textarea id="ProductAmount" rows="1" readonly>{{ $product->productamount }}</textarea>
                         @endif
-                        <textarea type="text" id="ProductTotalProductSum" readonly>{{ $product->total }}€</textarea>
-                        <textarea type="text" id="ProductDate" readonly>{{ $product->created_at }}</textarea>
+                        <textarea id="ProductTotalProductSum" rows="1" readonly>{{ $product->total }}€</textarea>
+                        <textarea id="ProductDate" rows="1" readonly>{{ $product->created_at }}</textarea>
                         <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop4_{{$product->id}}" data-product-id="{{$product->id}}">Modify</button>
                         <div class="modal fade" id="staticBackdrop4_{{$product->id}}" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel4" aria-hidden="true">
                             <div class="modal-dialog modal-dialog-centered">
@@ -70,16 +70,16 @@
                                             @csrf
                                             @method('PUT')
                                             <div class="input-group mb-3">
-                                                <textarea type="text" id="ProductEditName" readonly>{{$product->productname}}</textarea>
+                                                <textarea id="ProductEditName" rows="1" readonly>{{$product->productname}}</textarea>
                                                 @if ($product->producttype == 'weight')
-                                                    <textarea type="text" id="ProductEditPrice" readonly>{{$product->productprice}}€/KG</textarea>
+                                                    <textarea id="ProductEditPrice" rows="1" readonly>{{$product->productprice}}€/KG</textarea>
                                                 @else
-                                                    <textarea type="text" id="ProductEditPrice" readonly>{{$product->productprice}}€</textarea>
+                                                    <textarea id="ProductEditPrice" rows="1" readonly>{{$product->productprice}}€</textarea>
                                                 @endif
                                                 @if ($product->producttype == 'weight')
-                                                    <textarea type="text" id="ProductEditAmount" readonly>{{$product->productamount}}KG</textarea>
+                                                    <textarea id="ProductEditAmount" rows="1" readonly>{{$product->productamount}}KG</textarea>
                                                 @else
-                                                    <textarea type="text" id="ProductEditAmount" readonly>{{$product->productamount}}</textarea>
+                                                    <textarea id="ProductEditAmount" rows="1" readonly>{{$product->productamount}}</textarea>
                                                 @endif
                                             </div>
                                             <input type="text" class="form-control" minlength="3" maxlength="50" name="new_name" id="new_name" placeholder="New product name" style="margin-top: 10px;">

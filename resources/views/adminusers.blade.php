@@ -43,10 +43,10 @@
             <br>
             @foreach($users as $user)
                 <div class="input-group mb-3">
-                    <textarea type="text" id="UserID" readonly>{{$user->id}}</textarea>
-                    <textarea type="text" id="UserName" readonly>{{$user->name}}</textarea>
-                    <textarea type="text" id="UserEmail" readonly>{{$user->email}}</textarea>
-                    <textarea type="text" id="UserDate" readonly>{{$user->created_at}}</textarea>
+                    <textarea id="UserID" rows="1" readonly>{{$user->id}}</textarea>
+                    <textarea id="UserName" rows="1" readonly>{{$user->name}}</textarea>
+                    <textarea id="UserEmail" rows="1" readonly>{{$user->email}}</textarea>
+                    <textarea id="UserDate" rows="1" readonly>{{$user->created_at}}</textarea>
                     <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop2_{{$user->id}}" data-product-id="{{$user->id}}">Modify</button>
                     <div class="modal fade" id="staticBackdrop2_{{$user->id}}" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel2" aria-hidden="true">
                         <div class="modal-dialog modal-dialog-centered">
@@ -56,9 +56,9 @@
                                 </div>
                                 <div class="modal-body">
                                     <div class="input-group mb-3">
-                                        <textarea type="text" id="UserEditID" readonly>{{$user->id}}</textarea>
-                                        <textarea type="text" id="UserEditName" readonly>{{$user->name}}</textarea>
-                                        <textarea type="text" id="UserEditEmail" readonly>{{$user->email}}</textarea>
+                                        <textarea id="UserEditID" rows="1" readonly>{{$user->id}}</textarea>
+                                        <textarea id="UserEditName" rows="1" readonly>{{$user->name}}</textarea>
+                                        <textarea id="UserEditEmail" rows="1" readonly>{{$user->email}}</textarea>
                                     </div>
                                     <form method="POST" action="{{ route('adminuserupdate', ['id' => $user->id]) }}">
                                         @csrf

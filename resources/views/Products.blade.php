@@ -35,16 +35,16 @@
                 <div class="input-group mb-3">
                     <textarea id="ProductName" rows="1" style="overflow-wrap: break-word; resize: none; vertical-align: middle;" autofocus readonly>{{ $groupedProduct[0]->productname }}</textarea>
                     @if($groupedProduct[0]->producttype == 'weight')
-                        <textarea type="text" id="ProductPrice" readonly>{{ $groupedProduct[0]->productprice }} €/KG</textarea>
+                        <textarea type="text" id="ProductPrice" rows="1" readonly>{{ $groupedProduct[0]->productprice }} €/KG</textarea>
                     @else
-                        <textarea type="text" id="ProductPrice" readonly>{{ $groupedProduct[0]->productprice }} €</textarea>
+                        <textarea type="text" id="ProductPrice" rows="1" readonly>{{ $groupedProduct[0]->productprice }} €</textarea>
                     @endif
                     @if($groupedProduct[0]->producttype == 'weight')
-                        <textarea type="text" id="ProductAmount" readonly>{{ $groupedProduct->sum(function($product) { return $product->productamount; }) }} KG</textarea>
+                        <textarea type="text" id="ProductAmount" rows="1" readonly>{{ $groupedProduct->sum(function($product) { return $product->productamount; }) }} KG</textarea>
                     @else
-                        <textarea type="text" id="ProductAmount" readonly>{{ $groupedProduct->sum(function($product) { return $product->productamount; }) }}</textarea>
+                        <textarea type="text" id="ProductAmount" rows="1" readonly>{{ $groupedProduct->sum(function($product) { return $product->productamount; }) }}</textarea>
                     @endif
-                    <textarea type="text" id="ProductTotalProductSum" readonly>{{ $groupedProduct->totalSum }} €</textarea>
+                    <textarea type="text" id="ProductTotalProductSum" rows="1" readonly>{{ $groupedProduct->totalSum }} €</textarea>
                 </div>
             @endforeach
         </div>

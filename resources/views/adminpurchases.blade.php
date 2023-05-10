@@ -40,38 +40,38 @@
                 @foreach($purchases as $purchase)
                 <div id="zone">
                     <div class="input-group mb-3">
-                        <textarea type="text" id="PurchaseUserIDTitle" readonly>User ID:</textarea>
-                        <textarea type="text" id="PurchaseUserID" readonly>{{ $purchase->userid }}</textarea>
-                        <textarea type="text" id="PurchaseIDTitle" readonly>Purchase ID:</textarea>
-                        <textarea type="text" id="PurchaseID" readonly>{{ $purchase->id }}</textarea>
-                        <textarea type="text" id="PurchaseDateTitle" readonly>Date:</textarea>
-                        <textarea type="text" id="PurchaseDate" readonly>{{ $purchase->created_at }}</textarea>
+                        <textarea type="text" id="PurchaseUserIDTitle" rows="1" readonly>User ID:</textarea>
+                        <textarea type="text" id="PurchaseUserID" rows="1" readonly>{{ $purchase->userid }}</textarea>
+                        <textarea type="text" id="PurchaseIDTitle" rows="1" readonly>Purchase ID:</textarea>
+                        <textarea type="text" id="PurchaseID" rows="1" readonly>{{ $purchase->id }}</textarea>
+                        <textarea type="text" id="PurchaseDateTitle" rows="1" readonly>Date:</textarea>
+                        <textarea type="text" id="PurchaseDate" rows="1" readonly>{{ $purchase->created_at }}</textarea>
                     </div>
                     <div class="input-group mb-3">
-                        <textarea type="text" id="ProductsTitle" readonly>Products</textarea>
+                        <textarea type="text" id="ProductsTitle" rows="1" readonly>Products</textarea>
                     </div>
                     <div id="products">
                         @foreach($data[$purchase->id] as $products)
                             <div class="input-group mb-3">
-                                <textarea readonly id="PurchaseName" rows="2" autofocus>{{ $products->productname }}</textarea>
+                                <textarea readonly id="PurchaseName" rows="1" autofocus>{{ $products->productname }}</textarea>
                                 @if ($products->producttype == 'weight')
-                                    <textarea  type="text" id="PurchasePrice" readonly>{{$products->productprice}}€/KG</textarea>
+                                    <textarea  type="text" id="PurchasePrice" rows="1" readonly>{{$products->productprice}}€/KG</textarea>
                                 @else
-                                    <textarea  type="text" id="PurchasePrice" readonly>{{$products->productprice}}€</textarea>
+                                    <textarea  type="text" id="PurchasePrice" rows="1" readonly>{{$products->productprice}}€</textarea>
                                 @endif
                                 @if ($products->producttype == 'weight')
-                                    <textarea  type="text" id="PurchaseAmount" readonly>{{$products->productamount}}KG</textarea>
+                                    <textarea  type="text" id="PurchaseAmount" rows="1" readonly>{{$products->productamount}}KG</textarea>
                                 @else
-                                    <textarea  type="text" id="PurchaseAmount" readonly>{{$products->productamount}}</textarea>
+                                    <textarea  type="text" id="PurchaseAmount" rows="1" readonly>{{$products->productamount}}</textarea>
                                 @endif
-                                <textarea  type="text" id="PurchaseTotalProductSum" readonly>{{$products->total}}€</textarea>
+                                <textarea  type="text" id="PurchaseTotalProductSum" rows="1" readonly>{{$products->total}}€</textarea>
                             </div>
                         @endforeach
                     </div>
                     <br>
                     <div class="input-group mb-3">
-                        <textarea type="text" id="PurchaseTotalSumTitle" readonly>Total:</textarea>
-                        <textarea type="text" id="PurchaseTotalSum" readonly>{{ $totalSums[$purchase->id] }}€</textarea>
+                        <textarea type="text" id="PurchaseTotalSumTitle" rows="1" readonly>Total:</textarea>
+                        <textarea type="text" id="PurchaseTotalSum" rows="1" readonly>{{ $totalSums[$purchase->id] }}€</textarea>
                     </div>
                     <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#staticBackdrop4_{{$purchase->id}}" style="margin-bottom: 10px;">Delete Purchase</button>
                     <div class="modal fade" id="staticBackdrop4_{{$purchase->id}}" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" data-product-id="{{$purchase->id}}" aria-labelledby="staticBackdropLabel4" aria-hidden="true">
