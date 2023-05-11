@@ -171,7 +171,7 @@
         /* Product Title */
         textarea[id="ProductsTitle"] {
             background-color: rgba(148, 151, 255, 0.65);
-            width: 10%;
+            width: 15%;
             text-align: center;
             border: 1px solid black;
             overflow-wrap: break-word;
@@ -182,7 +182,7 @@
         /* Purchase Info Data Style */
         textarea[id="PurchaseUserIDTitle"] {
             background-color: rgba(215, 215, 215, 0.65);
-            width: 10%;
+            width: 11%;
             text-align: center;
             border: 1px solid black;
             overflow-wrap: break-word;
@@ -199,7 +199,7 @@
         }
         textarea[id="PurchaseIDTitle"] {
             background-color: rgba(215, 215, 215, 0.65);
-            width: 12%;
+            width: 14%;
             text-align: center;
             border: 1px solid black;
             overflow-wrap: break-word;
@@ -216,7 +216,7 @@
         }
         textarea[id="PurchaseDateTitle"] {
             background-color: rgba(215, 215, 215, 0.65);
-            width: 7%;
+            width: 8%;
             text-align: center;
             border: 1px solid black;
             overflow-wrap: break-word;

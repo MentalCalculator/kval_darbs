@@ -172,6 +172,7 @@
         textarea[id="ProductsTitle"] {
             background-color: rgba(148, 151, 255, 0.65);
             width: 15%;
+            height: auto;
             text-align: center;
             justify-content: center;
             border: 1px solid black;
@@ -400,7 +401,7 @@
             $('#add-product-btn').click(function() {
                 var newInputGroup = $('<div class="input-group mb-3">' +
                     '<input type="text" class="form-control" placeholder="Name" name="productname[]" minlength="3" maxlength="50" required>' +
-                    '<input type="number" class="form-control" placeholder="Price" name="productprice[]" max="99999999.99" required>' +
+                    '<input type="number" class="form-control" placeholder="Price" name="productprice[]" step="0.01" " max="99999999.99" required>' +
                     '<select class="form-select form-select-sm" aria-label=".form-select-sm example" name="producttype[]" required>' +
                     '<option value="amount">Amount</option>' +
                     '<option value="weight">Weight</option>' +
@@ -417,9 +418,11 @@
 
                     if (selectedOption === 'amount') {
                         productAmountInput.attr('max', '99999999');
+                        productAmountInput.attr('step', '1');
                         newInputGroup.find('input[name="productamount[]"]').attr('placeholder', 'Number*');
                     } else if (selectedOption === 'weight') {
                         productAmountInput.attr('max', '99999999.999');
+                        productAmountInput.attr('step', '0.001');
                         newInputGroup.find('input[name="productamount[]"]').attr('placeholder', 'Number*');
                     }
                 });
