@@ -14,7 +14,7 @@
                 <h2>Registration</h2>
                     <form method="POST" action="{{ route('register') }}">
                                 @csrf
-                                <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" max="20" required autocomplete="name" autofocus placeholder="Username">
+                                <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" min="4" max="20" required autocomplete="name" autofocus placeholder="Username">
 
                                 @error('name')
                                     <span class="invalid-feedback" role="alert">
@@ -22,7 +22,7 @@
                                     </span>
                                 @enderror
 
-                                <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" max="20" required autocomplete="email" placeholder="E-Mail">
+                                <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" min="6" max="30" required autocomplete="email" placeholder="E-Mail">
 
                                 @error('email')
                                     <span class="invalid-feedback" role="alert">

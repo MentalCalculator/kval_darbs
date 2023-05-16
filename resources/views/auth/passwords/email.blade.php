@@ -25,7 +25,7 @@
                         @csrf
 
                                 <div class="text-center">
-                                <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus placeholder="E-Pasts">
+                                <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" max="30" required autocomplete="email" autofocus placeholder="E-Pasts">
 
                                 @error('email')
                                     <span class="invalid-feedback" role="alert">
