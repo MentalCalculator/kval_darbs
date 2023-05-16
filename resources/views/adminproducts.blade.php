@@ -85,9 +85,9 @@
                                             <input type="text" class="form-control" minlength="3" maxlength="50" name="new_name" id="new_name" placeholder="New product name" style="margin-top: 10px;">
                                             <input type="number" class="form-control" name="new_price" id="new_price" step="0.01" placeholder="New product price" max="99999999.99" style="margin-top: 10px;">
                                             @if ($product->producttype == 'weight')
-                                                <input type="number" class="form-control" name="new_amount" id="new_amount" max="99999999.999" placeholder="New product weight" style="margin-top: 10px;">
+                                                <input type="number" class="form-control" name="new_amount" id="new_amount" step="0.001" max="99999999.999" placeholder="New product weight" style="margin-top: 10px;">
                                             @else
-                                                <input type="number" class="form-control" name="new_amount" id="new_amount" max="99999999" placeholder="New product amount" maxlength="8" style="margin-top: 10px; margin-bottom: 10px">
+                                                <input type="number" class="form-control" name="new_amount" id="new_amount" step="1" max="99999999" placeholder="New product amount" maxlength="8" style="margin-top: 10px; margin-bottom: 10px">
                                             @endif
                                             <br>
                                             <div class="modal-footer">

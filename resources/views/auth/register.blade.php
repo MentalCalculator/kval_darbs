@@ -14,7 +14,7 @@
                 <h2>Registration</h2>
                     <form method="POST" action="{{ route('register') }}">
                                 @csrf
-                                <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus placeholder="Username">
+                                <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" max="20" required autocomplete="name" autofocus placeholder="Username">
 
                                 @error('name')
                                     <span class="invalid-feedback" role="alert">
@@ -22,7 +22,7 @@
                                     </span>
                                 @enderror
 
-                                <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" placeholder="E-Mail">
+                                <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" max="20" required autocomplete="email" placeholder="E-Mail">
 
                                 @error('email')
                                     <span class="invalid-feedback" role="alert">
@@ -30,7 +30,7 @@
                                     </span>
                                 @enderror
 
-                                <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password" placeholder="Password">
+                                <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password" min="8" max="20" placeholder="Password">
 
                                 @error('password')
                                     <span class="invalid-feedback" role="alert">
@@ -38,7 +38,7 @@
                                     </span>
                                 @enderror
 
-                                <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password" placeholder="Repeat Password">
+                                <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password" min="8" max="20" placeholder="Repeat Password">
                                 <div class="text-center">
                                 <button type="submit" class="btn btn-success">
                                     {{ __('Register') }}

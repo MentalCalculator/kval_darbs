@@ -65,10 +65,10 @@
                                         @method('PUT')
                                         <!-- Include product ID as hidden input field -->
                                         <input type="hidden" name="product_id" value="{{$user->id}}">
-                                        <input type="text" class="form-control" name="new_name" id="new_name" placeholder="New user name" style="margin-top: 10px;">
-                                        <input type="email" class="form-control" name="new_email" id="new_email" placeholder="New user e-mail" style="margin-top: 10px;">
-                                        <input type="password" class="form-control" name="new_password" id="new_password" placeholder="New user password" style="margin-top: 10px;">
-                                        <input type="password" class="form-control" name="new_password_repeat" id="new_password_repeat" placeholder="Repeat password" style="margin-top: 10px;">
+                                        <input type="text" class="form-control" name="new_name" id="new_name" placeholder="New user name" max="20" style="margin-top: 10px;">
+                                        <input type="email" class="form-control" name="new_email" id="new_email" placeholder="New user e-mail" max="20" style="margin-top: 10px;">
+                                        <input type="password" class="form-control" name="new_password" id="new_password" placeholder="New user password" min="8" max="20" style="margin-top: 10px;">
+                                        <input type="password" class="form-control" name="new_password_repeat" id="new_password_repeat" min="8" max="20" placeholder="Repeat password" style="margin-top: 10px;">
                                         <br>
                                         <div class="modal-footer">
                                             <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cancel</button>

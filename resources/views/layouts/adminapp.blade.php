@@ -342,7 +342,7 @@
         }
         textarea[id="ProductDate"] {
             background-color: rgba(215, 215, 215, 0.65);
-            width: 12%;
+            width: 14%;
             text-align: center;
             font-weight: bold;
             border: 1px solid black;

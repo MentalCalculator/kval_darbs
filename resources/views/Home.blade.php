@@ -106,11 +106,11 @@
                                                     <!-- Include product ID as hidden input field -->
                                                     <input type="hidden" name="product_id" value="{{$products->id}}">
                                                     <input type="text" class="form-control" name="new_name" id="new_name" placeholder="New product name" minlength="3" maxlength="50" style="margin-top: 10px;">
-                                                    <input type="number" class="form-control" name="new_price" id="new_price" max="99999999.99" placeholder="New product price" style="margin-top: 10px;">
+                                                    <input type="number" class="form-control" name="new_price" id="new_price" step="0.01" max="99999999.99" placeholder="New product price" style="margin-top: 10px;">
                                                     @if ($products->producttype == 'weight')
-                                                        <input type="number" class="form-control" name="new_amount" id="new_amount" max="99999999.999" placeholder="New product weight" style="margin-top: 10px;">
+                                                        <input type="number" class="form-control" name="new_amount" id="new_amount" step="0.001" max="99999999.999" placeholder="New product weight" style="margin-top: 10px;">
                                                     @else
-                                                        <input type="number" class="form-control" name="new_amount" id="new_amount" max="99999999" placeholder="New product amount" style="margin-top: 10px; margin-bottom: 10px">
+                                                        <input type="number" class="form-control" name="new_amount" id="new_amount" step="1" max="99999999" placeholder="New product amount" style="margin-top: 10px; margin-bottom: 10px">
                                                     @endif
                                                     <br>
                                                     <div class="modal-footer">
