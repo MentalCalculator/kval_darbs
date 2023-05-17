@@ -25,7 +25,7 @@
                         @csrf
 
                                 <div class="text-center">
-                                <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" max="30" required autocomplete="email" autofocus placeholder="E-Pasts">
+                                <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" max="30" required placeholder="E-Pasts">
 
                                 @error('email')
                                     <span class="invalid-feedback" role="alert">
@@ -34,12 +34,12 @@
                                 @enderror
                                 <br>
                                 <button type="submit" class="btn btn-success" style="align-content: center;">
-                                    {{ __('Sūtīt Paroles Nomaiņas Saiti') }}
+                                    {{ __('Send E-Mail') }}
                                 </button>
                                 </div>
                                 <br>
                                 <div class="text-center">
-                                <a href="{{route('login')}}" class="btn btn-primary">Atgriezties</a>
+                                <a href="{{route('login')}}" class="btn btn-primary">Return</a>
                                 </div>
                     </form>
               </div>
