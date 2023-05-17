@@ -21,7 +21,7 @@
                         </div>
                     @endif
 
-                    <form method="POST" action="{{ route('password.email') }}">
+                    <form method="POST" autocomplete="off" action="{{ route('password.email') }}">
                         @csrf
 
                                 <div class="text-center">

@@ -14,7 +14,7 @@
 </head>
 <body>
 <div class="container">
-                    <form method="POST" action="{{ route('password.update') }}">
+                    <form method="POST" autocomplete="off" action="{{ route('password.update') }}">
                         @csrf
 
                         <input type="hidden" name="token" value="{{ $token }}">
