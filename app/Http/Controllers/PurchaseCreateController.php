@@ -49,8 +49,8 @@ class PurchaseCreateController extends Controller
 
                     $usedproducts = new UsedProducts();
                     $usedproducts->id = $randomnumberproduct;
-                    $usedproducts->mainproductid = $products->id;
-                    $usedproducts->UsedPurchaseid = $purchases->id;
+                    $usedproducts->mainproductid = $randomnumberproduct;
+                    $usedproducts->UsedPurchaseid = $randomnumbers;
                     $usedproducts->userid = Auth::id();
                     $usedproducts->productname = $productname;
                     $usedproducts->productprice = $productprice;
