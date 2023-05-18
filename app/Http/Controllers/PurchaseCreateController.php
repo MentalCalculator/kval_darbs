@@ -60,8 +60,8 @@ class PurchaseCreateController extends Controller
                     $usedproducts->created_at = now();
                     $usedproducts->updated_at = now();
 
-                    $usedproducts->save();
                     $products->save();
+                    $usedproducts->save();
                 }
             }
             return redirect()->back();
