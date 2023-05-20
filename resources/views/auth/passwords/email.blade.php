@@ -58,35 +58,30 @@
 </head>
 <body>
 <div class="container">
-                <h2>Change password!</h2>
-
-                    @if (session('status'))
-                        <div class="alert alert-success" role="alert">
-                            {{ session('status') }}
-                        </div>
-                    @endif
-
-                    <form method="POST" autocomplete="off" action="{{ route('password.email') }}">
-                        @csrf
-
-                                <div class="text-center">
-                                <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" max="30" required placeholder="E-Mail">
-
-                                @error('email')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                                <br>
-                                <button type="submit" class="btn btn-success" style="align-content: center;">
-                                    {{ __('Send E-Mail') }}
-                                </button>
-                                </div>
-                                <br>
-                                <div class="text-center">
-                                <a href="{{route('login')}}" class="btn btn-primary">Return</a>
-                                </div>
-                    </form>
-              </div>
+    <h2>Change password!</h2>
+    @if (session('status'))
+        <div class="alert alert-success" role="alert">
+            {{ session('status') }}
         </div>
+    @endif
+    <form method="POST" autocomplete="off" action="{{ route('password.email') }}">
+        @csrf
+        <div class="text-center">
+            <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" max="30" required placeholder="E-Mail">
+            @error('email')
+            <span class="invalid-feedback" role="alert">
+                <strong>{{ $message }}</strong>
+            </span>
+            @enderror
+            <br>
+            <button type="submit" class="btn btn-success" style="align-content: center;">
+                {{ __('Send E-Mail') }}
+            </button>
+        </div>
+        <br>
+        <div class="text-center">
+            <a href="{{route('login')}}" class="btn btn-primary">Return</a>
+        </div>
+    </form>
+</div>
 </body>

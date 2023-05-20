@@ -66,7 +66,7 @@
     <form method="POST" autocomplete="off" action="{{ route('password.update') }}">
         @csrf
         <input type="hidden" name="token" value="{{ $token }}">
-        <input class="form-control" value="{{ $email ?? old('email') }}" readonly required placeholder="Your E-Mail">
+        <input class="form-control" value="{{ $email ?? old('email') }}" readonly placeholder="Your E-Mail">
         @error('email')
         <span class="invalid-feedback" role="alert">
             <strong>{{ $message }}</strong>
