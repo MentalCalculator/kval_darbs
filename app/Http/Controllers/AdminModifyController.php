@@ -6,6 +6,7 @@ use App\Models\Products;
 use App\Models\Purchases;
 use App\Models\UsedProducts;
 use App\Models\User;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -89,6 +90,8 @@ class AdminModifyController extends Controller
         }
         $product->total = $currentprice * $currentamount;
         $usedproduct->total = $currentusedprice * $currentusedamount;
+        $product->updated_at = Carbon::now()->tz(Auth::user()->timezone);
+        $usedproduct->updated_at = Carbon::now()->tz(Auth::user()->timezone);
         $product->save();
         $usedproduct->save();
         return redirect()->back();
@@ -146,6 +149,7 @@ class AdminModifyController extends Controller
             }
         }
 
+        $user->updated_at = Carbon::now()->tz(Auth::user()->timezone);
         $user->save();
         return redirect()->back();
     }

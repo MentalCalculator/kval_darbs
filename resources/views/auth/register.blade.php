@@ -2,12 +2,21 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Welcome</title>
+    <title>Register</title>
 
     <!-- Fonts -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
     <link href="css/register.css" type="text/css" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            // Retrieve the user's time zone
+            var userTimeZone = Intl.DateTimeFormat().resolvedOptions().timeZone;
 
+            // Set the value of the hidden input field
+            $('#timezone').val(userTimeZone);
+        });
+    </script>
 </head>
 <body>
 <div class="container">
@@ -34,7 +43,7 @@
             <strong>{{ $message }}</strong>
         </span>
         @enderror
-
+        <input type="hidden" id="timezone" name="timezone">
         <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password" min="8" max="20" placeholder="Repeat Password">
         <div class="text-center">
             <button type="submit" class="btn btn-success">

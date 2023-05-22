@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use Carbon\Carbon;
+use App\Models\User;
 use App\Models\Purchases;
 use App\Models\Products;
 use App\Models\UsedProducts;
@@ -22,8 +24,8 @@ class PurchaseCreateController extends Controller
                 $purchases = new Purchases;
                 $purchases->id = $randomnumbers;
                 $purchases->userid = Auth::id();
-                $purchases->created_at = now();
-                $purchases->updated_at = now();
+                $purchases->created_at = Carbon::now()->tz(Auth::user()->timezone);
+                $purchases->updated_at = Carbon::now()->tz(Auth::user()->timezone);
                 $purchases->save();
 
                 foreach ($productnames as $key => $productname) {
@@ -44,8 +46,8 @@ class PurchaseCreateController extends Controller
                     $products->productamount = $productamount;
                     $products->producttype = $producttype;
                     $products->total = $totalsum;
-                    $products->created_at = now();
-                    $products->updated_at = now();
+                    $products->created_at = Carbon::now()->tz(Auth::user()->timezone);
+                    $products->updated_at = Carbon::now()->tz(Auth::user()->timezone);
 
                     $usedproducts = new UsedProducts();
                     $usedproducts->id = $randomnumberproduct;
@@ -57,8 +59,8 @@ class PurchaseCreateController extends Controller
                     $usedproducts->productamount = $productamount;
                     $usedproducts->producttype = $producttype;
                     $usedproducts->total = $totalsum;
-                    $usedproducts->created_at = now();
-                    $usedproducts->updated_at = now();
+                    $usedproducts->created_at = Carbon::now()->tz(Auth::user()->timezone);
+                    $usedproducts->updated_at = Carbon::now()->tz(Auth::user()->timezone);
 
                     $products->save();
                     $usedproducts->save();

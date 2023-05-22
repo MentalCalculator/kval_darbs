@@ -4,8 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Models\Purchases;
 use App\Models\UsedProducts;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use App\Models\Products;
+use Illuminate\Support\Facades\Auth;
 
 class ModifyController extends Controller
 {
@@ -53,6 +55,8 @@ class ModifyController extends Controller
 
         $product->total = $currentprice * $currentamount;
         $usedproduct->total = $currentusedprice * $currentusedamount;
+        $product->updated_at = Carbon::now()->tz(Auth::user()->timezone);
+        $usedproduct->updated_at = Carbon::now()->tz(Auth::user()->timezone);
         $product->save();
         $usedproduct->save();
         return redirect()->back();
