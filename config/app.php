@@ -52,7 +52,7 @@ return [
     |
     */
 
-    'url' => env('APP_URL', 'urchin-app-f3su5.ondigitalocean.app'),
+    'url' => env('APP_URL', 'https://urchin-app-f3su5.ondigitalocean.app'),
 
     'asset_url' => env('ASSET_URL', null),
 
