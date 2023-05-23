@@ -44,7 +44,7 @@
             <br><br>
             @if (Route::has('register'))
             <div class="text-center">
-                <h2>Arent registered?</h2>
+                <h2>Aren't registered?</h2>
                 <a href="{{ route('register') }}" class="btn btn-primary">Register</a>
             </div>
             @endif

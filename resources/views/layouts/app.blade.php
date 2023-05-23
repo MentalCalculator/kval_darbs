@@ -404,12 +404,12 @@
             $('#add-product-btn').click(function() {
                 var newInputGroup = $('<div class="input-group mb-3">' +
                     '<input type="text" class="form-control" placeholder="Name" name="productname[]" minlength="3" maxlength="50" required>' +
-                    '<input type="number" class="form-control" placeholder="Price" name="productprice[]" step="0.01" max="99999999.99" required>' +
+                    '<input type="number" class="form-control" placeholder="Price" name="productprice[]" step="0.01" min="0" max="99999999.99" required>' +
                     '<select class="form-select form-select-sm" aria-label=".form-select-sm example" name="producttype[]" required>' +
                     '<option value="amount">Amount</option>' +
                     '<option value="weight">Weight</option>' +
                     '</select>' +
-                    '<input type="number" class="form-control" placeholder="Number*" name="productamount[]" max="99999999">' +
+                    '<input type="number" class="form-control" placeholder="Number*" name="productamount[]" min="0" max="99999999">' +
                     '<button class="btn btn-danger" type="button" onclick="$(this).parent().remove()">X</button></div>').clone();
 
                 newInputGroup.find('input').val('');

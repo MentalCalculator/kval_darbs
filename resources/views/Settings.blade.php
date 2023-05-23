@@ -16,6 +16,7 @@
                             <br>
                             @csrf
                             <input type="text"class="form-control @error('name') is-invalid @enderror" name="new_username" placeholder="Jauns nosaukums" required>
+                            <br>
                             <div class="buttons-container" style="text-align: center">
                                 <button class="btn btn-success">Change username</button>
                                 <button type="button" class="btn btn-danger" class="btn-close" data-bs-dismiss="modal" aria-label="Close">Cancel</button>
@@ -41,6 +42,7 @@
                                 <strong>Missing @ in the email!</strong>
                             </span>
                             @enderror
+                            <br>
                             <div class="buttons-container" style="text-align: center">
                                 <button class="btn btn-success">Change e-mail</button>
                                 <button type="button" class="btn btn-danger" class="btn-close" data-bs-dismiss="modal" aria-label="Close">Cancel</button>
@@ -68,6 +70,7 @@
                                 </span>
                                 @enderror
                             </div>
+                            <br>
                             <div class="form-group">
                                 <input type="password" class="form-control @error('new_password_confirmation') is-invalid @enderror" name="new_password_confirmation" id="new_password_confirmation" placeholder="Repeat new password" required>
                                 @error('new_password_confirmation')
@@ -76,6 +79,7 @@
                                 </span>
                                 @enderror
                             </div>
+                            <br>
                             <div class="buttons-container" style="text-align: center">
                                 <button type="submit" class="btn btn-success">Change password</button>
                                 <button type="button" class="btn btn-danger" class="btn-close" data-bs-dismiss="modal" aria-label="Close">Cancel</button>
