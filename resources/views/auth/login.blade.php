@@ -15,7 +15,7 @@
 <body>
     <div class="container">
         <h2>Login</h2>
-        <form method="POST" autocomplete="off" action="{{ route('login') }}">
+        <form method="POST" action="{{ route('login') }}">
             @csrf
             <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required placeholder="E-Mail">
             @error('email')

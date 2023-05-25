@@ -20,6 +20,7 @@ return new class extends Migration
             $table->rememberToken();
             $table->timestamps();
             $table->string('timezone')->default('UTC');
+            $table->boolean('is_admin')->default(false);
         });
     }
 
