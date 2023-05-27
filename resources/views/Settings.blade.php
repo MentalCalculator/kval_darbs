@@ -15,7 +15,7 @@
                         <form action="{{ route('namechange') }}" method="POST">
                             <br>
                             @csrf
-                            <input type="text"class="form-control @error('name') is-invalid @enderror" name="new_username" placeholder="Jauns nosaukums" required>
+                            <input type="text"class="form-control @error('name') is-invalid @enderror" name="new_username" placeholder="New username" required>
                             <br>
                             <div class="buttons-container" style="text-align: center">
                                 <button class="btn btn-success">Change username</button>
@@ -36,7 +36,7 @@
                         <form action="{{ route('emailchange') }}" method="POST">
                             <br>
                             @csrf
-                            <input type="email" class="form-control @error('email') is-invalid @enderror" name="new_email" placeholder="Jauns e-pasts" required>
+                            <input type="email" class="form-control @error('email') is-invalid @enderror" name="new_email" placeholder="New E-Mail" required>
                             @error('email')
                             <span class="invalid-feedback" role="alert" style="text-align: center;">
                                 <strong>Missing @ in the email!</strong>
