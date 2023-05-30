@@ -21,7 +21,7 @@
 <body>
 <div class="container">
     <h2>Registration</h2>
-    <form method="POST" autocomplete="off" action="{{ secure_url(route('register')) }}">
+    <form method="POST" autocomplete="on" action="{{ secure_url(route('register')) }}">
         @csrf
         <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" min="4" max="20" required placeholder="Username">
         @error('name')

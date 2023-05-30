@@ -64,7 +64,7 @@
             {{ session('status') }}
         </div>
     @endif
-    <form method="POST" action="{{ secure_url(route('password.email')) }}">
+    <form method="POST" autocomplete="on" action="{{ secure_url(route('password.email')) }}">
         @csrf
         <div class="text-center">
             <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" max="30" required placeholder="E-Mail">
