@@ -12,7 +12,7 @@
             <div class="modal-dialog modal-dialog-centered">
                 <div class="modal-content">
                     <div class="modal-body">
-                        <form action="{{ route('namechange') }}" method="POST">
+                        <form action="{{ secure_url(route('namechange')) }}" method="POST">
                             <br>
                             @csrf
                             <input type="text"class="form-control @error('name') is-invalid @enderror" name="new_username" placeholder="New username" required>
@@ -33,7 +33,7 @@
             <div class="modal-dialog modal-dialog-centered">
                 <div class="modal-content">
                     <div class="modal-body">
-                        <form action="{{ route('emailchange') }}" method="POST">
+                        <form action="{{ secure_url(route('emailchange')) }}" method="POST">
                             <br>
                             @csrf
                             <input type="email" class="form-control @error('email') is-invalid @enderror" name="new_email" placeholder="New E-Mail" required>
@@ -59,7 +59,7 @@
             <div class="modal-dialog modal-dialog-centered">
                 <div class="modal-content">
                     <div class="modal-body">
-                        <form action="{{ route('passwordchange') }}" method="POST">
+                        <form action="{{ secure_url(route('passwordchange')) }}" method="POST">
                             @csrf
                             <br>
                             <div class="form-group">

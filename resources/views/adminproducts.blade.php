@@ -13,7 +13,7 @@
                 <h1 style="text-align: center">All products</h1>
             </div>
                 <br>
-                <form method="GET" action="{{route('adminproductssearchname')}}">
+                <form method="GET" action="{{ secure_url(route('adminproductssearchname')) }}">
                     <div class="container" style="height: 20px; width: 500px">
                         <div class="input-group mb-3">
                             <input type="text" name="search" class="form-control" maxlength="50" value="{{ Session::get('productsSearch', '') }}" placeholder="Product name" required/>
@@ -22,7 +22,7 @@
                     </div>
                 </form>
                 <br><br>
-                <form method="GET" action="{{route('adminproductssearchuserid')}}">
+                <form method="GET" action="{{ secure_url(route('adminproductssearchuserid')) }}">
                     <div class="container" style="height: 20px; width: 500px">
                         <div class="input-group mb-3">
                             <input type="text" name="search" class="form-control" maxlength="20" value="{{ Session::get('productsSearch', '') }}" placeholder="Product user ID" required/>
@@ -31,7 +31,7 @@
                     </div>
                 </form>
                 <br><br>
-                <form method="GET" action="{{route('adminproductsdate')}}">
+                <form method="GET" action="{{ secure_url(route('adminproductsdate')) }}">
                     <div class="container" style="height: 20px; width: 500px">
                         <div class="input-group mb-3">
                             <input type="date" class="form-control" id="startdate" name="startdate" required>
@@ -66,7 +66,7 @@
                                         <h1 class="modal-title fs-5" id="staticBackdropLabel4">Modify product</h1>
                                     </div>
                                     <div class="modal-body">
-                                        <form method="POST" action="{{ route('adminproductupdate', ['id' => $product->id]) }}">
+                                        <form method="POST" action="{{ secure_url(route('adminproductupdate', ['id' => $product->id])) }}">
                                             @csrf
                                             @method('PUT')
                                             <div class="input-group mb-3">
@@ -106,7 +106,7 @@
                                     <div class="modal-header">
                                         <h1 class="modal-title fs-5" id="staticBackdropLabel3">Do you want to delete this product?</h1>
                                     </div>
-                                    <form method="POST" action="{{ route('adminremoveproduct', ['id' => $product->id]) }}">
+                                    <form method="POST" action="{{ secure_url(route('adminremoveproduct', ['id' => $product->id])) }}">
                                         @csrf
                                         @method('DELETE')
                                         <div class="modal-footer">

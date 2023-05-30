@@ -13,7 +13,7 @@
                 <h1 style="text-align: center">Your products</h1>
             </div>
             <br>
-            <form method="GET" action="{{route('productssearch')}}">
+            <form method="GET" action="{{ secure_url(route('productssearch')) }}">
                 <div class="container" style="height: 60px; width: 500px">
                     <div class="input-group mb-3">
                         <input type="text" name="search" class="form-control" maxlength="50" value="{{ Session::get('productsSearch', '') }}" placeholder="Product name" required/>
@@ -21,7 +21,7 @@
                     </div>
                 </div>
             </form>
-            <form method="GET" action="{{route('productsdate')}}">
+            <form method="GET" action="{{ secure_url(route('productsdate')) }}">
                 <div class="container" style="height: 60px; width: 500px">
                     <div class="input-group mb-3">
                         <input type="date" class="form-control" id="startdate" name="startdate" required>

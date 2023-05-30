@@ -12,7 +12,7 @@
         <h1 style="text-align: center">Total</h1>
     </div>
         <br>
-    <form method="GET" action="{{route('totaldate')}}">
+    <form method="GET" action="{{ secure_url(route('totaldate')) }}">
         <div class="container" style="height: 60px; width: 500px">
             <div class="input-group mb-3">
                 <input type="date" class="form-control" id="startdate" name="startdate" required>
