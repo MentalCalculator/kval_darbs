@@ -441,13 +441,13 @@
                 <!-- Left Side Of Navbar -->
                 <ul class="navbar-nav me-auto mx-5">
                     <li style="margin-left: 10px">
-                        <a class="nav-link text-light btn" href="{{ route('home')}}">{{__('Purchases')}}</a>
+                        <a class="nav-link text-light btn" href="{{ url('home', [], true) }}">{{__('Purchases')}}</a>
                     </li>
                     <li style="margin-left: 10px">
-                        <a class="nav-link text-light btn" href="{{ route('productsinfo')}}">{{__('Products')}}</a>
+                        <a class="nav-link text-light btn" href="{{ url('productsinfo', [], true) }}">{{__('Products')}}</a>
                     </li>
                     <li style="margin-left: 10px">
-                        <a class="nav-link text-light btn" href="{{ route('total')}}">{{__('Total')}}</a>
+                        <a class="nav-link text-light btn" href="{{ url('total', [], true) }}">{{__('Total')}}</a>
                     </li>
                 </ul>
                 <!-- Middle Of Navbar -->
@@ -468,7 +468,7 @@
                             </button>
                             <div class="dropdown-menu dropdown-menu-dark dropdown-menu-lg-end">
                                 @if(Auth::user()->is_admin)
-                                    <a class="dropdown-item" href="{{ route('adminpurchases') }}">Admin Panel</a>
+                                    <a class="dropdown-item" href="{{ url('adminpurchases', [], true) }}">Admin Panel</a>
                                 @endif
                                 <a class="dropdown-item" href="{{ route('profile') }}">Settings</a>
                                 <a class="dropdown-item text-danger" href="{{ route('logout') }}"
@@ -477,7 +477,7 @@
                                     {{ __('Logout') }}
                                 </a>
                             </div>
-                            <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                            <form id="logout-form" action="{{ url('logout', [], true) }}" method="POST" class="d-none">
                                 @csrf
                             </form>
                         </div>
