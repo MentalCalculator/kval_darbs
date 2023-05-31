@@ -129,7 +129,7 @@
                                             <div class="modal-header">
                                                 <h1 class="modal-title fs-5" id="staticBackdropLabel3">Do you want to delete this product?</h1>
                                             </div>
-                                            <form method="POST" autocomplete="on" action="{{ url(route('removeproduct', ['id' => $products->id]), [], true) }}">
+                                            <form method="POST" autocomplete="on" action="{{ url('removeproduct', ['id' => $products->id], true) }}">
                                                 @csrf
                                                 @method('DELETE')
                                                 <div class="modal-footer">
@@ -155,7 +155,7 @@
                                 <div class="modal-header">
                                     <h1 class="modal-title fs-5" id="staticBackdropLabel4">Do you want to delete Purchase?</h1>
                                 </div>
-                                <form method="POST" autocomplete="on" action="{{ url(route('removepurchase', ['id' => $purchase->id]), [], true) }}">
+                                <form method="POST" autocomplete="on" action="{{ url('removepurchase', ['id' => $purchase->id], true) }}">
                                     @csrf
                                     @method('DELETE')
                                     <div class="modal-footer">
