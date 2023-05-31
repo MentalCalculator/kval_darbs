@@ -506,13 +506,13 @@
                 <!-- Left Side Of Navbar -->
                 <ul class="navbar-nav me-auto mx-5">
                     <li style="margin-left: 10px">
-                        <a class="text-light btn" href="{{ url('adminpurchases', [], true) }}">Purchases</a>
+                        <a class="text-light btn" href="{{ route('adminpurchases') }}">Purchases</a>
                     </li>
                     <li style="margin-left: 10px">
-                        <a class="text-light btn" href="{{ url('adminproducts', [], true) }}">Products</a>
+                        <a class="text-light btn" href="{{ route('adminproducts') }}">Products</a>
                     </li>
                     <li style="margin-left: 10px">
-                        <a class="text-light btn" href="{{ url('adminusers', [], true) }}">Users</a>
+                        <a class="text-light btn" href="{{ route('adminusers') }}">Users</a>
                     </li>
                 </ul>
                 <!-- Middle Of Navbar -->
@@ -522,7 +522,7 @@
                 <!-- Right Side Of Navbar -->
                 <ul class="navbar-nav ms-auto mx-5">
                     <li style="margin-left: 50px">
-                        <a class="nav-link text-danger btn" href="{{ url('home', [], true) }}">Return</a>
+                        <a class="nav-link text-danger btn" href="{{ route('home')}}">Return</a>
                     </li>
                 </ul>
             </nav>

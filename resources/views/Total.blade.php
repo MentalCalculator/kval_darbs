@@ -12,7 +12,7 @@
         <h1 style="text-align: center">Total</h1>
     </div>
         <br>
-    <form method="GET" autocomplete="on" action="{{ url('totaldate', [], true) }}">
+    <form method="GET" autocomplete="on" action="{{ secure_url(route('totaldate')) }}">
         <div class="container" style="height: 60px; width: 500px">
             <div class="input-group mb-3">
                 <input type="date" class="form-control" id="startdate" name="startdate" required>

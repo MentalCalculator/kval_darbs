@@ -12,21 +12,21 @@
         <div class="summary-box" style="margin-bottom: 50px">
             <h1 style="text-align: center">All purchases</h1>
         </div>
-        <form method="GET" autocomplete="on" action="{{ url('adminpurchasesearchid', [], true) }}">
+        <form method="GET" autocomplete="on" action="{{ route('adminpurchasesearchid') }}">
             <div class="input-group mb-3">
                 <input type="text" name="search" class="form-control" maxlength="20" value="{{ Session::get('adminpurchasesearchid', '') }}"
                        placeholder="Purchase ID"/>
                 <button class="btn btn-primary" type="submit">Search</button>
             </div>
         </form>
-        <form method="GET" autocomplete="on" action="{{ url('adminpurchasesearchuserid', [], true) }}">
+        <form method="GET" autocomplete="on" action="{{ route('adminpurchasesearchuserid') }}">
             <div class="input-group mb-3">
                 <input type="text" name="search" class="form-control" maxlength="20" value="{{ Session::get('adminpurchasesearchuserid', '') }}"
                        placeholder="User ID"/>
                 <button class="btn btn-primary" type="submit">Search</button>
             </div>
         </form>
-        <form method="GET" autocomplete="on" action="{{ url('adminpurchasesdate', [], true) }}">
+        <form method="GET" autocomplete="on" action="{{ route('adminpurchasesdate') }}">
             <div class="input-group mb-3">
                 <input type="date" class="form-control" id="startdate" name="startdate" required>
                 <input type="date" class="form-control" id="enddate" name="enddate" required>
@@ -81,7 +81,7 @@
                                     <h1 class="modal-title fs-5" id="staticBackdropLabel4">Do you want to delete
                                         Purchase?</h1>
                                 </div>
-                                <form method="POST" autocomplete="on" action="{{ url('removepurchase', ['id' => $purchase->id], true) }}">
+                                <form method="POST" autocomplete="on" action="https://tomskd.lat/removepurchase/{{ $purchase->id }}">
                                     @csrf
                                     @csrf
                                     @method('DELETE')

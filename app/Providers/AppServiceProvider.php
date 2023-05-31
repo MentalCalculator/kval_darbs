@@ -3,8 +3,7 @@
 namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
-use Illuminate\Support\Facades\Config;
-use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\URL;
 use Illuminate\Support\Facades\Validator;
 
 class AppServiceProvider extends ServiceProvider
@@ -35,5 +34,7 @@ class AppServiceProvider extends ServiceProvider
         Validator::replacer('strong_password', function ($message, $attribute, $rule, $parameters) {
             return str_replace(':attribute', $attribute, ':attribute should include at least one lowercase letter, one uppercase letter, one number, and one special character.');
         });
+
+        URL::forceScheme('https');
     }
 }
