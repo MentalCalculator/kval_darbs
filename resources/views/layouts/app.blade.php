@@ -444,7 +444,7 @@
                         <a class="nav-link text-light btn" href="{{ url('home', [], true) }}">{{__('Purchases')}}</a>
                     </li>
                     <li style="margin-left: 10px">
-                        <a class="nav-link text-light btn" href="{{ url('productsinfo', [], true) }}">{{__('Products')}}</a>
+                        <a class="nav-link text-light btn" href="{{ url('products', [], true) }}">{{__('Products')}}</a>
                     </li>
                     <li style="margin-left: 10px">
                         <a class="nav-link text-light btn" href="{{ url('total', [], true) }}">{{__('Total')}}</a>

@@ -52,7 +52,7 @@ Route::get('/', function () {
     })->name('Purchases');
 // Page Routes
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-Route::get('/products',[App\Http\Controllers\HomeController::class, 'products'])->name('productsinfo');
+Route::get('/products',[App\Http\Controllers\HomeController::class, 'products'])->name('products');
 Route::get('/total', [App\Http\Controllers\HomeController::class, 'total'])->name('total');
 Route::get('/settings', [App\Http\Controllers\HomeController::class, 'profile'])->name('profile');
 // Edit, Add and Delete Routes
