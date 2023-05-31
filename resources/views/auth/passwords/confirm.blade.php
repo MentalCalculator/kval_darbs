@@ -67,7 +67,7 @@
                 <div class="card-body">
                     {{ __('Please confirm your password before continuing.') }}
 
-                    <form method="POST" autocomplete="off" action="{{ route('password.confirm') }}">
+                    <form method="POST" autocomplete="off" action="{{ url('password.confirm', [], true) }}">
                         @csrf
 
                         <div class="row mb-3">
