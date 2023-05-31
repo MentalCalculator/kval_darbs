@@ -100,7 +100,7 @@
                                                         <textarea type="text" id="ProductEditAmount" rows="1" readonly>{{$products->productamount}}</textarea>
                                                     @endif
                                                 </div>
-                                                <form method="POST" autocomplete="on" action="{{ url('productupdate', ['id' => $product->id], true) }}">
+                                                <form method="POST" autocomplete="on" action="{{ url('productupdate', ['id' => $products->id], true) }}">
                                                     @csrf
                                                     @method('PUT')
                                                     <!-- Include product ID as hidden input field -->
