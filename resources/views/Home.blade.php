@@ -155,7 +155,7 @@
                                 <div class="modal-header">
                                     <h1 class="modal-title fs-5" id="staticBackdropLabel4">Do you want to delete Purchase?</h1>
                                 </div>
-                                <form method="POST" autocomplete="on" action="{{ url('/purchase/remove/{id}', ['id' => $purchase->id], ['secure' => true]) }}">
+                                <form method="POST" autocomplete="on" action="{{ url(route('purchaseremove'), ['id' => $purchase->id], ['secure' => true]) }}">
                                     @csrf
                                     @method('DELETE')
                                     <div class="modal-footer">
