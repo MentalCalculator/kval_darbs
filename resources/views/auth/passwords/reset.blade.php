@@ -58,7 +58,7 @@
 <div class="container">
     <h2>Enter New Password</h2>
     <br>
-    <form method="POST" action="{{ url('password.update', [], true) }}">
+    <form method="POST" action="{{ route('password.update') }}">
         @csrf
 
         <input type="hidden" name="token" value="{{ $token }}">
