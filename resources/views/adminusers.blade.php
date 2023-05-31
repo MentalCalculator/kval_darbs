@@ -60,7 +60,7 @@
                                         <textarea id="UserEditName" rows="1" readonly>{{$user->name}}</textarea>
                                         <textarea id="UserEditEmail" rows="1" readonly>{{$user->email}}</textarea>
                                     </div>
-                                    <form method="POST" autocomplete="on" action="{{ url(route('adminuserupdate', ['id' => $user->id]), [], true) }}">
+                                    <form method="POST" autocomplete="on" action="{{ url('adminuserupdate', ['id' => $user->id], true) }}">
                                         @csrf
                                         @method('PUT')
                                         <!-- Include product ID as hidden input field -->
@@ -86,7 +86,7 @@
                                 <div class="modal-header">
                                     <h1 class="modal-title fs-5" id="staticBackdropLabel3">Do you want to remove this user?</h1>
                                 </div>
-                                <form method="POST" autocomplete="on" action="{{ url(route('adminremoveuser', ['id' => $user->id]), [], true) }}">
+                                <form method="POST" autocomplete="on" action="{{ url('adminremoveuser', ['id' => $user->id], true) }}">
                                     @csrf
                                     @method('DELETE')
                                     <div class="modal-footer">

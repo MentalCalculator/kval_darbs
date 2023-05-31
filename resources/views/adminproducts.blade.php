@@ -66,7 +66,7 @@
                                         <h1 class="modal-title fs-5" id="staticBackdropLabel4">Modify product</h1>
                                     </div>
                                     <div class="modal-body">
-                                        <form method="POST" action="{{ url(route('adminproductupdate', ['id' => $product->id]), [], true) }}">
+                                        <form method="POST" action="{{ url('adminproductupdate', ['id' => $product->id], true) }}">
                                             @csrf
                                             @method('PUT')
                                             <div class="input-group mb-3">
@@ -106,7 +106,7 @@
                                     <div class="modal-header">
                                         <h1 class="modal-title fs-5" id="staticBackdropLabel3">Do you want to delete this product?</h1>
                                     </div>
-                                    <form method="POST" action="{{ url(route('adminremoveproduct', ['id' => $product->id]), [], true) }}">
+                                    <form method="POST" action="{{ url('adminremoveproduct', ['id' => $product->id], true) }}">
                                         @csrf
                                         @method('DELETE')
                                         <div class="modal-footer">
