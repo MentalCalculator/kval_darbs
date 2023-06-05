@@ -23,11 +23,10 @@ class RedirectIfAuthenticated
 
         foreach ($guards as $guard) {
             if (Auth::guard($guard)->check()) {
-                // Remove the redirect and return the response as is
-                return $next($request);
+                return redirect(RouteServiceProvider::HOME);
             }
         }
 
-        return redirect(RouteServiceProvider::HOME);
+        return $next($request);
     }
 }
