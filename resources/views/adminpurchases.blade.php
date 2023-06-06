@@ -81,7 +81,7 @@
                                     <h1 class="modal-title fs-5" id="staticBackdropLabel4">Do you want to delete
                                         Purchase?</h1>
                                 </div>
-                                <form method="POST" autocomplete="on" action="https://tomskd.lat/removepurchase/{{ $purchase->id }}">
+                                <form method="POST" autocomplete="on" action="{{ route('adminremovepurchase') }}">
                                     @csrf
                                     @csrf
                                     @method('DELETE')
