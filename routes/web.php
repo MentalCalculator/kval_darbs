@@ -15,42 +15,41 @@ use Illuminate\Support\Facades\Route;
 |
 */
 Auth::routes();
-// Registered Verification
-Route::get('/', function () {
-    $user_id = Auth::id();
-    $purchases = DB::table('purchases')
-        ->select('id','created_at')
-        ->where('userid', '=', $user_id)
-        ->get();
-
-    $data = [];
-    $totalSums = [];
-    foreach ($purchases as $p) {
-        $purchase_id = $p->id;
-        $products = DB::table('products')
-            ->select('id', 'purchaseid', 'productname', 'productprice', 'productamount', 'producttype', 'total', 'created_at')
-            ->where('userid', '=', $user_id)
-            ->where('purchaseid', '=', $purchase_id)
-            ->get();
-
-        $totalSum = $products->sum('total');
-        $totalSum = number_format($totalSum, 2);
-        foreach ($products as $product) {
-            if (round($product->productamount) == $product->productamount) {
-                $product->productamount = number_format($product->productamount);
-            } else {
-                $product->productamount = number_format($product->productamount, 3);
-            }
-        }
-        $data[$purchase_id] = $products;
-        $totalSums[$purchase_id] = $totalSum;
-    }
-
-    return view('Home', compact('data', 'purchases', 'totalSums'));
-})->name('Purchases');
-
 // Registered User Routes
 Route::middleware(['auth'])->group(function() {
+// Registered Verification
+Route::get('/', function () {
+        $user_id = Auth::id();
+        $purchases = DB::table('purchases')
+            ->select('id','created_at')
+            ->where('userid', '=', $user_id)
+            ->get();
+
+        $data = [];
+        $totalSums = [];
+        foreach ($purchases as $p) {
+            $purchase_id = $p->id;
+            $products = DB::table('products')
+                ->select('id', 'purchaseid', 'productname', 'productprice', 'productamount', 'producttype', 'total', 'created_at')
+                ->where('userid', '=', $user_id)
+                ->where('purchaseid', '=', $purchase_id)
+                ->get();
+
+            $totalSum = $products->sum('total');
+            $totalSum = number_format($totalSum, 2);
+            foreach ($products as $product) {
+                if (round($product->productamount) == $product->productamount) {
+                    $product->productamount = number_format($product->productamount);
+                } else {
+                    $product->productamount = number_format($product->productamount, 3);
+                }
+            }
+            $data[$purchase_id] = $products;
+            $totalSums[$purchase_id] = $totalSum;
+        }
+
+        return view('Home', compact('data', 'purchases', 'totalSums'));
+    })->name('Purchases');
 // Page Routes
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('/products',[App\Http\Controllers\HomeController::class, 'products'])->name('productsinfo');
