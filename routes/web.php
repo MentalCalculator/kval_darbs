@@ -15,6 +15,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 Auth::routes();
+// Registered Verification
+Route::middleware(['auth'])->group(function() {
 // Entrance Route When You Login/Register
 Route::get('/', function () {
     $user_id = Auth::id();
@@ -49,24 +51,25 @@ Route::get('/', function () {
     return view('Home', compact('data', 'purchases', 'totalSums'));
     })->name('Purchases');
 // Page Routes
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home')->middleware('auth');
-Route::get('/products',[App\Http\Controllers\HomeController::class, 'products'])->name('productsinfo')->middleware('auth');
-Route::get('/total', [App\Http\Controllers\HomeController::class, 'total'])->name('total')->middleware('auth');
-Route::get('/settings', [App\Http\Controllers\HomeController::class, 'profile'])->name('profile')->middleware('auth');
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/products',[App\Http\Controllers\HomeController::class, 'products'])->name('productsinfo');
+Route::get('/total', [App\Http\Controllers\HomeController::class, 'total'])->name('total');
+Route::get('/settings', [App\Http\Controllers\HomeController::class, 'profile'])->name('profile');
 // Edit, Add and Delete Routes
-Route::post('/CreatePurchase', [App\Http\Controllers\PurchaseCreateController::class, 'purchasecreate'])->name('purchasecreate')->middleware('auth');
-Route::delete('/purchase/remove/{id}', [App\Http\Controllers\ModifyController::class, 'removepurchase'])->name('removepurchase')->middleware('auth');
-Route::delete('/product/remove/{id}', [App\Http\Controllers\ModifyController::class, 'removeproduct'])->name('removeproduct')->middleware('auth');
-Route::put('/product/update/{id}', [App\Http\Controllers\ModifyController::class, 'productupdate'])->name('productupdate')->middleware('auth');
-Route::post('/ProfileU',[App\Http\Controllers\ProfileEditController::class, 'userchange'])->name('namechange')->middleware('auth');
-Route::post('/ProfileE',[App\Http\Controllers\ProfileEditController::class, 'emailchange'])->name('emailchange')->middleware('auth');
-Route::post('/ProfileP',[App\Http\Controllers\ProfileEditController::class, 'passwordchange'])->name('passwordchange')->middleware('auth');
+Route::post('/CreatePurchase', [App\Http\Controllers\PurchaseCreateController::class, 'purchasecreate'])->name('purchasecreate');
+Route::delete('/purchase/remove/{id}', [App\Http\Controllers\ModifyController::class, 'removepurchase'])->name('removepurchase');
+Route::delete('/product/remove/{id}', [App\Http\Controllers\ModifyController::class, 'removeproduct'])->name('removeproduct');
+Route::put('/product/update/{id}', [App\Http\Controllers\ModifyController::class, 'productupdate'])->name('productupdate');
+Route::post('/ProfileU',[App\Http\Controllers\ProfileEditController::class, 'userchange'])->name('namechange');
+Route::post('/ProfileE',[App\Http\Controllers\ProfileEditController::class, 'emailchange'])->name('emailchange');
+Route::post('/ProfileP',[App\Http\Controllers\ProfileEditController::class, 'passwordchange'])->name('passwordchange');
 // Search and Date Routes
-Route::get('/PurchaseS', [App\Http\Controllers\SearchController::class, 'purchasessearch'])->name('purchasessearch')->middleware('auth');
-Route::get('/ProductsS', [App\Http\Controllers\SearchController::class, 'productssearch'])->name('productssearch')->middleware('auth');
-Route::get('/PurchaseD', [App\Http\Controllers\DateController::class, 'purchasesdate'])->name('purchasesdate')->middleware('auth');
-Route::get('/ProductsD', [App\Http\Controllers\DateController::class, 'productsdate'])->name('productsdate')->middleware('auth');
-Route::get('/TotalD', [App\Http\Controllers\DateController::class, 'totalcountdate'])->name('totaldate')->middleware('auth');
+Route::get('/PurchaseS', [App\Http\Controllers\SearchController::class, 'purchasessearch'])->name('purchasessearch');
+Route::get('/ProductsS', [App\Http\Controllers\SearchController::class, 'productssearch'])->name('productssearch');
+Route::get('/PurchaseD', [App\Http\Controllers\DateController::class, 'purchasesdate'])->name('purchasesdate');
+Route::get('/ProductsD', [App\Http\Controllers\DateController::class, 'productsdate'])->name('productsdate');
+Route::get('/TotalD', [App\Http\Controllers\DateController::class, 'totalcountdate'])->name('totaldate');
+});
 // Admin User Confirmation
 Route::middleware('admin')->group(function() {
 // Admin Page Routes
