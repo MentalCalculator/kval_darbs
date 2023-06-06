@@ -49,6 +49,7 @@ Route::get('/', function () {
     return view('Home', compact('data', 'purchases', 'totalSums'));
 })->name('Purchases');
 
+// Registered User Routes
 Route::middleware(['auth'])->group(function() {
 // Page Routes
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
