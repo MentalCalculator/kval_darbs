@@ -16,8 +16,6 @@ use Illuminate\Support\Facades\Route;
 */
 Auth::routes();
 // Registered Verification
-Route::middleware(['auth'])->group(function() {
-// Entrance Route When You Login/Register
 Route::get('/', function () {
     $user_id = Auth::id();
     $purchases = DB::table('purchases')
@@ -49,7 +47,9 @@ Route::get('/', function () {
     }
 
     return view('Home', compact('data', 'purchases', 'totalSums'));
-    })->name('Purchases');
+})->name('Purchases');
+
+Route::middleware(['auth'])->group(function() {
 // Page Routes
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('/products',[App\Http\Controllers\HomeController::class, 'products'])->name('productsinfo');
