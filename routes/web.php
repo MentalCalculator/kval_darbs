@@ -18,6 +18,7 @@ use Illuminate\Support\Facades\Route;
 Auth::routes();
 
 // Registered User Routes
+Route::middleware('auth')->group(function () {
 // Registered Verification
     Route::get('/', function () {
         $user_id = Auth::id();
@@ -70,6 +71,7 @@ Auth::routes();
     Route::get('/PurchaseD', [App\Http\Controllers\DateController::class, 'purchasesdate'])->name('purchasesdate');
     Route::get('/ProductsD', [App\Http\Controllers\DateController::class, 'productsdate'])->name('productsdate');
     Route::get('/TotalD', [App\Http\Controllers\DateController::class, 'totalcountdate'])->name('totaldate');
+});
 
 // Admin User Confirmation
 Route::middleware('admin')->group(function () {
