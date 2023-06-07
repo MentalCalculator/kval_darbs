@@ -16,7 +16,7 @@ use Illuminate\Support\Facades\Route;
 */
 Auth::routes();
 // Registered User Routes
-Route::middleware(['auth'])->group(function() {
+Route::middleware('auth')->group(function() {
 // Registered Verification
 Route::get('/', function () {
         $user_id = Auth::id();
