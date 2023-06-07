@@ -15,7 +15,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 Auth::routes();
-// Registered User Routes
+// Registered User Confirmation
 Route::middleware('auth')->group(function() {
 // Registered Verification
 Route::get('/', function () {
