@@ -13,7 +13,7 @@
                 <h1 style="text-align: center">All users</h1>
             </div>
             <br>
-            <form method="GET" autocomplete="on" action="{{ secure_url(route('adminusersearchid')) }}">
+            <form method="GET" autocomplete="on" action="{{ route('adminusersearchid') }}">
                 <div class="container" style="height: 50px; width: 500px">
                     <div class="input-group mb-3">
                         <input type="number" name="search" class="form-control" value="{{ Session::get('userSearch', '') }}" placeholder="User ID" required/>
@@ -22,7 +22,7 @@
                 </div>
             </form>
             <br>
-            <form method="GET" autocomplete="on" action="{{ secure_url(route('adminusersearchname')) }}">
+            <form method="GET" autocomplete="on" action="{{ route('adminusersearchname') }}">
                 <div class="container" style="height: 20px; width: 500px">
                     <div class="input-group mb-3">
                         <input type="text" name="search" class="form-control" value="{{ Session::get('userSearch', '') }}" placeholder="Username" required/>
@@ -31,7 +31,7 @@
                 </div>
             </form>
             <br>
-            <form method="GET" autocomplete="on" action="{{ secure_url(route('adminuserdate')) }}">
+            <form method="GET" autocomplete="on" action="{{ route('adminuserdate') }}">
                 <div class="container" style="height: 50px; width: 500px">
                     <div class="input-group mb-3">
                         <input type="date" class="form-control" id="startdate" name="startdate" required>
@@ -60,7 +60,7 @@
                                         <textarea id="UserEditName" rows="1" readonly>{{$user->name}}</textarea>
                                         <textarea id="UserEditEmail" rows="1" readonly>{{$user->email}}</textarea>
                                     </div>
-                                    <form method="POST" autocomplete="on" action="{{ secure_url(route('adminuserupdate', ['id' => $user->id])) }}">
+                                    <form method="POST" autocomplete="on" action="{{ route('adminuserupdate', ['id' => $user->id]) }}">
                                         @csrf
                                         @method('PUT')
                                         <!-- Include product ID as hidden input field -->
@@ -86,7 +86,7 @@
                                 <div class="modal-header">
                                     <h1 class="modal-title fs-5" id="staticBackdropLabel3">Do you want to remove this user?</h1>
                                 </div>
-                                <form method="POST" autocomplete="on" action="{{ secure_url(route('adminremoveuser', ['id' => $user->id])) }}">
+                                <form method="POST" autocomplete="on" action="{{ route('adminremoveuser', ['id' => $user->id]) }}">
                                     @csrf
                                     @method('DELETE')
                                     <div class="modal-footer">

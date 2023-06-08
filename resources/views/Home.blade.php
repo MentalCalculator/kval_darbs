@@ -12,13 +12,13 @@
         <div class="summary-box" id="PurchasesSummary">
             <h1 style="text-align: center">Your purchases</h1>
         </div>
-        <form method="GET" autocomplete="on" action="{{ secure_url(route('purchasessearch')) }}">
+        <form method="GET" autocomplete="on" action="{{ route('purchasessearch') }}">
             <div class="input-group mb-3">
                 <input type="text" name="search" class="form-control" maxlength="50" value="{{ Session::get('purchasesSearch', '') }}" placeholder="Product name" />
                 <button class="btn btn-primary" type="submit">Search</button>
             </div>
         </form>
-        <form method="GET" autocomplete="on" action="{{ secure_url(route('purchasesdate')) }}">
+        <form method="GET" autocomplete="on" action="{{ route('purchasesdate') }}">
             <div class="input-group mb-3">
                 <input type="date" class="form-control" id="startdate" name="startdate" required>
                 <input type="date" class="form-control" id="enddate" name="enddate" required>
@@ -36,7 +36,7 @@
                         <h1 class="modal-title fs-5" id="staticBackdropLabel">Create Purchase</h1>
                     </div>
                     <div class="modal-body">
-                        <form method="POST" autocomplete="on" action="{{ secure_url(route('purchasecreate')) }}">
+                        <form method="POST" autocomplete="on" action="{{ route('purchasecreate') }}">
                             @csrf
                             <div id="product-input-group"></div>
                             <p>Weight/Amount is optional. It sets to 1 if left blank.</p>
@@ -100,7 +100,7 @@
                                                         <textarea type="text" id="ProductEditAmount" rows="1" readonly>{{$products->productamount}}</textarea>
                                                     @endif
                                                 </div>
-                                                <form method="POST" autocomplete="on" action="{{ secure_url(route('productupdate', ['id' => $products->id])) }}">
+                                                <form method="POST" autocomplete="on" action="{{ route('productupdate', ['id' => $products->id]) }}">
                                                     @csrf
                                                     @method('PUT')
                                                     <!-- Include product ID as hidden input field -->
@@ -129,7 +129,7 @@
                                             <div class="modal-header">
                                                 <h1 class="modal-title fs-5" id="staticBackdropLabel3">Do you want to delete this product?</h1>
                                             </div>
-                                            <form method="POST" autocomplete="on" action="{{ secure_url(route('removeproduct', ['id' => $products->id])) }}">
+                                            <form method="POST" autocomplete="on" action="{{ route('removeproduct', ['id' => $products->id]) }}">
                                                 @csrf
                                                 @method('DELETE')
                                                 <div class="modal-footer">
@@ -155,7 +155,7 @@
                                 <div class="modal-header">
                                     <h1 class="modal-title fs-5" id="staticBackdropLabel4">Do you want to delete Purchase?</h1>
                                 </div>
-                                <form method="POST" autocomplete="on" action="{{ secure_url(route('removepurchase', ['id' => $purchase->id])) }}">
+                                <form method="POST" autocomplete="on" action="{{ route('removepurchase', ['id' => $purchase->id]) }}">
                                     @csrf
                                     @method('DELETE')
                                     <div class="modal-footer">

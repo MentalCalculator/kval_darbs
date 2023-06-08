@@ -13,7 +13,7 @@
                 <h1 style="text-align: center">All products</h1>
             </div>
                 <br>
-                <form method="GET" action="z{{route('adminproductssearchname')}}">
+                <form method="GET" action="z{{ route('adminproductssearchname') }}">
                     <div class="container" style="height: 20px; width: 500px">
                         <div class="input-group mb-3">
                             <input type="text" name="search" class="form-control" maxlength="50" value="{{ Session::get('productsSearch', '') }}" placeholder="Product name" required/>
@@ -22,7 +22,7 @@
                     </div>
                 </form>
                 <br><br>
-                <form method="GET" action="{{route('adminproductssearchuserid')}}">
+                <form method="GET" action="{{ route('adminproductssearchuserid') }}">
                     <div class="container" style="height: 20px; width: 500px">
                         <div class="input-group mb-3">
                             <input type="text" name="search" class="form-control" maxlength="20" value="{{ Session::get('productsSearch', '') }}" placeholder="Product user ID" required/>
@@ -31,7 +31,7 @@
                     </div>
                 </form>
                 <br><br>
-                <form method="GET" action="{{route('adminproductsdate')}}">
+                <form method="GET" action="{{ route('adminproductsdate') }}">
                     <div class="container" style="height: 20px; width: 500px">
                         <div class="input-group mb-3">
                             <input type="date" class="form-control" id="startdate" name="startdate" required>
