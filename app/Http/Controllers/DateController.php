@@ -8,6 +8,16 @@ use Illuminate\Support\Facades\DB;
 
 class DateController extends Controller
 {
+    /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     public function purchasesdate(Request $request)
     {
         $startdate = $request->input('startdate');

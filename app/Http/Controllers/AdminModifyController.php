@@ -14,6 +14,16 @@ use Illuminate\Support\Facades\Route;
 
 class AdminModifyController extends Controller
 {
+    /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     public function adminremoveproduct($id)
     {
         $product = Products::find($id);

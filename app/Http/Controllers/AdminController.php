@@ -9,6 +9,16 @@ use Illuminate\Support\Facades\Route;
 
 class AdminController extends Controller
 {
+    /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     public function purchasedashboard()
     {
             $purchases = DB::table('purchases')

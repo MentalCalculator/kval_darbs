@@ -11,6 +11,16 @@ use Illuminate\Support\Facades\Auth;
 
 class PurchaseCreateController extends Controller
 {
+    /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     public function purchasecreate(Request $request)
     {
         $randomnumbers = random_int(1, 1000000000000);
